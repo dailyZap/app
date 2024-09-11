@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "516365348946",
+    "project_id": "dailyzap",
+    "storage_bucket": "dailyzap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516365348946:android:d74d45b0682b388b412f8b",
+        "android_client_info": {
+          "package_name": "me.dailyzap.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRsvISWD3ZVgJXwXxjgM0YC04qRnKc7ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
