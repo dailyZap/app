@@ -14,7 +14,7 @@ class TwoFaPage extends StatefulWidget {
 
 class _TwoFaPageState extends State<TwoFaPage> {
   String? loginToken;
-  String? handle;
+  String? handleOrEmail;
 
   bool loading = false;
   bool? success;
@@ -28,9 +28,12 @@ class _TwoFaPageState extends State<TwoFaPage> {
     final Map<String, dynamic> args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     loginToken = args['loginToken'];
-    handle = args['handle'];
+    handleOrEmail = args['handleOrEmail'];
 
-    if (loginToken == null || handle == null) {
+    print("✅ loginToken: $loginToken");
+    print("✅ handleOrEmail: $handleOrEmail");
+
+    if (loginToken == null || handleOrEmail == null) {
       setState(() {
         loading = false;
         success = false;
@@ -104,10 +107,9 @@ class _TwoFaPageState extends State<TwoFaPage> {
                   setState(() {
                     resendingCode = true;
                   });
-                  print("🎉 handle: $handle");
                   try {
-                    loginToken = (await homeServerApi!
-                            .login(UserLoginParams(handleOrEmail: handle!)))!
+                    loginToken = (await homeServerApi!.login(
+                            UserLoginParams(handleOrEmail: handleOrEmail!)))!
                         .loginToken;
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
