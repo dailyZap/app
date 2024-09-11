@@ -40,13 +40,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:dailyzap_api/api.dart';
 
 
-final api_instance = DefaultApi();
+final api_instance = AuthApi();
 final code = code_example; // String | 
 
 try {
     api_instance.checkInvite(code);
 } catch (e) {
-    print('Exception when calling DefaultApi->checkInvite: $e\n');
+    print('Exception when calling AuthApi->checkInvite: $e\n');
 }
 
 ```
@@ -57,18 +57,27 @@ All URIs are relative to *http://192.168.114.17*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**checkInvite**](doc//DefaultApi.md#checkinvite) | **GET** /v1/auth/invite/{code} | 
-*DefaultApi* | [**createUser**](doc//DefaultApi.md#createuser) | **POST** /users | 
-*DefaultApi* | [**getUserByHandle**](doc//DefaultApi.md#getuserbyhandle) | **GET** /users | 
-*DefaultApi* | [**getUserById**](doc//DefaultApi.md#getuserbyid) | **GET** /users/{id} | 
-*DefaultApi* | [**register**](doc//DefaultApi.md#register) | **PUT** /v1/auth/register | 
+*AuthApi* | [**checkInvite**](doc//AuthApi.md#checkinvite) | **GET** /v1/auth/invite/{code} | 
+*AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /v1/auth/login | 
+*AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
+*AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
+*UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /users | 
+*UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /users/{id} | 
 
 
 ## Documentation For Models
 
  - [CheckInvite404Response](doc//CheckInvite404Response.md)
+ - [LoginReturnParams](doc//LoginReturnParams.md)
+ - [Register409Response](doc//Register409Response.md)
+ - [Register500Response](doc//Register500Response.md)
+ - [RegisterReturnParams](doc//RegisterReturnParams.md)
+ - [TwoFaReturnParams](doc//TwoFaReturnParams.md)
+ - [UniqueFields](doc//UniqueFields.md)
  - [UserCreationParams](doc//UserCreationParams.md)
  - [UserGetParams](doc//UserGetParams.md)
+ - [UserLoginParams](doc//UserLoginParams.md)
+ - [UserTwoFaParams](doc//UserTwoFaParams.md)
 
 
 ## Documentation For Authorization

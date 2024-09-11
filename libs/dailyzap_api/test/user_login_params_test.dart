@@ -1,0 +1,29 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.12
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:dailyzap_api/api.dart';
+import 'package:test/test.dart';
+
+// tests for UserLoginParams
+void main() {
+  // final instance = UserLoginParams();
+
+  group('test UserLoginParams', () {
+    // String loginToken
+    test('to test the property `loginToken`', () async {
+      // TODO
+    });
+
+    // String twoFaCode
+    test('to test the property `twoFaCode`', () async {
+      // TODO
+    });
+  });
+}

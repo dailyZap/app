@@ -231,10 +231,26 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'CheckInvite404Response':
           return CheckInvite404Response.fromJson(value);
+        case 'LoginReturnParams':
+          return LoginReturnParams.fromJson(value);
+        case 'Register409Response':
+          return Register409Response.fromJson(value);
+        case 'Register500Response':
+          return Register500Response.fromJson(value);
+        case 'RegisterReturnParams':
+          return RegisterReturnParams.fromJson(value);
+        case 'TwoFaReturnParams':
+          return TwoFaReturnParams.fromJson(value);
+        case 'UniqueFields':
+          return UniqueFieldsTypeTransformer().decode(value);
         case 'UserCreationParams':
           return UserCreationParams.fromJson(value);
         case 'UserGetParams':
           return UserGetParams.fromJson(value);
+        case 'UserLoginParams':
+          return UserLoginParams.fromJson(value);
+        case 'UserTwoFaParams':
+          return UserTwoFaParams.fromJson(value);
         default:
           dynamic match;
           if (value is List &&

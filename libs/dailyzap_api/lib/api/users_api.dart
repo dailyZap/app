@@ -10,99 +10,10 @@
 
 part of openapi.api;
 
-class DefaultApi {
-  DefaultApi([ApiClient? apiClient])
-      : apiClient = apiClient ?? defaultApiClient;
+class UsersApi {
+  UsersApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
-
-  /// Performs an HTTP 'GET /v1/auth/invite/{code}' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [String] code (required):
-  Future<Response> checkInviteWithHttpInfo(
-    String code,
-  ) async {
-    // ignore: prefer_const_declarations
-    final path = r'/v1/auth/invite/{code}'.replaceAll('{code}', code);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [String] code (required):
-  Future<void> checkInvite(
-    String code,
-  ) async {
-    final response = await checkInviteWithHttpInfo(
-      code,
-    );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-  }
-
-  /// Performs an HTTP 'POST /users' operation and returns the [Response].
-  /// Parameters:
-  ///
-  /// * [UserCreationParams] userCreationParams (required):
-  Future<Response> createUserWithHttpInfo(
-    UserCreationParams userCreationParams,
-  ) async {
-    // ignore: prefer_const_declarations
-    final path = r'/users';
-
-    // ignore: prefer_final_locals
-    Object? postBody = userCreationParams;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Parameters:
-  ///
-  /// * [UserCreationParams] userCreationParams (required):
-  Future<void> createUser(
-    UserCreationParams userCreationParams,
-  ) async {
-    final response = await createUserWithHttpInfo(
-      userCreationParams,
-    );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-  }
 
   /// Performs an HTTP 'GET /users' operation and returns the [Response].
   /// Parameters:
@@ -217,37 +128,5 @@ class DefaultApi {
       ) as UserGetParams;
     }
     return null;
-  }
-
-  /// Performs an HTTP 'PUT /v1/auth/register' operation and returns the [Response].
-  Future<Response> registerWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/v1/auth/register';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  Future<void> register() async {
-    final response = await registerWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
   }
 }

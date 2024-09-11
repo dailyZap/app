@@ -28,11 +28,20 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
-part 'api/default_api.dart';
+part 'api/auth_api.dart';
+part 'api/users_api.dart';
 
 part 'model/check_invite404_response.dart';
+part 'model/login_return_params.dart';
+part 'model/register409_response.dart';
+part 'model/register500_response.dart';
+part 'model/register_return_params.dart';
+part 'model/two_fa_return_params.dart';
+part 'model/unique_fields.dart';
 part 'model/user_creation_params.dart';
 part 'model/user_get_params.dart';
+part 'model/user_login_params.dart';
+part 'model/user_two_fa_params.dart';
 
 /// An [ApiClient] instance that uses the default values obtained from
 /// the OpenAPI specification file.
