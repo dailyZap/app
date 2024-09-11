@@ -14,9 +14,11 @@ class TwoFaPage extends StatefulWidget {
 
 class _TwoFaPageState extends State<TwoFaPage> {
   String? loginToken;
+  String? handle;
 
   bool loading = false;
   bool? success;
+  bool resendingCode = false;
 
   AuthApi? api;
 
@@ -26,8 +28,9 @@ class _TwoFaPageState extends State<TwoFaPage> {
     final Map<String, dynamic> args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     loginToken = args['loginToken'];
+    handle = args['handle'];
 
-    if (loginToken == null) {
+    if (loginToken == null || handle == null) {
       setState(() {
         loading = false;
         success = false;
@@ -95,7 +98,34 @@ class _TwoFaPageState extends State<TwoFaPage> {
                   });
                 }
               },
-            )
+            ),
+            TextButton(
+                onPressed: () async {
+                  setState(() {
+                    resendingCode = true;
+                  });
+                  print("🎉 handle: $handle");
+                  try {
+                    loginToken = (await homeServerApi!
+                            .login(UserLoginParams(handleOrEmail: handle!)))!
+                        .loginToken;
+                    if (!context.mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('New code sent'),
+                    ));
+                  } on ApiException catch (e) {
+                    if (!context.mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Failed to resend code (${e.message})'),
+                    ));
+                  }
+                  setState(() {
+                    resendingCode = false;
+                  });
+                },
+                child: resendingCode
+                    ? const CircularProgressIndicator()
+                    : const Text('Resend code')),
           ],
         ),
       ),

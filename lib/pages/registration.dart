@@ -179,8 +179,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         if (response == null) {
                           return;
                         }
-                        navigate("/auth/2fa",
-                            arguments: {"loginToken": response.loginToken});
+                        navigate("/auth/2fa", arguments: {
+                          "loginToken": response.loginToken,
+                          "handle":
+                              _formKey.currentState?.fields['handle']!.value
+                        });
                       } on ApiException catch (e) {
                         setState(() {
                           registering = false;

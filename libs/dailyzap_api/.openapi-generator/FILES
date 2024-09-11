@@ -39,5 +39,3 @@ lib/model/user_get_params.dart
 lib/model/user_login_params.dart
 lib/model/user_two_fa_params.dart
 pubspec.yaml
-test/two_fa_return_params_test.dart
-test/user_two_fa_params_test.dart

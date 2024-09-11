@@ -13,54 +13,27 @@ part of openapi.api;
 class UserLoginParams {
   /// Returns a new [UserLoginParams] instance.
   UserLoginParams({
-    this.handle,
-    this.email,
+    required this.handleOrEmail,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? handle;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? email;
+  String handleOrEmail;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserLoginParams &&
-          other.handle == handle &&
-          other.email == email;
+      other is UserLoginParams && other.handleOrEmail == handleOrEmail;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (handle == null ? 0 : handle!.hashCode) +
-      (email == null ? 0 : email!.hashCode);
+      (handleOrEmail.hashCode);
 
   @override
-  String toString() => 'UserLoginParams[handle=$handle, email=$email]';
+  String toString() => 'UserLoginParams[handleOrEmail=$handleOrEmail]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.handle != null) {
-      json[r'handle'] = this.handle;
-    } else {
-      json[r'handle'] = null;
-    }
-    if (this.email != null) {
-      json[r'email'] = this.email;
-    } else {
-      json[r'email'] = null;
-    }
+    json[r'handleOrEmail'] = this.handleOrEmail;
     return json;
   }
 
@@ -85,8 +58,7 @@ class UserLoginParams {
       }());
 
       return UserLoginParams(
-        handle: mapValueOfType<String>(json, r'handle'),
-        email: mapValueOfType<String>(json, r'email'),
+        handleOrEmail: mapValueOfType<String>(json, r'handleOrEmail')!,
       );
     }
     return null;
@@ -142,5 +114,7 @@ class UserLoginParams {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'handleOrEmail',
+  };
 }
