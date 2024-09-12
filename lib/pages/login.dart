@@ -56,9 +56,8 @@ class _LoginPageState extends State<LoginPage> {
                         loading = true;
                       });
                       try {
-                        homeServerApi = AuthApi(ApiClient(
-                            basePath: _formKey
-                                .currentState?.fields['server']!.value));
+                        await setServerUrl(
+                            _formKey.currentState?.fields['server']!.value);
                         final response = await homeServerApi!.login(
                             UserLoginParams(
                                 handleOrEmail: _formKey.currentState

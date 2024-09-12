@@ -82,14 +82,7 @@ class _TwoFaPageState extends State<TwoFaPage> {
                     });
                     return;
                   }
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  await prefs.setString(
-                      StorageKeys.sessionToken, response.sessionToken);
-                  homeServerApi = AuthApi(ApiClient(
-                      basePath: homeServerApi!.apiClient.basePath,
-                      authentication: ApiKeyAuth("header", "Authorization")
-                        ..apiKey = response.sessionToken));
+                  await setSessionToken(response.sessionToken);
                   navigate('/home');
                 } on ApiException catch (e) {
                   if (!context.mounted) return;

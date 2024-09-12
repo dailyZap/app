@@ -1,8 +1,7 @@
 import 'package:camerawesome/camerawesome_plugin.dart';
-import 'package:dailyzap/helpers/constants/storage_keys.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,10 +36,11 @@ class _HomePageState extends State<HomePage> {
       body: loading
           ? TextButton(
               onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.remove(StorageKeys.sessionToken);
+                await logout();
+                navigate('/');
               },
-              child: const Text("Logout"))
+              child: const Text("Logout"),
+            )
           : CameraAwesomeBuilder.awesome(
               saveConfig: SaveConfig.photo(),
               previewFit: CameraPreviewFit.contain,
