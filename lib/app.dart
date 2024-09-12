@@ -4,6 +4,7 @@ import 'package:dailyzap/pages/auth_landing.dart';
 import 'package:dailyzap/pages/home.dart';
 import 'package:dailyzap/pages/landing.dart';
 import 'package:dailyzap/pages/login.dart';
+import 'package:dailyzap/pages/profile.dart';
 import 'package:dailyzap/pages/registration.dart';
 import 'package:dailyzap/pages/twofa.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class DailyZapApp extends StatelessWidget {
       routes: {
         '/': (_) => const LandingPage(),
         '/home': (_) => const HomePage(),
+        '/profile': (_) => const ProfilePage(),
         '/auth': (_) => const AuthLandingPage(),
         '/auth/login': (_) => const LoginPage(),
         '/auth/2fa': (_) => const TwoFaPage(),

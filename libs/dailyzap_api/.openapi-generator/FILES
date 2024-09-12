@@ -5,6 +5,9 @@ analysis_options.yaml
 doc/AuthApi.md
 doc/CheckInvite404Response.md
 doc/LoginReturnParams.md
+doc/PictureResponseProps.md
+doc/ProfileApi.md
+doc/ProfileResponseProps.md
 doc/Register409Response.md
 doc/Register500Response.md
 doc/RegisterReturnParams.md
@@ -18,6 +21,7 @@ doc/UsersApi.md
 git_push.sh
 lib/api.dart
 lib/api/auth_api.dart
+lib/api/profile_api.dart
 lib/api/users_api.dart
 lib/api_client.dart
 lib/api_exception.dart
@@ -29,6 +33,8 @@ lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
 lib/model/check_invite404_response.dart
 lib/model/login_return_params.dart
+lib/model/picture_response_props.dart
+lib/model/profile_response_props.dart
 lib/model/register409_response.dart
 lib/model/register500_response.dart
 lib/model/register_return_params.dart
@@ -39,3 +45,5 @@ lib/model/user_get_params.dart
 lib/model/user_login_params.dart
 lib/model/user_two_fa_params.dart
 pubspec.yaml
+test/picture_response_props_test.dart
+test/profile_response_props_test.dart

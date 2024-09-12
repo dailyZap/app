@@ -45,9 +45,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
       loading = true;
     });
 
-    homeServerApi =
+    authApi =
         AuthApi(ApiClient(basePath: "http${kDebugMode ? '' : 's'}://$server"));
-    homeServerApi!.checkInvite(token!).then((value) {
+    authApi!.checkInvite(token!).then((value) {
       setState(() {
         loading = false;
         success = true;
@@ -166,14 +166,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         registering = true;
                       });
                       try {
-                        final response = await homeServerApi!.register(
+                        final response = await authApi!.register(
                             UserCreationParams(
                                 handle: _formKey
                                     .currentState?.fields['handle']?.value,
                                 email: _formKey
                                     .currentState?.fields['email']?.value,
-                                firstName: _formKey
-                                    .currentState?.fields['firstname']?.value,
+                                firstName:
+                                    _formKey.currentState?.fields['firstname']
+                                        ?.value,
                                 lastName: _formKey
                                     .currentState?.fields['lastname']?.value));
                         if (response == null) {

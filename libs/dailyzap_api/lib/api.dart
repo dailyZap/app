@@ -29,10 +29,13 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/auth_api.dart';
+part 'api/profile_api.dart';
 part 'api/users_api.dart';
 
 part 'model/check_invite404_response.dart';
 part 'model/login_return_params.dart';
+part 'model/picture_response_props.dart';
+part 'model/profile_response_props.dart';
 part 'model/register409_response.dart';
 part 'model/register500_response.dart';
 part 'model/register_return_params.dart';

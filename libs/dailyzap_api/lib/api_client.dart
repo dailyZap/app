@@ -233,6 +233,10 @@ class ApiClient {
           return CheckInvite404Response.fromJson(value);
         case 'LoginReturnParams':
           return LoginReturnParams.fromJson(value);
+        case 'PictureResponseProps':
+          return PictureResponseProps.fromJson(value);
+        case 'ProfileResponseProps':
+          return ProfileResponseProps.fromJson(value);
         case 'Register409Response':
           return Register409Response.fromJson(value);
         case 'Register500Response':

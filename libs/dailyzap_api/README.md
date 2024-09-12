@@ -61,6 +61,8 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /v1/auth/login | 
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
 *AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
+*ProfileApi* | [**getProfile**](doc//ProfileApi.md#getprofile) | **GET** /v1/profile | 
+*ProfileApi* | [**setProfilePicture**](doc//ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
 *UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /users | 
 *UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /users/{id} | 
 
@@ -69,6 +71,8 @@ Class | Method | HTTP request | Description
 
  - [CheckInvite404Response](doc//CheckInvite404Response.md)
  - [LoginReturnParams](doc//LoginReturnParams.md)
+ - [PictureResponseProps](doc//PictureResponseProps.md)
+ - [ProfileResponseProps](doc//ProfileResponseProps.md)
  - [Register409Response](doc//Register409Response.md)
  - [Register500Response](doc//Register500Response.md)
  - [RegisterReturnParams](doc//RegisterReturnParams.md)
@@ -82,7 +86,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+### sessionToken
+
+- **Type**: HTTP Bearer authentication
 
 
 ## Author

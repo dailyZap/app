@@ -74,7 +74,7 @@ class _TwoFaPageState extends State<TwoFaPage> {
                   loading = true;
                 });
                 try {
-                  final response = await homeServerApi!.twoFa(
+                  final response = await authApi!.twoFa(
                       UserTwoFaParams(loginToken: loginToken!, twoFaCode: pin));
                   if (response == null) {
                     setState(() {
@@ -101,7 +101,7 @@ class _TwoFaPageState extends State<TwoFaPage> {
                     resendingCode = true;
                   });
                   try {
-                    loginToken = (await homeServerApi!.login(
+                    loginToken = (await authApi!.login(
                             UserLoginParams(handleOrEmail: handleOrEmail!)))!
                         .loginToken;
                     if (!context.mounted) return;

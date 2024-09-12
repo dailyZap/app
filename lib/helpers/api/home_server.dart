@@ -3,18 +3,27 @@ import 'package:dailyzap_api/api.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-AuthApi? homeServerApi;
+AuthApi? authApi;
+ProfileApi? profileApi;
 
 Future<bool> initHomeServerApi() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   final basePath = sharedPreferences.getString(StorageKeys.homeServer);
   final sessionToken = sharedPreferences.getString(StorageKeys.sessionToken);
-  homeServerApi = AuthApi(basePath != null
+  authApi = AuthApi(basePath != null
       ? ApiClient(
           basePath: basePath,
         )
       : null);
-  return basePath != null && sessionToken != null;
+  final loggedIn = basePath != null && sessionToken != null;
+  if (loggedIn) {
+    final authenticatedApiClient = ApiClient(
+        basePath: basePath,
+        authentication: HttpBearerAuth()..accessToken = sessionToken);
+    profileApi = ProfileApi(authenticatedApiClient);
+  }
+
+  return loggedIn;
 }
 
 Future<void> setServerUrl(String url) async {
@@ -39,6 +48,20 @@ Future<void> logout() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   await sharedPreferences.remove(StorageKeys.sessionToken);
   await sharedPreferences.remove(StorageKeys.homeServer);
-  homeServerApi = null;
+  authApi = null;
   await initHomeServerApi();
+}
+
+String getApiBaseUrl() {
+  return authApi?.apiClient.basePath ?? "";
+}
+
+String getSessionToken() {
+  return (profileApi?.apiClient.authentication as HttpBearerAuth?)
+          ?.accessToken ??
+      "";
+}
+
+Map<String, String> getAuthHeader() {
+  return {"Authorization": "Bearer ${getSessionToken()}"};
 }
