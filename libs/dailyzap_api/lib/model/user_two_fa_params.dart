@@ -15,32 +15,37 @@ class UserTwoFaParams {
   UserTwoFaParams({
     required this.loginToken,
     required this.twoFaCode,
+    required this.deviceToken,
   });
 
   String loginToken;
 
   String twoFaCode;
 
+  String deviceToken;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UserTwoFaParams &&
           other.loginToken == loginToken &&
-          other.twoFaCode == twoFaCode;
+          other.twoFaCode == twoFaCode &&
+          other.deviceToken == deviceToken;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (loginToken.hashCode) + (twoFaCode.hashCode);
+      (loginToken.hashCode) + (twoFaCode.hashCode) + (deviceToken.hashCode);
 
   @override
   String toString() =>
-      'UserTwoFaParams[loginToken=$loginToken, twoFaCode=$twoFaCode]';
+      'UserTwoFaParams[loginToken=$loginToken, twoFaCode=$twoFaCode, deviceToken=$deviceToken]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'loginToken'] = this.loginToken;
     json[r'twoFaCode'] = this.twoFaCode;
+    json[r'deviceToken'] = this.deviceToken;
     return json;
   }
 
@@ -67,6 +72,7 @@ class UserTwoFaParams {
       return UserTwoFaParams(
         loginToken: mapValueOfType<String>(json, r'loginToken')!,
         twoFaCode: mapValueOfType<String>(json, r'twoFaCode')!,
+        deviceToken: mapValueOfType<String>(json, r'deviceToken')!,
       );
     }
     return null;
@@ -125,5 +131,6 @@ class UserTwoFaParams {
   static const requiredKeys = <String>{
     'loginToken',
     'twoFaCode',
+    'deviceToken',
   };
 }

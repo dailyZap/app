@@ -45,5 +45,3 @@ lib/model/user_get_params.dart
 lib/model/user_login_params.dart
 lib/model/user_two_fa_params.dart
 pubspec.yaml
-test/picture_response_props_test.dart
-test/profile_response_props_test.dart

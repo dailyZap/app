@@ -62,6 +62,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
 *AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
 *ProfileApi* | [**getProfile**](doc//ProfileApi.md#getprofile) | **GET** /v1/profile | 
+*ProfileApi* | [**getProfilePicture**](doc//ProfileApi.md#getprofilepicture) | **GET** /v1/profile/picture | 
 *ProfileApi* | [**setProfilePicture**](doc//ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
 *UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /users | 
 *UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /users/{id} | 

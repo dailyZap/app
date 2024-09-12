@@ -2,6 +2,8 @@ import 'package:dailyzap/helpers/globals/navigator.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
+late String deviceToken;
+
 Future<void> requestPermissions() async {
   final result = await FirebaseMessaging.instance.requestPermission(
       provisional: true,
@@ -28,6 +30,6 @@ Future<void> requestPermissions() async {
     requestPermissions();
   }
   FirebaseMessaging.instance.getToken().then((token) {
-    print('Token: $token');
+    deviceToken = token!;
   });
 }

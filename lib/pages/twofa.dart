@@ -1,10 +1,9 @@
 import 'package:dailyzap/helpers/api/home_server.dart';
-import 'package:dailyzap/helpers/constants/storage_keys.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
+import 'package:dailyzap/helpers/push_notifications/permissions.dart';
 import 'package:flutter/material.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:pinput/pinput.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TwoFaPage extends StatefulWidget {
   const TwoFaPage({Key? key}) : super(key: key);
@@ -74,8 +73,10 @@ class _TwoFaPageState extends State<TwoFaPage> {
                   loading = true;
                 });
                 try {
-                  final response = await authApi!.twoFa(
-                      UserTwoFaParams(loginToken: loginToken!, twoFaCode: pin));
+                  final response = await authApi!.twoFa(UserTwoFaParams(
+                      loginToken: loginToken!,
+                      twoFaCode: pin,
+                      deviceToken: deviceToken));
                   if (response == null) {
                     setState(() {
                       loading = false;
