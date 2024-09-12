@@ -229,10 +229,16 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'CheckInvite404Response':
-          return CheckInvite404Response.fromJson(value);
+        case 'FetchNotification404Response':
+          return FetchNotification404Response.fromJson(value);
         case 'LoginReturnParams':
           return LoginReturnParams.fromJson(value);
+        case 'NotificationResponseProps':
+          return NotificationResponseProps.fromJson(value);
+        case 'NotificationType':
+          return NotificationTypeTypeTransformer().decode(value);
+        case 'NotificationsResponseProps':
+          return NotificationsResponseProps.fromJson(value);
         case 'PictureResponseProps':
           return PictureResponseProps.fromJson(value);
         case 'ProfileResponseProps':

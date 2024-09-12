@@ -4,7 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 AuthApi? authApi;
-ProfileApi? profileApi;
+late ProfileApi profileApi;
+late NotificationsApi notificationsApi;
 
 Future<bool> initHomeServerApi() async {
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -21,6 +22,7 @@ Future<bool> initHomeServerApi() async {
         basePath: basePath,
         authentication: HttpBearerAuth()..accessToken = sessionToken);
     profileApi = ProfileApi(authenticatedApiClient);
+    notificationsApi = NotificationsApi(authenticatedApiClient);
   }
 
   return loggedIn;

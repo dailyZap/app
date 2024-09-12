@@ -10,37 +10,39 @@
 
 part of openapi.api;
 
-class CheckInvite404Response {
-  /// Returns a new [CheckInvite404Response] instance.
-  CheckInvite404Response({
-    required this.reason,
+class NotificationsResponseProps {
+  /// Returns a new [NotificationsResponseProps] instance.
+  NotificationsResponseProps({
+    this.notifications = const [],
   });
 
-  String reason;
+  List<NotificationResponseProps> notifications;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CheckInvite404Response && other.reason == reason;
+      other is NotificationsResponseProps &&
+          _deepEquality.equals(other.notifications, notifications);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (reason.hashCode);
+      (notifications.hashCode);
 
   @override
-  String toString() => 'CheckInvite404Response[reason=$reason]';
+  String toString() =>
+      'NotificationsResponseProps[notifications=$notifications]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'reason'] = this.reason;
+    json[r'notifications'] = this.notifications;
     return json;
   }
 
-  /// Returns a new [CheckInvite404Response] instance and imports its values from
+  /// Returns a new [NotificationsResponseProps] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CheckInvite404Response? fromJson(dynamic value) {
+  static NotificationsResponseProps? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -50,28 +52,29 @@ class CheckInvite404Response {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "CheckInvite404Response[$key]" is missing from JSON.');
+              'Required key "NotificationsResponseProps[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "CheckInvite404Response[$key]" has a null value in JSON.');
+              'Required key "NotificationsResponseProps[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return CheckInvite404Response(
-        reason: mapValueOfType<String>(json, r'reason')!,
+      return NotificationsResponseProps(
+        notifications:
+            NotificationResponseProps.listFromJson(json[r'notifications']),
       );
     }
     return null;
   }
 
-  static List<CheckInvite404Response> listFromJson(
+  static List<NotificationsResponseProps> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <CheckInvite404Response>[];
+    final result = <NotificationsResponseProps>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = CheckInvite404Response.fromJson(row);
+        final value = NotificationsResponseProps.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -80,12 +83,12 @@ class CheckInvite404Response {
     return result.toList(growable: growable);
   }
 
-  static Map<String, CheckInvite404Response> mapFromJson(dynamic json) {
-    final map = <String, CheckInvite404Response>{};
+  static Map<String, NotificationsResponseProps> mapFromJson(dynamic json) {
+    final map = <String, NotificationsResponseProps>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = CheckInvite404Response.fromJson(entry.value);
+        final value = NotificationsResponseProps.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -94,17 +97,17 @@ class CheckInvite404Response {
     return map;
   }
 
-  // maps a json object with a list of CheckInvite404Response-objects as value to a dart map
-  static Map<String, List<CheckInvite404Response>> mapListFromJson(
+  // maps a json object with a list of NotificationsResponseProps-objects as value to a dart map
+  static Map<String, List<NotificationsResponseProps>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<CheckInvite404Response>>{};
+    final map = <String, List<NotificationsResponseProps>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = CheckInvite404Response.listFromJson(
+        map[entry.key] = NotificationsResponseProps.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -115,6 +118,6 @@ class CheckInvite404Response {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'reason',
+    'notifications',
   };
 }

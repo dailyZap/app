@@ -65,6 +65,9 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
+  if (value is NotificationType) {
+    return NotificationTypeTypeTransformer().encode(value).toString();
+  }
   if (value is UniqueFields) {
     return UniqueFieldsTypeTransformer().encode(value).toString();
   }

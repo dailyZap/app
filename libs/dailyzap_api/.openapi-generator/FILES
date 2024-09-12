@@ -3,8 +3,12 @@
 README.md
 analysis_options.yaml
 doc/AuthApi.md
-doc/CheckInvite404Response.md
+doc/FetchNotification404Response.md
 doc/LoginReturnParams.md
+doc/NotificationResponseProps.md
+doc/NotificationType.md
+doc/NotificationsApi.md
+doc/NotificationsResponseProps.md
 doc/PictureResponseProps.md
 doc/ProfileApi.md
 doc/ProfileResponseProps.md
@@ -21,6 +25,7 @@ doc/UsersApi.md
 git_push.sh
 lib/api.dart
 lib/api/auth_api.dart
+lib/api/notifications_api.dart
 lib/api/profile_api.dart
 lib/api/users_api.dart
 lib/api_client.dart
@@ -31,8 +36,11 @@ lib/auth/authentication.dart
 lib/auth/http_basic_auth.dart
 lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
-lib/model/check_invite404_response.dart
+lib/model/fetch_notification404_response.dart
 lib/model/login_return_params.dart
+lib/model/notification_response_props.dart
+lib/model/notification_type.dart
+lib/model/notifications_response_props.dart
 lib/model/picture_response_props.dart
 lib/model/profile_response_props.dart
 lib/model/register409_response.dart

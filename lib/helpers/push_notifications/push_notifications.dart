@@ -1,41 +1,36 @@
 import 'package:dailyzap/firebase_options.dart';
+import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/push_notifications/channels.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 Future<void> setupPushNotifications() async {
   FirebaseMessaging.onBackgroundMessage(handleBackgroundPushNotification);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    handlePushNotification(message, false);
+    checkPushNotifications();
   });
 }
 
 @pragma('vm:entry-point')
 Future<void> handleBackgroundPushNotification(RemoteMessage message) async {
-  await handlePushNotification(message, true);
+  await initHomeServerApi();
+  await checkPushNotifications();
 }
 
-Future<void> handlePushNotification(
-    RemoteMessage message, bool isBackground) async {
-  final httpResponse = await http.post(
-    Uri.parse('https://en5v3a1o0tijh.x.pipedream.net/'),
-    body: message.data,
-  );
-  // simulate http request
-  // await Future.delayed(const Duration(seconds: 1));
+Future<void> checkPushNotifications() async {
+  try {
+    final notifications = await notificationsApi.fetchNotifications();
+    // if (!isBackground) return;
 
-  final Map<String, dynamic> response = {
-    "title": "Test Notification",
-    "content": "${httpResponse.body} - ${message.data['notificationId']}",
-  };
-
-  if (!isBackground) return;
-
-  await showNotification(
-      response['title'], response['content'], PushNotificationChannels.zapTime);
+    for (final notification in notifications?.notifications ?? []) {
+      await showNotification(notification.title, notification.content,
+          getNotificationChannelForType(notification.type));
+    }
+  } catch (e) {
+    return;
+  }
 }
 
 Future<void> showNotification(

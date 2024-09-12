@@ -61,6 +61,8 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /v1/auth/login | 
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
 *AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
+*NotificationsApi* | [**fetchNotification**](doc//NotificationsApi.md#fetchnotification) | **POST** /v1/notifications/{id} | 
+*NotificationsApi* | [**fetchNotifications**](doc//NotificationsApi.md#fetchnotifications) | **POST** /v1/notifications | 
 *ProfileApi* | [**getProfile**](doc//ProfileApi.md#getprofile) | **GET** /v1/profile | 
 *ProfileApi* | [**getProfilePicture**](doc//ProfileApi.md#getprofilepicture) | **GET** /v1/profile/picture | 
 *ProfileApi* | [**setProfilePicture**](doc//ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
@@ -70,8 +72,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [CheckInvite404Response](doc//CheckInvite404Response.md)
+ - [FetchNotification404Response](doc//FetchNotification404Response.md)
  - [LoginReturnParams](doc//LoginReturnParams.md)
+ - [NotificationResponseProps](doc//NotificationResponseProps.md)
+ - [NotificationType](doc//NotificationType.md)
+ - [NotificationsResponseProps](doc//NotificationsResponseProps.md)
  - [PictureResponseProps](doc//PictureResponseProps.md)
  - [ProfileResponseProps](doc//ProfileResponseProps.md)
  - [Register409Response](doc//Register409Response.md)
