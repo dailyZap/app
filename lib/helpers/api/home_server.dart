@@ -35,13 +35,13 @@ Future<void> setServerUrl(String url) async {
   }
   final sharedPreferences = await SharedPreferences.getInstance();
   await sharedPreferences.setString(StorageKeys.homeServer, url);
-  initHomeServerApi();
+  await initHomeServerApi();
 }
 
 Future<void> setSessionToken(String token) async {
   final sharedPreferences = await SharedPreferences.getInstance();
   await sharedPreferences.setString(StorageKeys.sessionToken, token);
-  initHomeServerApi();
+  await initHomeServerApi();
 }
 
 Future<void> logout() async {
