@@ -11,6 +11,7 @@ plugins {
 android {
     namespace = "me.dailyzap.android"
     compileSdk = 34
+    compileSdkVersion 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

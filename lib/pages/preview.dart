@@ -1,8 +1,23 @@
 import 'dart:io';
-
+import 'package:geolocator/geolocator.dart';
 import 'package:camera/camera.dart';
 import 'package:dailyzap/helpers/widgets/zap.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:flutter/material.dart';
+
+class LocationResult {
+  final double latitude;
+  final double longitude;
+  final String location;
+  final String countryCode;
+
+  LocationResult({
+    required this.location,
+    required this.countryCode,
+    required this.latitude,
+    required this.longitude,
+  });
+}
 
 class CapturePreviewPage extends StatefulWidget {
   const CapturePreviewPage({super.key});
@@ -17,6 +32,8 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
   XFile? backPicture;
 
   bool loading = true;
+  bool loadingLocation = false;
+  LocationResult? location;
 
   @override
   void dispose() {
@@ -69,13 +86,59 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
                     children: [
                       Expanded(
                         child: TextButton(
-                          onPressed: () {
-                            //
+                          onPressed: () async {
+                            setState(() {
+                              loadingLocation = true;
+                            });
+
+                            if (location != null) {
+                              setState(() {
+                                location = null;
+                                loadingLocation = false;
+                              });
+                              return;
+                            }
+
+                            try {
+                              final Position position =
+                                  await _determinePosition();
+                              final List<Placemark> placemarks =
+                                  await placemarkFromCoordinates(
+                                      position.latitude, position.longitude);
+                              final Placemark place = placemarks.first;
+                              setState(() {
+                                location = LocationResult(
+                                  location: place.locality ??
+                                      place.administrativeArea ??
+                                      "Somewhere",
+                                  countryCode: place.isoCountryCode ?? "",
+                                  latitude: position.latitude,
+                                  longitude: position.longitude,
+                                );
+                              });
+                            } catch (e) {
+                              if (!context.mounted) return;
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(e.toString()),
+                                ),
+                              );
+                            } finally {
+                              setState(() {
+                                loadingLocation = false;
+                              });
+                            }
                           },
-                          child: const Row(
+                          child: Row(
                             children: [
-                              Icon(Icons.location_off),
-                              Text("Location"),
+                              Text(
+                                  "Location${location == null ? "" : ": ${location!.location}, ${location!.countryCode}"}"),
+                              if (loadingLocation)
+                                const CircularProgressIndicator()
+                              else if (location == null)
+                                const Icon(Icons.location_off)
+                              else
+                                const Icon(Icons.location_on),
                             ],
                           ),
                         ),
@@ -96,5 +159,29 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
                   )
                 ],
               ));
+  }
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    return await Geolocator.getCurrentPosition();
   }
 }
