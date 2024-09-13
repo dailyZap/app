@@ -1,6 +1,7 @@
 import 'package:dailyzap/helpers/api/api_client.dart';
 import 'package:dailyzap/helpers/constants/storage_keys.dart';
 import 'package:dailyzap_api/api.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -54,6 +55,7 @@ Future<void> setSessionToken(String token) async {
 }
 
 Future<void> logout() async {
+  FastCachedImageConfig.clearAllCachedImages();
   final sharedPreferences = await SharedPreferences.getInstance();
   await sharedPreferences.remove(StorageKeys.sessionToken);
   await sharedPreferences.remove(StorageKeys.homeServer);
@@ -66,7 +68,7 @@ String getApiBaseUrl() {
 }
 
 String getSessionToken() {
-  return (profileApi?.apiClient.authentication as HttpBearerAuth?)
+  return (profileApi.apiClient.authentication as HttpBearerAuth?)
           ?.accessToken ??
       "";
 }
