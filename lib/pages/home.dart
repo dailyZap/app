@@ -1,4 +1,3 @@
-import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/api/urls.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/profile_picture.dart';
@@ -84,7 +83,11 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageViewController,
-          onPageChanged: _onItemTapped,
+          onPageChanged: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
           children: pages.map((page) => page.page).toList()),
     );
   }
