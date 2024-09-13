@@ -16,8 +16,8 @@ class Reaction {
     required this.id,
     required this.authorId,
     required this.type,
+    required this.imageUrl,
     required this.timestamp,
-    this.imageUrl,
   });
 
   String id;
@@ -26,15 +26,9 @@ class Reaction {
 
   ReactionType type;
 
-  int timestamp;
+  String imageUrl;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? imageUrl;
+  int timestamp;
 
   @override
   bool operator ==(Object other) =>
@@ -43,8 +37,8 @@ class Reaction {
           other.id == id &&
           other.authorId == authorId &&
           other.type == type &&
-          other.timestamp == timestamp &&
-          other.imageUrl == imageUrl;
+          other.imageUrl == imageUrl &&
+          other.timestamp == timestamp;
 
   @override
   int get hashCode =>
@@ -52,24 +46,20 @@ class Reaction {
       (id.hashCode) +
       (authorId.hashCode) +
       (type.hashCode) +
-      (timestamp.hashCode) +
-      (imageUrl == null ? 0 : imageUrl!.hashCode);
+      (imageUrl.hashCode) +
+      (timestamp.hashCode);
 
   @override
   String toString() =>
-      'Reaction[id=$id, authorId=$authorId, type=$type, timestamp=$timestamp, imageUrl=$imageUrl]';
+      'Reaction[id=$id, authorId=$authorId, type=$type, imageUrl=$imageUrl, timestamp=$timestamp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'id'] = this.id;
     json[r'authorId'] = this.authorId;
     json[r'type'] = this.type;
+    json[r'imageUrl'] = this.imageUrl;
     json[r'timestamp'] = this.timestamp;
-    if (this.imageUrl != null) {
-      json[r'imageUrl'] = this.imageUrl;
-    } else {
-      json[r'imageUrl'] = null;
-    }
     return json;
   }
 
@@ -97,8 +87,8 @@ class Reaction {
         id: mapValueOfType<String>(json, r'id')!,
         authorId: mapValueOfType<String>(json, r'authorId')!,
         type: ReactionType.fromJson(json[r'type'])!,
+        imageUrl: mapValueOfType<String>(json, r'imageUrl')!,
         timestamp: mapValueOfType<int>(json, r'timestamp')!,
-        imageUrl: mapValueOfType<String>(json, r'imageUrl'),
       );
     }
     return null;
@@ -158,6 +148,7 @@ class Reaction {
     'id',
     'authorId',
     'type',
+    'imageUrl',
     'timestamp',
   };
 }

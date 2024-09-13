@@ -69,6 +69,8 @@ Class | Method | HTTP request | Description
 *ProfileApi* | [**setProfilePicture**](doc//ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
 *UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /users | 
 *UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /users/{id} | 
+*ZapsApi* | [**createZap**](doc//ZapsApi.md#createzap) | **PUT** /v1/zaps | 
+*ZapsApi* | [**setZapUploaded**](doc//ZapsApi.md#setzapuploaded) | **PUT** /v1/zaps/{zapId}/uploaded | 
 
 
 ## Documentation For Models
@@ -77,6 +79,7 @@ Class | Method | HTTP request | Description
  - [Comment](doc//Comment.md)
  - [Content](doc//Content.md)
  - [FeedResponseProps](doc//FeedResponseProps.md)
+ - [FeedResponsePropsFriend](doc//FeedResponsePropsFriend.md)
  - [FetchNotification404Response](doc//FetchNotification404Response.md)
  - [LoginReturnParams](doc//LoginReturnParams.md)
  - [NotificationResponseProps](doc//NotificationResponseProps.md)
@@ -96,6 +99,8 @@ Class | Method | HTTP request | Description
  - [UserLoginParams](doc//UserLoginParams.md)
  - [UserTwoFaParams](doc//UserTwoFaParams.md)
  - [Zap](doc//Zap.md)
+ - [ZapCreationParams](doc//ZapCreationParams.md)
+ - [ZapResponseProps](doc//ZapResponseProps.md)
 
 
 ## Documentation For Authorization

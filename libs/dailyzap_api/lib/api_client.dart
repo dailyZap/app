@@ -237,6 +237,8 @@ class ApiClient {
           return Content.fromJson(value);
         case 'FeedResponseProps':
           return FeedResponseProps.fromJson(value);
+        case 'FeedResponsePropsFriend':
+          return FeedResponsePropsFriend.fromJson(value);
         case 'FetchNotification404Response':
           return FetchNotification404Response.fromJson(value);
         case 'LoginReturnParams':
@@ -275,6 +277,10 @@ class ApiClient {
           return UserTwoFaParams.fromJson(value);
         case 'Zap':
           return Zap.fromJson(value);
+        case 'ZapCreationParams':
+          return ZapCreationParams.fromJson(value);
+        case 'ZapResponseProps':
+          return ZapResponseProps.fromJson(value);
         default:
           dynamic match;
           if (value is List &&

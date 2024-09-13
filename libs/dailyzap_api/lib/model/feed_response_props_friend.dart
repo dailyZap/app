@@ -10,43 +10,44 @@
 
 part of openapi.api;
 
-class FeedResponseProps {
-  /// Returns a new [FeedResponseProps] instance.
-  FeedResponseProps({
-    this.myZaps = const [],
-    required this.friend,
+class FeedResponsePropsFriend {
+  /// Returns a new [FeedResponsePropsFriend] instance.
+  FeedResponsePropsFriend({
+    this.users = const [],
+    this.content = const [],
   });
 
-  List<Zap> myZaps;
+  List<Author> users;
 
-  FeedResponsePropsFriend friend;
+  List<Content> content;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FeedResponseProps &&
-          _deepEquality.equals(other.myZaps, myZaps) &&
-          other.friend == friend;
+      other is FeedResponsePropsFriend &&
+          _deepEquality.equals(other.users, users) &&
+          _deepEquality.equals(other.content, content);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (myZaps.hashCode) + (friend.hashCode);
+      (users.hashCode) + (content.hashCode);
 
   @override
-  String toString() => 'FeedResponseProps[myZaps=$myZaps, friend=$friend]';
+  String toString() =>
+      'FeedResponsePropsFriend[users=$users, content=$content]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'myZaps'] = this.myZaps;
-    json[r'friend'] = this.friend;
+    json[r'users'] = this.users;
+    json[r'content'] = this.content;
     return json;
   }
 
-  /// Returns a new [FeedResponseProps] instance and imports its values from
+  /// Returns a new [FeedResponsePropsFriend] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static FeedResponseProps? fromJson(dynamic value) {
+  static FeedResponsePropsFriend? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -56,29 +57,29 @@ class FeedResponseProps {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "FeedResponseProps[$key]" is missing from JSON.');
+              'Required key "FeedResponsePropsFriend[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "FeedResponseProps[$key]" has a null value in JSON.');
+              'Required key "FeedResponsePropsFriend[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return FeedResponseProps(
-        myZaps: Zap.listFromJson(json[r'myZaps']),
-        friend: FeedResponsePropsFriend.fromJson(json[r'friend'])!,
+      return FeedResponsePropsFriend(
+        users: Author.listFromJson(json[r'users']),
+        content: Content.listFromJson(json[r'content']),
       );
     }
     return null;
   }
 
-  static List<FeedResponseProps> listFromJson(
+  static List<FeedResponsePropsFriend> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <FeedResponseProps>[];
+    final result = <FeedResponsePropsFriend>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = FeedResponseProps.fromJson(row);
+        final value = FeedResponsePropsFriend.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -87,12 +88,12 @@ class FeedResponseProps {
     return result.toList(growable: growable);
   }
 
-  static Map<String, FeedResponseProps> mapFromJson(dynamic json) {
-    final map = <String, FeedResponseProps>{};
+  static Map<String, FeedResponsePropsFriend> mapFromJson(dynamic json) {
+    final map = <String, FeedResponsePropsFriend>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = FeedResponseProps.fromJson(entry.value);
+        final value = FeedResponsePropsFriend.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -101,17 +102,17 @@ class FeedResponseProps {
     return map;
   }
 
-  // maps a json object with a list of FeedResponseProps-objects as value to a dart map
-  static Map<String, List<FeedResponseProps>> mapListFromJson(
+  // maps a json object with a list of FeedResponsePropsFriend-objects as value to a dart map
+  static Map<String, List<FeedResponsePropsFriend>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<FeedResponseProps>>{};
+    final map = <String, List<FeedResponsePropsFriend>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = FeedResponseProps.listFromJson(
+        map[entry.key] = FeedResponsePropsFriend.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -122,7 +123,7 @@ class FeedResponseProps {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'myZaps',
-    'friend',
+    'users',
+    'content',
   };
 }

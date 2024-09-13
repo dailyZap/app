@@ -8,6 +8,7 @@ AuthApi? authApi;
 late ProfileApi profileApi;
 late NotificationsApi notificationsApi;
 late FeedApi feedApi;
+late ZapsApi zapsApi;
 
 Future<bool> initHomeServerApi() async {
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -26,6 +27,7 @@ Future<bool> initHomeServerApi() async {
     profileApi = ProfileApi(authenticatedApiClient);
     notificationsApi = NotificationsApi(authenticatedApiClient);
     feedApi = FeedApi(authenticatedApiClient);
+    zapsApi = ZapsApi(authenticatedApiClient);
   }
 
   return loggedIn;

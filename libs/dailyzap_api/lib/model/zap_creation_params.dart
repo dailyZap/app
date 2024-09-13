@@ -10,43 +10,37 @@
 
 part of openapi.api;
 
-class FeedResponseProps {
-  /// Returns a new [FeedResponseProps] instance.
-  FeedResponseProps({
-    this.myZaps = const [],
-    required this.friend,
+class ZapCreationParams {
+  /// Returns a new [ZapCreationParams] instance.
+  ZapCreationParams({
+    required this.timestamp,
   });
 
-  List<Zap> myZaps;
-
-  FeedResponsePropsFriend friend;
+  int timestamp;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FeedResponseProps &&
-          _deepEquality.equals(other.myZaps, myZaps) &&
-          other.friend == friend;
+      other is ZapCreationParams && other.timestamp == timestamp;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (myZaps.hashCode) + (friend.hashCode);
+      (timestamp.hashCode);
 
   @override
-  String toString() => 'FeedResponseProps[myZaps=$myZaps, friend=$friend]';
+  String toString() => 'ZapCreationParams[timestamp=$timestamp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'myZaps'] = this.myZaps;
-    json[r'friend'] = this.friend;
+    json[r'timestamp'] = this.timestamp;
     return json;
   }
 
-  /// Returns a new [FeedResponseProps] instance and imports its values from
+  /// Returns a new [ZapCreationParams] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static FeedResponseProps? fromJson(dynamic value) {
+  static ZapCreationParams? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -56,29 +50,28 @@ class FeedResponseProps {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "FeedResponseProps[$key]" is missing from JSON.');
+              'Required key "ZapCreationParams[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "FeedResponseProps[$key]" has a null value in JSON.');
+              'Required key "ZapCreationParams[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return FeedResponseProps(
-        myZaps: Zap.listFromJson(json[r'myZaps']),
-        friend: FeedResponsePropsFriend.fromJson(json[r'friend'])!,
+      return ZapCreationParams(
+        timestamp: mapValueOfType<int>(json, r'timestamp')!,
       );
     }
     return null;
   }
 
-  static List<FeedResponseProps> listFromJson(
+  static List<ZapCreationParams> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <FeedResponseProps>[];
+    final result = <ZapCreationParams>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = FeedResponseProps.fromJson(row);
+        final value = ZapCreationParams.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -87,12 +80,12 @@ class FeedResponseProps {
     return result.toList(growable: growable);
   }
 
-  static Map<String, FeedResponseProps> mapFromJson(dynamic json) {
-    final map = <String, FeedResponseProps>{};
+  static Map<String, ZapCreationParams> mapFromJson(dynamic json) {
+    final map = <String, ZapCreationParams>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = FeedResponseProps.fromJson(entry.value);
+        final value = ZapCreationParams.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -101,17 +94,17 @@ class FeedResponseProps {
     return map;
   }
 
-  // maps a json object with a list of FeedResponseProps-objects as value to a dart map
-  static Map<String, List<FeedResponseProps>> mapListFromJson(
+  // maps a json object with a list of ZapCreationParams-objects as value to a dart map
+  static Map<String, List<ZapCreationParams>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<FeedResponseProps>>{};
+    final map = <String, List<ZapCreationParams>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = FeedResponseProps.listFromJson(
+        map[entry.key] = ZapCreationParams.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -122,7 +115,6 @@ class FeedResponseProps {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'myZaps',
-    'friend',
+    'timestamp',
   };
 }

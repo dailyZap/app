@@ -33,11 +33,13 @@ part 'api/feed_api.dart';
 part 'api/notifications_api.dart';
 part 'api/profile_api.dart';
 part 'api/users_api.dart';
+part 'api/zaps_api.dart';
 
 part 'model/author.dart';
 part 'model/comment.dart';
 part 'model/content.dart';
 part 'model/feed_response_props.dart';
+part 'model/feed_response_props_friend.dart';
 part 'model/fetch_notification404_response.dart';
 part 'model/login_return_params.dart';
 part 'model/notification_response_props.dart';
@@ -57,6 +59,8 @@ part 'model/user_get_params.dart';
 part 'model/user_login_params.dart';
 part 'model/user_two_fa_params.dart';
 part 'model/zap.dart';
+part 'model/zap_creation_params.dart';
+part 'model/zap_response_props.dart';
 
 /// An [ApiClient] instance that uses the default values obtained from
 /// the OpenAPI specification file.

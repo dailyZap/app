@@ -1,9 +1,13 @@
 import 'dart:io';
+import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/navigation/navigation.dart';
+import 'package:dailyzap_api/api.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:camera/camera.dart';
-import 'package:dailyzap/helpers/widgets/zap.dart';
+import 'package:dailyzap/helpers/widgets/interactive_zap.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class LocationResult {
   final double latitude;
@@ -32,6 +36,7 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
   XFile? backPicture;
 
   bool loading = true;
+  bool posting = false;
   bool loadingLocation = false;
   LocationResult? location;
 
@@ -76,7 +81,8 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
                   SizedBox(
                     width: 300,
                     height: 400,
-                    child: Zap(
+                    child: InteractiveZap(
+                      width: 300,
                       frontPicture: Image.file(File(frontPicture!.path)),
                       backPicture: Image.file(File(backPicture!.path)),
                     ),
@@ -147,9 +153,47 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
                       ),
                       Expanded(
                         child: TextButton(
-                            onPressed: () {
-                              //
-                            },
+                            onPressed: posting
+                                ? null
+                                : () async {
+                                    setState(() {
+                                      posting = true;
+                                    });
+
+                                    try {
+                                      final data = (await zapsApi.createZap(
+                                          ZapCreationParams(
+                                              timestamp: DateTime.now()
+                                                  .millisecondsSinceEpoch)))!;
+                                      await http.put(
+                                        Uri.parse(data.uploadFrontUrl),
+                                        body: File(frontPicture!.path)
+                                            .readAsBytesSync(),
+                                      );
+                                      await http.put(
+                                        Uri.parse(data.uploadBackUrl),
+                                        body: File(backPicture!.path)
+                                            .readAsBytesSync(),
+                                      );
+                                      await zapsApi.setZapUploaded(data.zapId);
+                                      setState(() {
+                                        posting = false;
+                                      });
+                                      navigate('/');
+                                    } catch (e) {
+                                      if (!context.mounted) return;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(e.toString()),
+                                        ),
+                                      );
+                                    } finally {
+                                      setState(() {
+                                        posting = false;
+                                      });
+                                    }
+                                  },
                             child: const Row(
                               children: [
                                 Text("Post"),
