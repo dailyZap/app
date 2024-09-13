@@ -62,6 +62,12 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
 *AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
 *FeedApi* | [**getFeed**](doc//FeedApi.md#getfeed) | **GET** /v1/feed | 
+*FriendsApi* | [**acceptFriendship**](doc//FriendsApi.md#acceptfriendship) | **POST** /v1/friends/accept/{senderId} | 
+*FriendsApi* | [**deleteFriendRequest**](doc//FriendsApi.md#deletefriendrequest) | **DELETE** /v1/friends/requests/{handle} | 
+*FriendsApi* | [**getFriendRequests**](doc//FriendsApi.md#getfriendrequests) | **GET** /v1/friends/requests | 
+*FriendsApi* | [**getFriends**](doc//FriendsApi.md#getfriends) | **GET** /v1/friends | 
+*FriendsApi* | [**rejectFriendship**](doc//FriendsApi.md#rejectfriendship) | **POST** /v1/friends/reject/{senderId} | 
+*FriendsApi* | [**requestFriendship**](doc//FriendsApi.md#requestfriendship) | **PUT** /v1/friends/requests/{handle} | 
 *NotificationsApi* | [**fetchNotification**](doc//NotificationsApi.md#fetchnotification) | **POST** /v1/notifications/{id} | 
 *NotificationsApi* | [**fetchNotifications**](doc//NotificationsApi.md#fetchnotifications) | **POST** /v1/notifications | 
 *ProfileApi* | [**getProfile**](doc//ProfileApi.md#getprofile) | **GET** /v1/profile | 
@@ -81,6 +87,8 @@ Class | Method | HTTP request | Description
  - [FeedResponseProps](doc//FeedResponseProps.md)
  - [FeedResponsePropsFriend](doc//FeedResponsePropsFriend.md)
  - [FetchNotification404Response](doc//FetchNotification404Response.md)
+ - [FriendRequestsResponseProps](doc//FriendRequestsResponseProps.md)
+ - [FriendsResponseProps](doc//FriendsResponseProps.md)
  - [LoginReturnParams](doc//LoginReturnParams.md)
  - [NotificationResponseProps](doc//NotificationResponseProps.md)
  - [NotificationType](doc//NotificationType.md)
@@ -97,6 +105,7 @@ Class | Method | HTTP request | Description
  - [UserCreationParams](doc//UserCreationParams.md)
  - [UserGetParams](doc//UserGetParams.md)
  - [UserLoginParams](doc//UserLoginParams.md)
+ - [UserProps](doc//UserProps.md)
  - [UserTwoFaParams](doc//UserTwoFaParams.md)
  - [Zap](doc//Zap.md)
  - [ZapCreationParams](doc//ZapCreationParams.md)

@@ -10,6 +10,9 @@ doc/FeedApi.md
 doc/FeedResponseProps.md
 doc/FeedResponsePropsFriend.md
 doc/FetchNotification404Response.md
+doc/FriendRequestsResponseProps.md
+doc/FriendsApi.md
+doc/FriendsResponseProps.md
 doc/LoginReturnParams.md
 doc/NotificationResponseProps.md
 doc/NotificationType.md
@@ -28,6 +31,7 @@ doc/UniqueFields.md
 doc/UserCreationParams.md
 doc/UserGetParams.md
 doc/UserLoginParams.md
+doc/UserProps.md
 doc/UserTwoFaParams.md
 doc/UsersApi.md
 doc/Zap.md
@@ -38,6 +42,7 @@ git_push.sh
 lib/api.dart
 lib/api/auth_api.dart
 lib/api/feed_api.dart
+lib/api/friends_api.dart
 lib/api/notifications_api.dart
 lib/api/profile_api.dart
 lib/api/users_api.dart
@@ -56,6 +61,8 @@ lib/model/content.dart
 lib/model/feed_response_props.dart
 lib/model/feed_response_props_friend.dart
 lib/model/fetch_notification404_response.dart
+lib/model/friend_requests_response_props.dart
+lib/model/friends_response_props.dart
 lib/model/login_return_params.dart
 lib/model/notification_response_props.dart
 lib/model/notification_type.dart
@@ -72,9 +79,9 @@ lib/model/unique_fields.dart
 lib/model/user_creation_params.dart
 lib/model/user_get_params.dart
 lib/model/user_login_params.dart
+lib/model/user_props.dart
 lib/model/user_two_fa_params.dart
 lib/model/zap.dart
 lib/model/zap_creation_params.dart
 lib/model/zap_response_props.dart
 pubspec.yaml
-test/feed_response_props_friend_test.dart

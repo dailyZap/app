@@ -241,6 +241,10 @@ class ApiClient {
           return FeedResponsePropsFriend.fromJson(value);
         case 'FetchNotification404Response':
           return FetchNotification404Response.fromJson(value);
+        case 'FriendRequestsResponseProps':
+          return FriendRequestsResponseProps.fromJson(value);
+        case 'FriendsResponseProps':
+          return FriendsResponseProps.fromJson(value);
         case 'LoginReturnParams':
           return LoginReturnParams.fromJson(value);
         case 'NotificationResponseProps':
@@ -273,6 +277,8 @@ class ApiClient {
           return UserGetParams.fromJson(value);
         case 'UserLoginParams':
           return UserLoginParams.fromJson(value);
+        case 'UserProps':
+          return UserProps.fromJson(value);
         case 'UserTwoFaParams':
           return UserTwoFaParams.fromJson(value);
         case 'Zap':
