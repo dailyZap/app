@@ -1,13 +1,15 @@
 import 'dart:io';
 
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/api/urls.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
+import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:june/june.dart';
 import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatefulWidget {
@@ -56,17 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
-                      child: FastCachedImage(
-                          loadingBuilder: (p0, p1) => Shimmer.fromColors(
-                                baseColor: Colors.white,
-                                highlightColor: Colors.grey,
-                                child: Container(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                          fit: BoxFit.cover,
-                          errorBuilder: (p0, p1, p2) => const Icon(Icons.error),
-                          url: profile!.pictureUrl),
+                      child: ProfilePicture(url: getMyProfilePictureUrl()),
                     ),
                     TextButton(
                         onPressed: () async {
@@ -75,7 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             return;
                           }
                           final uploadUrl =
-                              (await profileApi!.setProfilePicture())!;
+                              (await profileApi.setProfilePicture())!;
                           final response = await http.put(
                               Uri.parse(uploadUrl.uploadUrl),
                               body: file.readAsBytesSync());
@@ -84,6 +76,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           } else {
                             print("🎉 Image uploaded");
                           }
+                          await FastCachedImageConfig.deleteCachedImage(
+                              imageUrl: getMyProfilePictureUrl());
+                          myProfilePictureVersion++;
+                          final cacheState = June.getState(() => CacheState());
+                          cacheState.setState();
                           loadProfile();
                         },
                         child: const Text("Change Picture")),

@@ -1,9 +1,11 @@
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/api/urls.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap/pages/feed.dart';
 import 'package:dailyzap/pages/friends/friends.dart';
 import 'package:flutter/material.dart';
+import 'package:june/june.dart';
 
 class Page {
   final String title;
@@ -74,8 +76,9 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 navigateNewSubPage('/profile');
               },
-              icon:
-                  ProfilePicture(url: "${getApiBaseUrl()}/v1/profile/picture")),
+              icon: JuneBuilder(() => CacheState(),
+                  builder: (CacheState state) =>
+                      ProfilePicture(url: getMyProfilePictureUrl()))),
         ],
       ),
       body: PageView(

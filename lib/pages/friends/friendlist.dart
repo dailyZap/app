@@ -1,4 +1,5 @@
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:flutter/material.dart';
 
@@ -41,13 +42,14 @@ class _FriendListPageState extends State<FriendListPage> {
               itemBuilder: (BuildContext context, int index) {
                 final friend = friends[index];
                 return ListTile(
-                  title: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                          "${friend.firstName} ${friend.lastName} (${friend.handle})"),
-                    ],
+                  leading: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: ProfilePicture(url: friend.profilePictureUrl)),
+                  title: Text(
+                    "${friend.firstName} ${friend.lastName}",
                   ),
+                  subtitle: Text(friend.handle),
                 );
               },
             )

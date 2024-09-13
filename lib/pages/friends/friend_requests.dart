@@ -50,7 +50,9 @@ class _FriendRequestsPageState extends State<FriendRequestsPage> {
                   height: 50,
                   child: ProfilePicture(url: friend.profilePictureUrl)),
               title: Text(
-                  "${friend.firstName} ${friend.lastName} (${friend.handle})"),
+                "${friend.firstName} ${friend.lastName}",
+              ),
+              subtitle: Text(friend.handle),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -108,12 +110,13 @@ class _FriendRequestsPageState extends State<FriendRequestsPage> {
           const ListTile(title: Text("Outgoing Friend Requests")),
           for (final friend in friendRequests?.outgoing ?? [])
             ListTile(
-              leading: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: ProfilePicture(url: friend.profilePictureUrl)),
+              leading: const CircleAvatar(
+                child: Icon(Icons.person),
+              ),
               title: Text(
-                  "${friend.firstName} ${friend.lastName} (${friend.handle})"),
+                "${friend.firstName} ${friend.lastName}",
+              ),
+              subtitle: Text(friend.handle),
               trailing: TextButton(
                   onPressed: deletingFriendRequest == friend.handle
                       ? null
