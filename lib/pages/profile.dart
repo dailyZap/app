@@ -76,6 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           } else {
                             print("🎉 Image uploaded");
                           }
+                          await profileApi.setProfilePictureUploaded();
                           await FastCachedImageConfig.deleteCachedImage(
                               imageUrl: getMyProfilePictureUrl());
                           myProfilePictureVersion++;
