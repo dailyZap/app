@@ -66,99 +66,96 @@ class _CapturePageState extends State<CapturePage>
 
   @override
   Widget build(BuildContext context) {
-    if (!loaded) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Capture Picture'),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-                color: Colors.white,
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Container(
-                              clipBehavior: Clip.hardEdge,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius: 2,
-                                  ),
-                                ],
-                              ),
-                              child: AspectRatio(
-                                aspectRatio: 3 / 4,
-                                child: CameraPreview(
-                                  controller!,
-                                ),
-                              ),
-                            )),
-                        if (capturing)
-                          Positioned(
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            child: Container(
-                              child: Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                    if (!capturing)
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: (!loaded)
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Column(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                      color: Colors.white,
+                      child: Column(
                         children: [
-                          IconButton(
-                            icon: Icon({
-                              FlashMode.off: Icons.flash_off,
-                              FlashMode.always: Icons.flash_on,
-                              FlashMode.auto: Icons.flash_auto,
-                              FlashMode.torch: Icons.flash_on,
-                            }[flashMode]),
-                            onPressed: () {
-                              const modes = [
-                                FlashMode.off,
-                                FlashMode.always,
-                                FlashMode.auto,
-                                FlashMode.torch,
-                              ];
-                              setFlashMode(modes[
-                                  (modes.indexOf(flashMode) + 1) %
-                                      modes.length]);
-                            },
+                          Stack(
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Container(
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Colors.black,
+                                          spreadRadius: 2,
+                                        ),
+                                      ],
+                                    ),
+                                    child: AspectRatio(
+                                      aspectRatio: 3 / 4,
+                                      child: CameraPreview(
+                                        controller!,
+                                      ),
+                                    ),
+                                  )),
+                              if (capturing)
+                                const Positioned(
+                                  top: 0,
+                                  left: 0,
+                                  right: 0,
+                                  bottom: 0,
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                            ],
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.camera),
-                            onPressed: onTakePictureButtonPressed,
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.switch_camera),
-                            onPressed: () async {
-                              await switchCamera();
-                            },
-                          ),
+                          if (!capturing)
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                IconButton(
+                                  icon: Icon({
+                                    FlashMode.off: Icons.flash_off,
+                                    FlashMode.always: Icons.flash_on,
+                                    FlashMode.auto: Icons.flash_auto,
+                                    FlashMode.torch: Icons.flash_on,
+                                  }[flashMode]),
+                                  onPressed: () {
+                                    const modes = [
+                                      FlashMode.off,
+                                      FlashMode.always,
+                                      FlashMode.auto,
+                                      FlashMode.torch,
+                                    ];
+                                    setFlashMode(modes[
+                                        (modes.indexOf(flashMode) + 1) %
+                                            modes.length]);
+                                  },
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.camera),
+                                  onPressed: onTakePictureButtonPressed,
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.switch_camera),
+                                  onPressed: () async {
+                                    await switchCamera();
+                                  },
+                                ),
+                              ],
+                            ),
                         ],
-                      ),
-                  ],
-                )),
-          ),
-        ],
-      ),
+                      )),
+                ),
+              ],
+            ),
     );
   }
 
