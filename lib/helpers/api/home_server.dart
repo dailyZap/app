@@ -1,3 +1,4 @@
+import 'package:dailyzap/helpers/api/api_client.dart';
 import 'package:dailyzap/helpers/constants/storage_keys.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:flutter/foundation.dart';
@@ -12,13 +13,13 @@ Future<bool> initHomeServerApi() async {
   final basePath = sharedPreferences.getString(StorageKeys.homeServer);
   final sessionToken = sharedPreferences.getString(StorageKeys.sessionToken);
   authApi = AuthApi(basePath != null
-      ? ApiClient(
+      ? MyApiClient(
           basePath: basePath,
         )
       : null);
   final loggedIn = basePath != null && sessionToken != null;
   if (loggedIn) {
-    final authenticatedApiClient = ApiClient(
+    final authenticatedApiClient = MyApiClient(
         basePath: basePath,
         authentication: HttpBearerAuth()..accessToken = sessionToken);
     profileApi = ProfileApi(authenticatedApiClient);
