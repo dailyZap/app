@@ -3,7 +3,6 @@
 README.md
 analysis_options.yaml
 doc/AuthApi.md
-doc/Author.md
 doc/Comment.md
 doc/Content.md
 doc/FeedApi.md
@@ -36,6 +35,7 @@ doc/UserTwoFaParams.md
 doc/UsersApi.md
 doc/Zap.md
 doc/ZapCreationParams.md
+doc/ZapImageType.md
 doc/ZapResponseProps.md
 doc/ZapsApi.md
 git_push.sh
@@ -55,7 +55,6 @@ lib/auth/authentication.dart
 lib/auth/http_basic_auth.dart
 lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
-lib/model/author.dart
 lib/model/comment.dart
 lib/model/content.dart
 lib/model/feed_response_props.dart
@@ -83,5 +82,6 @@ lib/model/user_props.dart
 lib/model/user_two_fa_params.dart
 lib/model/zap.dart
 lib/model/zap_creation_params.dart
+lib/model/zap_image_type.dart
 lib/model/zap_response_props.dart
 pubspec.yaml

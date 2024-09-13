@@ -16,7 +16,7 @@ class FriendsApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /v1/friends/accept/{senderId}' operation and returns the [Response].
+  /// Performs an HTTP 'POST /v1/friends/requests/{senderId}/accept' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] senderId (required):
@@ -24,8 +24,8 @@ class FriendsApi {
     String senderId,
   ) async {
     // ignore: prefer_const_declarations
-    final path =
-        r'/v1/friends/accept/{senderId}'.replaceAll('{senderId}', senderId);
+    final path = r'/v1/friends/requests/{senderId}/accept'
+        .replaceAll('{senderId}', senderId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -192,7 +192,7 @@ class FriendsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /v1/friends/reject/{senderId}' operation and returns the [Response].
+  /// Performs an HTTP 'POST /v1/friends/requests/{senderId}/reject' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] senderId (required):
@@ -200,8 +200,8 @@ class FriendsApi {
     String senderId,
   ) async {
     // ignore: prefer_const_declarations
-    final path =
-        r'/v1/friends/reject/{senderId}'.replaceAll('{senderId}', senderId);
+    final path = r'/v1/friends/requests/{senderId}/reject'
+        .replaceAll('{senderId}', senderId);
 
     // ignore: prefer_final_locals
     Object? postBody;

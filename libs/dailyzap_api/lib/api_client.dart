@@ -229,8 +229,6 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'Author':
-          return Author.fromJson(value);
         case 'Comment':
           return Comment.fromJson(value);
         case 'Content':
@@ -285,6 +283,8 @@ class ApiClient {
           return Zap.fromJson(value);
         case 'ZapCreationParams':
           return ZapCreationParams.fromJson(value);
+        case 'ZapImageType':
+          return ZapImageTypeTypeTransformer().decode(value);
         case 'ZapResponseProps':
           return ZapResponseProps.fromJson(value);
         default:

@@ -10,7 +10,8 @@ All URIs are relative to *http://192.168.114.17*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createZap**](ZapsApi.md#createzap) | **PUT** /v1/zaps | 
-[**setZapUploaded**](ZapsApi.md#setzapuploaded) | **PUT** /v1/zaps/{zapId}/uploaded | 
+[**getProfilePicture**](ZapsApi.md#getprofilepicture) | **GET** /v1/zaps/{id}/picture/{side} | 
+[**setZapUploaded**](ZapsApi.md#setzapuploaded) | **PUT** /v1/zaps/{id}/uploaded | 
 
 
 # **createZap**
@@ -60,8 +61,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **setZapUploaded**
-> setZapUploaded(zapId)
+# **getProfilePicture**
+> String getProfilePicture(id, side)
 
 
 
@@ -76,10 +77,59 @@ import 'package:dailyzap_api/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ZapsApi();
-final zapId = zapId_example; // String | 
+final id = id_example; // String | 
+final side = ; // ZapImageType | 
 
 try {
-    api_instance.setZapUploaded(zapId);
+    final result = api_instance.getProfilePicture(id, side);
+    print(result);
+} catch (e) {
+    print('Exception when calling ZapsApi->getProfilePicture: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **side** | [**ZapImageType**](.md)|  | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[sessionToken](../README.md#sessionToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: image/*, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **setZapUploaded**
+> setZapUploaded(id)
+
+
+
+### Example
+```dart
+import 'package:dailyzap_api/api.dart';
+// TODO Configure HTTP Bearer authorization: sessionToken
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = ZapsApi();
+final id = id_example; // String | 
+
+try {
+    api_instance.setZapUploaded(id);
 } catch (e) {
     print('Exception when calling ZapsApi->setZapUploaded: $e\n');
 }
@@ -89,7 +139,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **zapId** | **String**|  | 
+ **id** | **String**|  | 
 
 ### Return type
 

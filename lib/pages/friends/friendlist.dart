@@ -1,4 +1,5 @@
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,9 @@ class _FriendListPageState extends State<FriendListPage> {
                     "${friend.firstName} ${friend.lastName}",
                   ),
                   subtitle: Text(friend.handle),
+                  onTap: () {
+                    openFriendPage(friend);
+                  },
                 );
               },
             )

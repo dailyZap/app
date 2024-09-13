@@ -74,6 +74,9 @@ String parameterToString(dynamic value) {
   if (value is UniqueFields) {
     return UniqueFieldsTypeTransformer().encode(value).toString();
   }
+  if (value is ZapImageType) {
+    return ZapImageTypeTypeTransformer().encode(value).toString();
+  }
   return value.toString();
 }
 

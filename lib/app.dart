@@ -2,6 +2,7 @@ import 'package:dailyzap/helpers/globals/navigator.dart';
 import 'package:dailyzap/helpers/push_notifications/permissions.dart';
 import 'package:dailyzap/pages/auth/auth_landing.dart';
 import 'package:dailyzap/pages/capture/capture.dart';
+import 'package:dailyzap/pages/friends/friend.dart';
 import 'package:dailyzap/pages/home.dart';
 import 'package:dailyzap/pages/landing.dart';
 import 'package:dailyzap/pages/auth/login.dart';
@@ -34,6 +35,7 @@ class DailyZapApp extends StatelessWidget {
         '/auth/login': (_) => const LoginPage(),
         '/auth/2fa': (_) => const TwoFaPage(),
         '/auth/register': (_) => const RegistrationPage(),
+        '/friend': (_) => FriendPage(),
       },
     );
   }

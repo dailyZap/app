@@ -70,15 +70,79 @@ class ZapsApi {
     return null;
   }
 
-  /// Performs an HTTP 'PUT /v1/zaps/{zapId}/uploaded' operation and returns the [Response].
+  /// Performs an HTTP 'GET /v1/zaps/{id}/picture/{side}' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] zapId (required):
-  Future<Response> setZapUploadedWithHttpInfo(
-    String zapId,
+  /// * [String] id (required):
+  ///
+  /// * [ZapImageType] side (required):
+  Future<Response> getProfilePictureWithHttpInfo(
+    String id,
+    ZapImageType side,
   ) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/zaps/{zapId}/uploaded'.replaceAll('{zapId}', zapId);
+    final path = r'/v1/zaps/{id}/picture/{side}'
+        .replaceAll('{id}', id)
+        .replaceAll('{side}', side.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///
+  /// * [ZapImageType] side (required):
+  Future<String?> getProfilePicture(
+    String id,
+    ZapImageType side,
+  ) async {
+    final response = await getProfilePictureWithHttpInfo(
+      id,
+      side,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'String',
+      ) as String;
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'PUT /v1/zaps/{id}/uploaded' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> setZapUploadedWithHttpInfo(
+    String id,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/zaps/{id}/uploaded'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -102,12 +166,12 @@ class ZapsApi {
 
   /// Parameters:
   ///
-  /// * [String] zapId (required):
+  /// * [String] id (required):
   Future<void> setZapUploaded(
-    String zapId,
+    String id,
   ) async {
     final response = await setZapUploadedWithHttpInfo(
-      zapId,
+      id,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));

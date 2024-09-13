@@ -62,11 +62,11 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
 *AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
 *FeedApi* | [**getFeed**](doc//FeedApi.md#getfeed) | **GET** /v1/feed | 
-*FriendsApi* | [**acceptFriendship**](doc//FriendsApi.md#acceptfriendship) | **POST** /v1/friends/accept/{senderId} | 
+*FriendsApi* | [**acceptFriendship**](doc//FriendsApi.md#acceptfriendship) | **POST** /v1/friends/requests/{senderId}/accept | 
 *FriendsApi* | [**deleteFriendRequest**](doc//FriendsApi.md#deletefriendrequest) | **DELETE** /v1/friends/requests/{handle} | 
 *FriendsApi* | [**getFriendRequests**](doc//FriendsApi.md#getfriendrequests) | **GET** /v1/friends/requests | 
 *FriendsApi* | [**getFriends**](doc//FriendsApi.md#getfriends) | **GET** /v1/friends | 
-*FriendsApi* | [**rejectFriendship**](doc//FriendsApi.md#rejectfriendship) | **POST** /v1/friends/reject/{senderId} | 
+*FriendsApi* | [**rejectFriendship**](doc//FriendsApi.md#rejectfriendship) | **POST** /v1/friends/requests/{senderId}/reject | 
 *FriendsApi* | [**requestFriendship**](doc//FriendsApi.md#requestfriendship) | **PUT** /v1/friends/requests/{handle} | 
 *NotificationsApi* | [**fetchNotification**](doc//NotificationsApi.md#fetchnotification) | **POST** /v1/notifications/{id} | 
 *NotificationsApi* | [**fetchNotifications**](doc//NotificationsApi.md#fetchnotifications) | **POST** /v1/notifications | 
@@ -78,12 +78,12 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /v1/users | 
 *UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /v1/users/{id} | 
 *ZapsApi* | [**createZap**](doc//ZapsApi.md#createzap) | **PUT** /v1/zaps | 
-*ZapsApi* | [**setZapUploaded**](doc//ZapsApi.md#setzapuploaded) | **PUT** /v1/zaps/{zapId}/uploaded | 
+*ZapsApi* | [**getProfilePicture**](doc//ZapsApi.md#getprofilepicture) | **GET** /v1/zaps/{id}/picture/{side} | 
+*ZapsApi* | [**setZapUploaded**](doc//ZapsApi.md#setzapuploaded) | **PUT** /v1/zaps/{id}/uploaded | 
 
 
 ## Documentation For Models
 
- - [Author](doc//Author.md)
  - [Comment](doc//Comment.md)
  - [Content](doc//Content.md)
  - [FeedResponseProps](doc//FeedResponseProps.md)
@@ -111,6 +111,7 @@ Class | Method | HTTP request | Description
  - [UserTwoFaParams](doc//UserTwoFaParams.md)
  - [Zap](doc//Zap.md)
  - [ZapCreationParams](doc//ZapCreationParams.md)
+ - [ZapImageType](doc//ZapImageType.md)
  - [ZapResponseProps](doc//ZapResponseProps.md)
 
 

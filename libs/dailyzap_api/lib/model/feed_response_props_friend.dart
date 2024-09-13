@@ -17,7 +17,7 @@ class FeedResponsePropsFriend {
     this.content = const [],
   });
 
-  List<Author> users;
+  List<UserProps> users;
 
   List<Content> content;
 
@@ -65,7 +65,7 @@ class FeedResponsePropsFriend {
       }());
 
       return FeedResponsePropsFriend(
-        users: Author.listFromJson(json[r'users']),
+        users: UserProps.listFromJson(json[r'users']),
         content: Content.listFromJson(json[r'content']),
       );
     }

@@ -1,3 +1,4 @@
+import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/widgets/interactive_zap.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
@@ -24,10 +25,12 @@ class _NetworkZapState extends State<NetworkZap> {
         frontCachedPicture: FastCachedImage(
             url: widget.zap.frontCameraUrl,
             fadeInDuration: const Duration(milliseconds: 0),
+            headers: getAuthHeader(),
             key: Key(widget.zap.frontCameraUrl)),
         backCachedPicture: FastCachedImage(
             fadeInDuration: const Duration(milliseconds: 0),
             url: widget.zap.backCameraUrl,
+            headers: getAuthHeader(),
             key: Key(widget.zap.backCameraUrl)));
   }
 }

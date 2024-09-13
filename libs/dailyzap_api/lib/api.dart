@@ -36,7 +36,6 @@ part 'api/profile_api.dart';
 part 'api/users_api.dart';
 part 'api/zaps_api.dart';
 
-part 'model/author.dart';
 part 'model/comment.dart';
 part 'model/content.dart';
 part 'model/feed_response_props.dart';
@@ -64,6 +63,7 @@ part 'model/user_props.dart';
 part 'model/user_two_fa_params.dart';
 part 'model/zap.dart';
 part 'model/zap_creation_params.dart';
+part 'model/zap_image_type.dart';
 part 'model/zap_response_props.dart';
 
 /// An [ApiClient] instance that uses the default values obtained from

@@ -19,7 +19,7 @@ class Zap {
     required this.timestamp,
     this.comments = const [],
     this.reactions = const [],
-    this.late_,
+    this.lateBy,
   });
 
   String id;
@@ -40,7 +40,7 @@ class Zap {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? late_;
+  int? lateBy;
 
   @override
   bool operator ==(Object other) =>
@@ -52,7 +52,7 @@ class Zap {
           other.timestamp == timestamp &&
           _deepEquality.equals(other.comments, comments) &&
           _deepEquality.equals(other.reactions, reactions) &&
-          other.late_ == late_;
+          other.lateBy == lateBy;
 
   @override
   int get hashCode =>
@@ -63,11 +63,11 @@ class Zap {
       (timestamp.hashCode) +
       (comments.hashCode) +
       (reactions.hashCode) +
-      (late_ == null ? 0 : late_!.hashCode);
+      (lateBy == null ? 0 : lateBy!.hashCode);
 
   @override
   String toString() =>
-      'Zap[id=$id, frontCameraUrl=$frontCameraUrl, backCameraUrl=$backCameraUrl, timestamp=$timestamp, comments=$comments, reactions=$reactions, late_=$late_]';
+      'Zap[id=$id, frontCameraUrl=$frontCameraUrl, backCameraUrl=$backCameraUrl, timestamp=$timestamp, comments=$comments, reactions=$reactions, lateBy=$lateBy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -77,10 +77,10 @@ class Zap {
     json[r'timestamp'] = this.timestamp;
     json[r'comments'] = this.comments;
     json[r'reactions'] = this.reactions;
-    if (this.late_ != null) {
-      json[r'late'] = this.late_;
+    if (this.lateBy != null) {
+      json[r'lateBy'] = this.lateBy;
     } else {
-      json[r'late'] = null;
+      json[r'lateBy'] = null;
     }
     return json;
   }
@@ -112,7 +112,7 @@ class Zap {
         timestamp: mapValueOfType<int>(json, r'timestamp')!,
         comments: Comment.listFromJson(json[r'comments']),
         reactions: Reaction.listFromJson(json[r'reactions']),
-        late_: mapValueOfType<int>(json, r'late'),
+        lateBy: mapValueOfType<int>(json, r'lateBy'),
       );
     }
     return null;

@@ -9,11 +9,11 @@ All URIs are relative to *http://192.168.114.17*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**acceptFriendship**](FriendsApi.md#acceptfriendship) | **POST** /v1/friends/accept/{senderId} | 
+[**acceptFriendship**](FriendsApi.md#acceptfriendship) | **POST** /v1/friends/requests/{senderId}/accept | 
 [**deleteFriendRequest**](FriendsApi.md#deletefriendrequest) | **DELETE** /v1/friends/requests/{handle} | 
 [**getFriendRequests**](FriendsApi.md#getfriendrequests) | **GET** /v1/friends/requests | 
 [**getFriends**](FriendsApi.md#getfriends) | **GET** /v1/friends | 
-[**rejectFriendship**](FriendsApi.md#rejectfriendship) | **POST** /v1/friends/reject/{senderId} | 
+[**rejectFriendship**](FriendsApi.md#rejectfriendship) | **POST** /v1/friends/requests/{senderId}/reject | 
 [**requestFriendship**](FriendsApi.md#requestfriendship) | **PUT** /v1/friends/requests/{handle} | 
 
 

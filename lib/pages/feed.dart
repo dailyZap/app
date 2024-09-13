@@ -15,7 +15,7 @@ class FeedPage extends StatefulWidget {
 class _FeedPageState extends State<FeedPage> {
   List<Content> content = [];
   List<Zap> myZaps = [];
-  Map<String, Author> users = {};
+  Map<String, UserProps> users = {};
 
   @override
   void initState() {
@@ -57,6 +57,7 @@ class _FeedPageState extends State<FeedPage> {
           if (index == 0) {
             return CarouselSlider.builder(
               options: CarouselOptions(
+                enlargeCenterPage: true,
                 enableInfiniteScroll: false,
                 viewportFraction: 0.3,
                 aspectRatio: 3,
@@ -119,10 +120,13 @@ class _FeedPageState extends State<FeedPage> {
           }
           final thisContent = content[index - 1];
           final user = users[thisContent.userId]!;
-          return ListTile(
-              title: CarouselSlider.builder(
+          return CarouselSlider.builder(
             options: CarouselOptions(
-              height: 400.0,
+              viewportFraction: 0.9,
+              aspectRatio: 0.8,
+              enlargeCenterPage: true,
+              enlargeFactor: 0.3,
+              enlargeStrategy: CenterPageEnlargeStrategy.zoom,
               enableInfiniteScroll: false,
             ),
             itemCount: thisContent.zaps.length,
@@ -130,17 +134,18 @@ class _FeedPageState extends State<FeedPage> {
                 (BuildContext context, int itemIndex, int pageViewIndex) {
               final zap = thisContent.zaps[itemIndex];
 
-              String timeString = zap.late_ != null
-                  ? formatLate(zap.late_!)
+              String timeString = zap.lateBy != null
+                  ? formatLate(zap.lateBy!)
                   : formatTime(
                       DateTime.fromMillisecondsSinceEpoch(zap.timestamp));
 
-              return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Column(
-                    children: [
-                      Row(
+              return Column(
+                children: [
+                  InkWell(
+                      onTap: () {
+                        openFriendPage(user);
+                      },
+                      child: Row(
                         children: [
                           SizedBox(
                             width: 50,
@@ -162,15 +167,15 @@ class _FeedPageState extends State<FeedPage> {
                             ],
                           )
                         ],
-                      ),
-                      NetworkZap(
-                        zap: zap,
-                        width: 300,
-                      ),
-                    ],
-                  ));
+                      )),
+                  NetworkZap(
+                    zap: zap,
+                    width: 400,
+                  ),
+                ],
+              );
             },
-          ));
+          );
         },
       ),
     );
