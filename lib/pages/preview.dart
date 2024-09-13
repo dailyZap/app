@@ -45,7 +45,6 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
     if (backPicture != null) {
       File(backPicture!.path).delete();
     }
-    print("Deleted files");
   }
 
   @override
@@ -86,49 +85,52 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
                     children: [
                       Expanded(
                         child: TextButton(
-                          onPressed: () async {
-                            setState(() {
-                              loadingLocation = true;
-                            });
+                          onPressed: loadingLocation
+                              ? null
+                              : () async {
+                                  setState(() {
+                                    loadingLocation = true;
+                                  });
 
-                            if (location != null) {
-                              setState(() {
-                                location = null;
-                                loadingLocation = false;
-                              });
-                              return;
-                            }
+                                  if (location != null) {
+                                    setState(() {
+                                      location = null;
+                                      loadingLocation = false;
+                                    });
+                                    return;
+                                  }
 
-                            try {
-                              final Position position =
-                                  await _determinePosition();
-                              final List<Placemark> placemarks =
-                                  await placemarkFromCoordinates(
-                                      position.latitude, position.longitude);
-                              final Placemark place = placemarks.first;
-                              setState(() {
-                                location = LocationResult(
-                                  location: place.locality ??
-                                      place.administrativeArea ??
-                                      "Somewhere",
-                                  countryCode: place.isoCountryCode ?? "",
-                                  latitude: position.latitude,
-                                  longitude: position.longitude,
-                                );
-                              });
-                            } catch (e) {
-                              if (!context.mounted) return;
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(e.toString()),
-                                ),
-                              );
-                            } finally {
-                              setState(() {
-                                loadingLocation = false;
-                              });
-                            }
-                          },
+                                  try {
+                                    final Position position =
+                                        await _determinePosition();
+                                    final List<Placemark> placemarks =
+                                        await placemarkFromCoordinates(
+                                            position.latitude,
+                                            position.longitude);
+                                    final Placemark place = placemarks.first;
+                                    setState(() {
+                                      location = LocationResult(
+                                        location: place.locality ??
+                                            place.administrativeArea ??
+                                            "Somewhere",
+                                        countryCode: place.isoCountryCode ?? "",
+                                        latitude: position.latitude,
+                                        longitude: position.longitude,
+                                      );
+                                    });
+                                  } catch (e) {
+                                    if (!context.mounted) return;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(e.toString()),
+                                      ),
+                                    );
+                                  } finally {
+                                    setState(() {
+                                      loadingLocation = false;
+                                    });
+                                  }
+                                },
                           child: Row(
                             children: [
                               Text(
@@ -182,6 +184,8 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-    return await Geolocator.getCurrentPosition();
+    return await Geolocator.getCurrentPosition(
+        locationSettings: const LocationSettings(
+            accuracy: LocationAccuracy.low, timeLimit: Duration(seconds: 20)));
   }
 }
