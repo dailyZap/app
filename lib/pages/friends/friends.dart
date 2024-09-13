@@ -1,6 +1,6 @@
-import 'package:dailyzap/pages/add_friend.dart';
-import 'package:dailyzap/pages/friend_requests.dart';
-import 'package:dailyzap/pages/friendlist.dart';
+import 'package:dailyzap/pages/friends/add_friend.dart';
+import 'package:dailyzap/pages/friends/friend_requests.dart';
+import 'package:dailyzap/pages/friends/friendlist.dart';
 import 'package:flutter/material.dart';
 
 class TabInfo {

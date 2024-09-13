@@ -1,14 +1,14 @@
 import 'package:dailyzap/helpers/globals/navigator.dart';
 import 'package:dailyzap/helpers/push_notifications/permissions.dart';
-import 'package:dailyzap/pages/auth_landing.dart';
-import 'package:dailyzap/pages/capture.dart';
+import 'package:dailyzap/pages/auth/auth_landing.dart';
+import 'package:dailyzap/pages/capture/capture.dart';
 import 'package:dailyzap/pages/home.dart';
 import 'package:dailyzap/pages/landing.dart';
-import 'package:dailyzap/pages/login.dart';
-import 'package:dailyzap/pages/preview.dart';
+import 'package:dailyzap/pages/auth/login.dart';
+import 'package:dailyzap/pages/capture/preview.dart';
 import 'package:dailyzap/pages/profile.dart';
-import 'package:dailyzap/pages/registration.dart';
-import 'package:dailyzap/pages/twofa.dart';
+import 'package:dailyzap/pages/auth/registration.dart';
+import 'package:dailyzap/pages/auth/twofa.dart';
 import 'package:flutter/material.dart';
 
 class DailyZapApp extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap/pages/feed.dart';
-import 'package:dailyzap/pages/friends.dart';
+import 'package:dailyzap/pages/friends/friends.dart';
 import 'package:flutter/material.dart';
 
 class Page {
