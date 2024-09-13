@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       profile = null;
     });
-    final profileR = await profileApi!.getProfile();
+    final profileR = await profileApi.getProfile();
     setState(() {
       profile = profileR;
     });
@@ -86,6 +87,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           loadProfile();
                         },
                         child: const Text("Change Picture")),
+                    TextButton(
+                      onPressed: () async {
+                        await logout();
+                        navigate('/');
+                      },
+                      child: const Text("Logout"),
+                    ),
                   ],
                 )
               ]));

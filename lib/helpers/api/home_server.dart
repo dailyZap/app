@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 AuthApi? authApi;
 late ProfileApi profileApi;
 late NotificationsApi notificationsApi;
+late FeedApi feedApi;
 
 Future<bool> initHomeServerApi() async {
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -24,6 +25,7 @@ Future<bool> initHomeServerApi() async {
         authentication: HttpBearerAuth()..accessToken = sessionToken);
     profileApi = ProfileApi(authenticatedApiClient);
     notificationsApi = NotificationsApi(authenticatedApiClient);
+    feedApi = FeedApi(authenticatedApiClient);
   }
 
   return loggedIn;

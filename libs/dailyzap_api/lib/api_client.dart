@@ -229,6 +229,14 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'Author':
+          return Author.fromJson(value);
+        case 'Comment':
+          return Comment.fromJson(value);
+        case 'Content':
+          return Content.fromJson(value);
+        case 'FeedResponseProps':
+          return FeedResponseProps.fromJson(value);
         case 'FetchNotification404Response':
           return FetchNotification404Response.fromJson(value);
         case 'LoginReturnParams':
@@ -243,6 +251,10 @@ class ApiClient {
           return PictureResponseProps.fromJson(value);
         case 'ProfileResponseProps':
           return ProfileResponseProps.fromJson(value);
+        case 'Reaction':
+          return Reaction.fromJson(value);
+        case 'ReactionType':
+          return ReactionTypeTypeTransformer().decode(value);
         case 'Register409Response':
           return Register409Response.fromJson(value);
         case 'Register500Response':
@@ -261,6 +273,8 @@ class ApiClient {
           return UserLoginParams.fromJson(value);
         case 'UserTwoFaParams':
           return UserTwoFaParams.fromJson(value);
+        case 'Zap':
+          return Zap.fromJson(value);
         default:
           dynamic match;
           if (value is List &&

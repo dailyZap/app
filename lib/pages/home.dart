@@ -15,6 +15,17 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
+    loadFeed();
+  }
+
+  void loadFeed() async {
+    try {
+      final feed = await feedApi.getFeed();
+      print(feed);
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -51,17 +62,6 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: [
-            const SizedBox(height: 200),
-            TextButton(
-              onPressed: () async {
-                await logout();
-                navigate('/');
-              },
-              child: const Text("Logout"),
-            ),
-            const SizedBox(height: 200),
-            const Divider(),
-            const SizedBox(height: 200),
             TextButton(
               onPressed: () async {
                 navigateNewSubPage('/capture');

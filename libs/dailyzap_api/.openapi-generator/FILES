@@ -3,6 +3,11 @@
 README.md
 analysis_options.yaml
 doc/AuthApi.md
+doc/Author.md
+doc/Comment.md
+doc/Content.md
+doc/FeedApi.md
+doc/FeedResponseProps.md
 doc/FetchNotification404Response.md
 doc/LoginReturnParams.md
 doc/NotificationResponseProps.md
@@ -12,6 +17,8 @@ doc/NotificationsResponseProps.md
 doc/PictureResponseProps.md
 doc/ProfileApi.md
 doc/ProfileResponseProps.md
+doc/Reaction.md
+doc/ReactionType.md
 doc/Register409Response.md
 doc/Register500Response.md
 doc/RegisterReturnParams.md
@@ -22,9 +29,11 @@ doc/UserGetParams.md
 doc/UserLoginParams.md
 doc/UserTwoFaParams.md
 doc/UsersApi.md
+doc/Zap.md
 git_push.sh
 lib/api.dart
 lib/api/auth_api.dart
+lib/api/feed_api.dart
 lib/api/notifications_api.dart
 lib/api/profile_api.dart
 lib/api/users_api.dart
@@ -36,6 +45,10 @@ lib/auth/authentication.dart
 lib/auth/http_basic_auth.dart
 lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
+lib/model/author.dart
+lib/model/comment.dart
+lib/model/content.dart
+lib/model/feed_response_props.dart
 lib/model/fetch_notification404_response.dart
 lib/model/login_return_params.dart
 lib/model/notification_response_props.dart
@@ -43,6 +56,8 @@ lib/model/notification_type.dart
 lib/model/notifications_response_props.dart
 lib/model/picture_response_props.dart
 lib/model/profile_response_props.dart
+lib/model/reaction.dart
+lib/model/reaction_type.dart
 lib/model/register409_response.dart
 lib/model/register500_response.dart
 lib/model/register_return_params.dart
@@ -52,4 +67,13 @@ lib/model/user_creation_params.dart
 lib/model/user_get_params.dart
 lib/model/user_login_params.dart
 lib/model/user_two_fa_params.dart
+lib/model/zap.dart
 pubspec.yaml
+test/author_test.dart
+test/comment_test.dart
+test/content_test.dart
+test/feed_api_test.dart
+test/feed_response_props_test.dart
+test/reaction_test.dart
+test/reaction_type_test.dart
+test/zap_test.dart

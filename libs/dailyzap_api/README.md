@@ -61,6 +61,7 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /v1/auth/login | 
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
 *AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
+*FeedApi* | [**getFeed**](doc//FeedApi.md#getfeed) | **GET** /v1/feed | 
 *NotificationsApi* | [**fetchNotification**](doc//NotificationsApi.md#fetchnotification) | **POST** /v1/notifications/{id} | 
 *NotificationsApi* | [**fetchNotifications**](doc//NotificationsApi.md#fetchnotifications) | **POST** /v1/notifications | 
 *ProfileApi* | [**getProfile**](doc//ProfileApi.md#getprofile) | **GET** /v1/profile | 
@@ -72,6 +73,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Author](doc//Author.md)
+ - [Comment](doc//Comment.md)
+ - [Content](doc//Content.md)
+ - [FeedResponseProps](doc//FeedResponseProps.md)
  - [FetchNotification404Response](doc//FetchNotification404Response.md)
  - [LoginReturnParams](doc//LoginReturnParams.md)
  - [NotificationResponseProps](doc//NotificationResponseProps.md)
@@ -79,6 +84,8 @@ Class | Method | HTTP request | Description
  - [NotificationsResponseProps](doc//NotificationsResponseProps.md)
  - [PictureResponseProps](doc//PictureResponseProps.md)
  - [ProfileResponseProps](doc//ProfileResponseProps.md)
+ - [Reaction](doc//Reaction.md)
+ - [ReactionType](doc//ReactionType.md)
  - [Register409Response](doc//Register409Response.md)
  - [Register500Response](doc//Register500Response.md)
  - [RegisterReturnParams](doc//RegisterReturnParams.md)
@@ -88,6 +95,7 @@ Class | Method | HTTP request | Description
  - [UserGetParams](doc//UserGetParams.md)
  - [UserLoginParams](doc//UserLoginParams.md)
  - [UserTwoFaParams](doc//UserTwoFaParams.md)
+ - [Zap](doc//Zap.md)
 
 
 ## Documentation For Authorization

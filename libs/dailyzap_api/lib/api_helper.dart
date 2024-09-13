@@ -68,6 +68,9 @@ String parameterToString(dynamic value) {
   if (value is NotificationType) {
     return NotificationTypeTypeTransformer().encode(value).toString();
   }
+  if (value is ReactionType) {
+    return ReactionTypeTypeTransformer().encode(value).toString();
+  }
   if (value is UniqueFields) {
     return UniqueFieldsTypeTransformer().encode(value).toString();
   }
