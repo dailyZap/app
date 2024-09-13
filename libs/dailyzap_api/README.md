@@ -59,8 +59,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthApi* | [**checkInvite**](doc//AuthApi.md#checkinvite) | **GET** /v1/auth/invite/{code} | 
 *AuthApi* | [**login**](doc//AuthApi.md#login) | **POST** /v1/auth/login | 
+*AuthApi* | [**otp**](doc//AuthApi.md#otp) | **POST** /v1/auth/otp | 
 *AuthApi* | [**register**](doc//AuthApi.md#register) | **PUT** /v1/auth/register | 
-*AuthApi* | [**twoFa**](doc//AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
 *FeedApi* | [**getFeed**](doc//FeedApi.md#getfeed) | **GET** /v1/feed | 
 *FriendsApi* | [**acceptFriendship**](doc//FriendsApi.md#acceptfriendship) | **POST** /v1/friends/requests/{senderId}/accept | 
 *FriendsApi* | [**deleteFriendRequest**](doc//FriendsApi.md#deletefriendrequest) | **DELETE** /v1/friends/requests/{handle} | 
@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
  - [NotificationResponseProps](doc//NotificationResponseProps.md)
  - [NotificationType](doc//NotificationType.md)
  - [NotificationsResponseProps](doc//NotificationsResponseProps.md)
+ - [OTPReturnParams](doc//OTPReturnParams.md)
  - [ProfileResponseProps](doc//ProfileResponseProps.md)
  - [Reaction](doc//Reaction.md)
  - [ReactionType](doc//ReactionType.md)
@@ -102,13 +103,12 @@ Class | Method | HTTP request | Description
  - [Register500Response](doc//Register500Response.md)
  - [RegisterReturnParams](doc//RegisterReturnParams.md)
  - [SetPictureResponseProps](doc//SetPictureResponseProps.md)
- - [TwoFaReturnParams](doc//TwoFaReturnParams.md)
  - [UniqueFields](doc//UniqueFields.md)
  - [UserCreationParams](doc//UserCreationParams.md)
  - [UserGetParams](doc//UserGetParams.md)
  - [UserLoginParams](doc//UserLoginParams.md)
+ - [UserOTPParams](doc//UserOTPParams.md)
  - [UserProps](doc//UserProps.md)
- - [UserTwoFaParams](doc//UserTwoFaParams.md)
  - [Zap](doc//Zap.md)
  - [ZapCreationParams](doc//ZapCreationParams.md)
  - [ZapImageType](doc//ZapImageType.md)

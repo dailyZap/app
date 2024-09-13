@@ -11,13 +11,23 @@
 import 'package:dailyzap_api/api.dart';
 import 'package:test/test.dart';
 
-// tests for CheckInvite404Response
+// tests for UserOTPParams
 void main() {
-  // final instance = CheckInvite404Response();
+  // final instance = UserOTPParams();
 
-  group('test CheckInvite404Response', () {
-    // String reason
-    test('to test the property `reason`', () async {
+  group('test UserOTPParams', () {
+    // String loginToken
+    test('to test the property `loginToken`', () async {
+      // TODO
+    });
+
+    // String otp
+    test('to test the property `otp`', () async {
+      // TODO
+    });
+
+    // String deviceToken
+    test('to test the property `deviceToken`', () async {
       // TODO
     });
   });

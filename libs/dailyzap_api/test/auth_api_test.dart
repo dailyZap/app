@@ -21,7 +21,17 @@ void main() {
       // TODO
     });
 
-    //Future register(UserCreationParams userCreationParams) async
+    //Future<LoginReturnParams> login(UserLoginParams userLoginParams) async
+    test('test login', () async {
+      // TODO
+    });
+
+    //Future<OTPReturnParams> otp(UserOTPParams userOTPParams) async
+    test('test otp', () async {
+      // TODO
+    });
+
+    //Future<RegisterReturnParams> register(UserCreationParams userCreationParams) async
     test('test register', () async {
       // TODO
     });

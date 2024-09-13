@@ -16,7 +16,7 @@ void main() {
   // final instance = FeedResponsePropsFriend();
 
   group('test FeedResponsePropsFriend', () {
-    // List<Author> users (default value: const [])
+    // List<UserProps> users (default value: const [])
     test('to test the property `users`', () async {
       // TODO
     });

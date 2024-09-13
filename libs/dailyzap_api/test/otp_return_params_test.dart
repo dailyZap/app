@@ -11,13 +11,13 @@
 import 'package:dailyzap_api/api.dart';
 import 'package:test/test.dart';
 
-// tests for PictureResponseProps
+// tests for OTPReturnParams
 void main() {
-  // final instance = PictureResponseProps();
+  // final instance = OTPReturnParams();
 
-  group('test PictureResponseProps', () {
-    // String uploadUrl
-    test('to test the property `uploadUrl`', () async {
+  group('test OTPReturnParams', () {
+    // String sessionToken
+    test('to test the property `sessionToken`', () async {
       // TODO
     });
   });

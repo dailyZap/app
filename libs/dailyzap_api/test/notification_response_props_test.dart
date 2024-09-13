@@ -16,6 +16,11 @@ void main() {
   // final instance = NotificationResponseProps();
 
   group('test NotificationResponseProps', () {
+    // NotificationType type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
     // String title
     test('to test the property `title`', () async {
       // TODO
@@ -23,6 +28,11 @@ void main() {
 
     // String content
     test('to test the property `content`', () async {
+      // TODO
+    });
+
+    // String targetId
+    test('to test the property `targetId`', () async {
       // TODO
     });
   });

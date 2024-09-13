@@ -16,7 +16,7 @@ void main() {
   // final instance = ZapCreationParams();
 
   group('test ZapCreationParams', () {
-    // double timestamp
+    // int timestamp
     test('to test the property `timestamp`', () async {
       // TODO
     });

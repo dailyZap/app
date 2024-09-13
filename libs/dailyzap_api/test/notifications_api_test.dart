@@ -20,5 +20,10 @@ void main() {
     test('test fetchNotification', () async {
       // TODO
     });
+
+    //Future<NotificationsResponseProps> fetchNotifications() async
+    test('test fetchNotifications', () async {
+      // TODO
+    });
   });
 }

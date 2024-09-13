@@ -16,13 +16,23 @@ void main() {
   // final instance = ProfileApi();
 
   group('tests for ProfileApi', () {
-    //Future<String> getCustomProduces() async
-    test('test getCustomProduces', () async {
+    //Future<ProfileResponseProps> getProfile() async
+    test('test getProfile', () async {
       // TODO
     });
 
     //Future<String> getProfilePicture() async
     test('test getProfilePicture', () async {
+      // TODO
+    });
+
+    //Future<SetPictureResponseProps> setProfilePicture() async
+    test('test setProfilePicture', () async {
+      // TODO
+    });
+
+    //Future setProfilePictureUploaded() async
+    test('test setProfilePictureUploaded', () async {
       // TODO
     });
   });

@@ -10,37 +10,49 @@
 
 part of openapi.api;
 
-class TwoFaReturnParams {
-  /// Returns a new [TwoFaReturnParams] instance.
-  TwoFaReturnParams({
-    required this.sessionToken,
+class UserOTPParams {
+  /// Returns a new [UserOTPParams] instance.
+  UserOTPParams({
+    required this.loginToken,
+    required this.otp,
+    required this.deviceToken,
   });
 
-  String sessionToken;
+  String loginToken;
+
+  String otp;
+
+  String deviceToken;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TwoFaReturnParams && other.sessionToken == sessionToken;
+      other is UserOTPParams &&
+          other.loginToken == loginToken &&
+          other.otp == otp &&
+          other.deviceToken == deviceToken;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (sessionToken.hashCode);
+      (loginToken.hashCode) + (otp.hashCode) + (deviceToken.hashCode);
 
   @override
-  String toString() => 'TwoFaReturnParams[sessionToken=$sessionToken]';
+  String toString() =>
+      'UserOTPParams[loginToken=$loginToken, otp=$otp, deviceToken=$deviceToken]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'sessionToken'] = this.sessionToken;
+    json[r'loginToken'] = this.loginToken;
+    json[r'otp'] = this.otp;
+    json[r'deviceToken'] = this.deviceToken;
     return json;
   }
 
-  /// Returns a new [TwoFaReturnParams] instance and imports its values from
+  /// Returns a new [UserOTPParams] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static TwoFaReturnParams? fromJson(dynamic value) {
+  static UserOTPParams? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -50,28 +62,30 @@ class TwoFaReturnParams {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "TwoFaReturnParams[$key]" is missing from JSON.');
+              'Required key "UserOTPParams[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "TwoFaReturnParams[$key]" has a null value in JSON.');
+              'Required key "UserOTPParams[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return TwoFaReturnParams(
-        sessionToken: mapValueOfType<String>(json, r'sessionToken')!,
+      return UserOTPParams(
+        loginToken: mapValueOfType<String>(json, r'loginToken')!,
+        otp: mapValueOfType<String>(json, r'otp')!,
+        deviceToken: mapValueOfType<String>(json, r'deviceToken')!,
       );
     }
     return null;
   }
 
-  static List<TwoFaReturnParams> listFromJson(
+  static List<UserOTPParams> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <TwoFaReturnParams>[];
+    final result = <UserOTPParams>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = TwoFaReturnParams.fromJson(row);
+        final value = UserOTPParams.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -80,12 +94,12 @@ class TwoFaReturnParams {
     return result.toList(growable: growable);
   }
 
-  static Map<String, TwoFaReturnParams> mapFromJson(dynamic json) {
-    final map = <String, TwoFaReturnParams>{};
+  static Map<String, UserOTPParams> mapFromJson(dynamic json) {
+    final map = <String, UserOTPParams>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = TwoFaReturnParams.fromJson(entry.value);
+        final value = UserOTPParams.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -94,17 +108,17 @@ class TwoFaReturnParams {
     return map;
   }
 
-  // maps a json object with a list of TwoFaReturnParams-objects as value to a dart map
-  static Map<String, List<TwoFaReturnParams>> mapListFromJson(
+  // maps a json object with a list of UserOTPParams-objects as value to a dart map
+  static Map<String, List<UserOTPParams>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<TwoFaReturnParams>>{};
+    final map = <String, List<UserOTPParams>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = TwoFaReturnParams.listFromJson(
+        map[entry.key] = UserOTPParams.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -115,6 +129,8 @@ class TwoFaReturnParams {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'sessionToken',
+    'loginToken',
+    'otp',
+    'deviceToken',
   };
 }

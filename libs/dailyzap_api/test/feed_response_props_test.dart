@@ -16,13 +16,13 @@ void main() {
   // final instance = FeedResponseProps();
 
   group('test FeedResponseProps', () {
-    // List<Content> content (default value: const [])
-    test('to test the property `content`', () async {
+    // List<Zap> myZaps (default value: const [])
+    test('to test the property `myZaps`', () async {
       // TODO
     });
 
-    // List<Author> authors (default value: const [])
-    test('to test the property `authors`', () async {
+    // FeedResponsePropsFriend friend
+    test('to test the property `friend`', () async {
       // TODO
     });
   });

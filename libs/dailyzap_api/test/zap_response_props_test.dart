@@ -16,6 +16,11 @@ void main() {
   // final instance = ZapResponseProps();
 
   group('test ZapResponseProps', () {
+    // String zapId
+    test('to test the property `zapId`', () async {
+      // TODO
+    });
+
     // String uploadFrontUrl
     test('to test the property `uploadFrontUrl`', () async {
       // TODO

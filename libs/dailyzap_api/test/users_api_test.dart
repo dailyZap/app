@@ -16,6 +16,11 @@ void main() {
   // final instance = UsersApi();
 
   group('tests for UsersApi', () {
+    //Future<String> getProfilePicture(String id) async
+    test('test getProfilePicture', () async {
+      // TODO
+    });
+
     //Future<List<UserGetParams>> getUserByHandle({ String handle }) async
     test('test getUserByHandle', () async {
       // TODO

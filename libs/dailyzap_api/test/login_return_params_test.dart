@@ -16,8 +16,8 @@ void main() {
   // final instance = LoginReturnParams();
 
   group('test LoginReturnParams', () {
-    // String sessionToken
-    test('to test the property `sessionToken`', () async {
+    // String loginToken
+    test('to test the property `loginToken`', () async {
       // TODO
     });
   });

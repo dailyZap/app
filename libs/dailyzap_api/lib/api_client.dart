@@ -251,6 +251,8 @@ class ApiClient {
           return NotificationTypeTypeTransformer().decode(value);
         case 'NotificationsResponseProps':
           return NotificationsResponseProps.fromJson(value);
+        case 'OTPReturnParams':
+          return OTPReturnParams.fromJson(value);
         case 'ProfileResponseProps':
           return ProfileResponseProps.fromJson(value);
         case 'Reaction':
@@ -265,8 +267,6 @@ class ApiClient {
           return RegisterReturnParams.fromJson(value);
         case 'SetPictureResponseProps':
           return SetPictureResponseProps.fromJson(value);
-        case 'TwoFaReturnParams':
-          return TwoFaReturnParams.fromJson(value);
         case 'UniqueFields':
           return UniqueFieldsTypeTransformer().decode(value);
         case 'UserCreationParams':
@@ -275,10 +275,10 @@ class ApiClient {
           return UserGetParams.fromJson(value);
         case 'UserLoginParams':
           return UserLoginParams.fromJson(value);
+        case 'UserOTPParams':
+          return UserOTPParams.fromJson(value);
         case 'UserProps':
           return UserProps.fromJson(value);
-        case 'UserTwoFaParams':
-          return UserTwoFaParams.fromJson(value);
         case 'Zap':
           return Zap.fromJson(value);
         case 'ZapCreationParams':

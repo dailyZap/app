@@ -21,6 +21,26 @@ void main() {
       // TODO
     });
 
+    //Future deleteFriendRequest(String handle) async
+    test('test deleteFriendRequest', () async {
+      // TODO
+    });
+
+    //Future<FriendRequestsResponseProps> getFriendRequests() async
+    test('test getFriendRequests', () async {
+      // TODO
+    });
+
+    //Future<FriendsResponseProps> getFriends() async
+    test('test getFriends', () async {
+      // TODO
+    });
+
+    //Future rejectFriendship(String senderId) async
+    test('test rejectFriendship', () async {
+      // TODO
+    });
+
     //Future requestFriendship(String handle) async
     test('test requestFriendship', () async {
       // TODO

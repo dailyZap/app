@@ -31,13 +31,13 @@ void main() {
       // TODO
     });
 
-    // int timestamp
-    test('to test the property `timestamp`', () async {
+    // String imageUrl
+    test('to test the property `imageUrl`', () async {
       // TODO
     });
 
-    // String imageUrl
-    test('to test the property `imageUrl`', () async {
+    // int timestamp
+    test('to test the property `timestamp`', () async {
       // TODO
     });
   });

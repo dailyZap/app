@@ -36,11 +36,6 @@ void main() {
       // TODO
     });
 
-    // int late_
-    test('to test the property `late_`', () async {
-      // TODO
-    });
-
     // List<Comment> comments (default value: const [])
     test('to test the property `comments`', () async {
       // TODO
@@ -48,6 +43,11 @@ void main() {
 
     // List<Reaction> reactions (default value: const [])
     test('to test the property `reactions`', () async {
+      // TODO
+    });
+
+    // int lateBy
+    test('to test the property `lateBy`', () async {
       // TODO
     });
   });

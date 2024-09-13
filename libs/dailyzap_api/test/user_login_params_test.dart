@@ -16,13 +16,8 @@ void main() {
   // final instance = UserLoginParams();
 
   group('test UserLoginParams', () {
-    // String loginToken
-    test('to test the property `loginToken`', () async {
-      // TODO
-    });
-
-    // String twoFaCode
-    test('to test the property `twoFaCode`', () async {
+    // String handleOrEmail
+    test('to test the property `handleOrEmail`', () async {
       // TODO
     });
   });

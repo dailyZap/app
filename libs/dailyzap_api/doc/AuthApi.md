@@ -11,8 +11,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**checkInvite**](AuthApi.md#checkinvite) | **GET** /v1/auth/invite/{code} | 
 [**login**](AuthApi.md#login) | **POST** /v1/auth/login | 
+[**otp**](AuthApi.md#otp) | **POST** /v1/auth/otp | 
 [**register**](AuthApi.md#register) | **PUT** /v1/auth/register | 
-[**twoFa**](AuthApi.md#twofa) | **POST** /v1/auth/twoFa | 
 
 
 # **checkInvite**
@@ -96,6 +96,47 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **otp**
+> OTPReturnParams otp(userOTPParams)
+
+
+
+### Example
+```dart
+import 'package:dailyzap_api/api.dart';
+
+final api_instance = AuthApi();
+final userOTPParams = UserOTPParams(); // UserOTPParams | 
+
+try {
+    final result = api_instance.otp(userOTPParams);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->otp: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userOTPParams** | [**UserOTPParams**](UserOTPParams.md)|  | 
+
+### Return type
+
+[**OTPReturnParams**](OTPReturnParams.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **register**
 > RegisterReturnParams register(userCreationParams)
 
@@ -125,47 +166,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RegisterReturnParams**](RegisterReturnParams.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **twoFa**
-> TwoFaReturnParams twoFa(userTwoFaParams)
-
-
-
-### Example
-```dart
-import 'package:dailyzap_api/api.dart';
-
-final api_instance = AuthApi();
-final userTwoFaParams = UserTwoFaParams(); // UserTwoFaParams | 
-
-try {
-    final result = api_instance.twoFa(userTwoFaParams);
-    print(result);
-} catch (e) {
-    print('Exception when calling AuthApi->twoFa: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userTwoFaParams** | [**UserTwoFaParams**](UserTwoFaParams.md)|  | 
-
-### Return type
-
-[**TwoFaReturnParams**](TwoFaReturnParams.md)
 
 ### Authorization
 

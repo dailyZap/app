@@ -21,7 +21,12 @@ void main() {
       // TODO
     });
 
-    //Future setZapUploaded(String zapId) async
+    //Future<String> getProfilePicture(String id, ZapImageType side) async
+    test('test getProfilePicture', () async {
+      // TODO
+    });
+
+    //Future setZapUploaded(String id) async
     test('test setZapUploaded', () async {
       // TODO
     });

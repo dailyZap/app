@@ -73,9 +73,9 @@ class _TwoFaPageState extends State<TwoFaPage> {
                   loading = true;
                 });
                 try {
-                  final response = await authApi!.twoFa(UserTwoFaParams(
+                  final response = await authApi!.otp(UserOTPParams(
                       loginToken: loginToken!,
-                      twoFaCode: pin,
+                      otp: pin,
                       deviceToken: deviceToken));
                   if (response == null) {
                     setState(() {
