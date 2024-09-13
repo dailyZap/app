@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/dates.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/network_zap.dart';
+import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:flutter/material.dart';
 
@@ -118,31 +120,57 @@ class _FeedPageState extends State<FeedPage> {
           final thisContent = content[index - 1];
           final user = users[thisContent.userId]!;
           return ListTile(
-            title: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text("${user.firstName} ${user.lastName} (${user.handle})"),
-                CarouselSlider.builder(
-                  options: CarouselOptions(
-                    height: 400.0,
-                    enableInfiniteScroll: false,
-                  ),
-                  itemCount: thisContent.zaps.length,
-                  itemBuilder:
-                      (BuildContext context, int itemIndex, int pageViewIndex) {
-                    final zap = thisContent.zaps[itemIndex];
-                    return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: NetworkZap(
-                          zap: zap,
-                          width: 300,
-                        ));
-                  },
-                )
-              ],
+              title: CarouselSlider.builder(
+            options: CarouselOptions(
+              height: 400.0,
+              enableInfiniteScroll: false,
             ),
-          );
+            itemCount: thisContent.zaps.length,
+            itemBuilder:
+                (BuildContext context, int itemIndex, int pageViewIndex) {
+              final zap = thisContent.zaps[itemIndex];
+
+              String timeString = zap.late_ != null
+                  ? formatLate(zap.late_!)
+                  : formatTime(
+                      DateTime.fromMillisecondsSinceEpoch(zap.timestamp));
+
+              return Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: ProfilePicture(
+                              url: user.profilePictureUrl,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                user.handle,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(timeString),
+                            ],
+                          )
+                        ],
+                      ),
+                      NetworkZap(
+                        zap: zap,
+                        width: 300,
+                      ),
+                    ],
+                  ));
+            },
+          ));
         },
       ),
     );

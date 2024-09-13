@@ -239,12 +239,12 @@ class ApiClient {
           return FeedResponseProps.fromJson(value);
         case 'FeedResponsePropsFriend':
           return FeedResponsePropsFriend.fromJson(value);
-        case 'FetchNotification404Response':
-          return FetchNotification404Response.fromJson(value);
         case 'FriendRequestsResponseProps':
           return FriendRequestsResponseProps.fromJson(value);
         case 'FriendsResponseProps':
           return FriendsResponseProps.fromJson(value);
+        case 'GetProfilePicture401Response':
+          return GetProfilePicture401Response.fromJson(value);
         case 'LoginReturnParams':
           return LoginReturnParams.fromJson(value);
         case 'NotificationResponseProps':
@@ -253,8 +253,6 @@ class ApiClient {
           return NotificationTypeTypeTransformer().decode(value);
         case 'NotificationsResponseProps':
           return NotificationsResponseProps.fromJson(value);
-        case 'PictureResponseProps':
-          return PictureResponseProps.fromJson(value);
         case 'ProfileResponseProps':
           return ProfileResponseProps.fromJson(value);
         case 'Reaction':
@@ -267,6 +265,8 @@ class ApiClient {
           return Register500Response.fromJson(value);
         case 'RegisterReturnParams':
           return RegisterReturnParams.fromJson(value);
+        case 'SetPictureResponseProps':
+          return SetPictureResponseProps.fromJson(value);
         case 'TwoFaReturnParams':
           return TwoFaReturnParams.fromJson(value);
         case 'UniqueFields':

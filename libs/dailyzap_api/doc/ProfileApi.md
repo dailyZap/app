@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**getProfile**](ProfileApi.md#getprofile) | **GET** /v1/profile | 
 [**getProfilePicture**](ProfileApi.md#getprofilepicture) | **GET** /v1/profile/picture | 
 [**setProfilePicture**](ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
+[**setProfilePictureUploaded**](ProfileApi.md#setprofilepictureuploaded) | **PUT** /v1/profile/picture/uploaded | 
 
 
 # **getProfile**
@@ -101,7 +102,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **setProfilePicture**
-> PictureResponseProps setProfilePicture()
+> SetPictureResponseProps setProfilePicture()
 
 
 
@@ -130,7 +131,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PictureResponseProps**](PictureResponseProps.md)
+[**SetPictureResponseProps**](SetPictureResponseProps.md)
 
 ### Authorization
 
@@ -140,6 +141,48 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **setProfilePictureUploaded**
+> setProfilePictureUploaded()
+
+
+
+### Example
+```dart
+import 'package:dailyzap_api/api.dart';
+// TODO Configure HTTP Bearer authorization: sessionToken
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = ProfileApi();
+
+try {
+    api_instance.setProfilePictureUploaded();
+} catch (e) {
+    print('Exception when calling ProfileApi->setProfilePictureUploaded: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[sessionToken](../README.md#sessionToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

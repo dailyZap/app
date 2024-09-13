@@ -127,7 +127,7 @@ class ProfileApi {
     );
   }
 
-  Future<PictureResponseProps?> setProfilePicture() async {
+  Future<SetPictureResponseProps?> setProfilePicture() async {
     final response = await setProfilePictureWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -139,9 +139,41 @@ class ProfileApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'PictureResponseProps',
-      ) as PictureResponseProps;
+        'SetPictureResponseProps',
+      ) as SetPictureResponseProps;
     }
     return null;
+  }
+
+  /// Performs an HTTP 'PUT /v1/profile/picture/uploaded' operation and returns the [Response].
+  Future<Response> setProfilePictureUploadedWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/profile/picture/uploaded';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  Future<void> setProfilePictureUploaded() async {
+    final response = await setProfilePictureUploadedWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 }

@@ -73,8 +73,10 @@ Class | Method | HTTP request | Description
 *ProfileApi* | [**getProfile**](doc//ProfileApi.md#getprofile) | **GET** /v1/profile | 
 *ProfileApi* | [**getProfilePicture**](doc//ProfileApi.md#getprofilepicture) | **GET** /v1/profile/picture | 
 *ProfileApi* | [**setProfilePicture**](doc//ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
-*UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /users | 
-*UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /users/{id} | 
+*ProfileApi* | [**setProfilePictureUploaded**](doc//ProfileApi.md#setprofilepictureuploaded) | **PUT** /v1/profile/picture/uploaded | 
+*UsersApi* | [**getProfilePicture**](doc//UsersApi.md#getprofilepicture) | **GET** /v1/users/{id}/profile/picture | 
+*UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /v1/users | 
+*UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /v1/users/{id} | 
 *ZapsApi* | [**createZap**](doc//ZapsApi.md#createzap) | **PUT** /v1/zaps | 
 *ZapsApi* | [**setZapUploaded**](doc//ZapsApi.md#setzapuploaded) | **PUT** /v1/zaps/{zapId}/uploaded | 
 
@@ -86,20 +88,20 @@ Class | Method | HTTP request | Description
  - [Content](doc//Content.md)
  - [FeedResponseProps](doc//FeedResponseProps.md)
  - [FeedResponsePropsFriend](doc//FeedResponsePropsFriend.md)
- - [FetchNotification404Response](doc//FetchNotification404Response.md)
  - [FriendRequestsResponseProps](doc//FriendRequestsResponseProps.md)
  - [FriendsResponseProps](doc//FriendsResponseProps.md)
+ - [GetProfilePicture401Response](doc//GetProfilePicture401Response.md)
  - [LoginReturnParams](doc//LoginReturnParams.md)
  - [NotificationResponseProps](doc//NotificationResponseProps.md)
  - [NotificationType](doc//NotificationType.md)
  - [NotificationsResponseProps](doc//NotificationsResponseProps.md)
- - [PictureResponseProps](doc//PictureResponseProps.md)
  - [ProfileResponseProps](doc//ProfileResponseProps.md)
  - [Reaction](doc//Reaction.md)
  - [ReactionType](doc//ReactionType.md)
  - [Register409Response](doc//Register409Response.md)
  - [Register500Response](doc//Register500Response.md)
  - [RegisterReturnParams](doc//RegisterReturnParams.md)
+ - [SetPictureResponseProps](doc//SetPictureResponseProps.md)
  - [TwoFaReturnParams](doc//TwoFaReturnParams.md)
  - [UniqueFields](doc//UniqueFields.md)
  - [UserCreationParams](doc//UserCreationParams.md)

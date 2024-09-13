@@ -17,9 +17,9 @@ class Zap {
     required this.frontCameraUrl,
     required this.backCameraUrl,
     required this.timestamp,
-    required this.late_,
     this.comments = const [],
     this.reactions = const [],
+    this.late_,
   });
 
   String id;
@@ -30,11 +30,17 @@ class Zap {
 
   int timestamp;
 
-  int late_;
-
   List<Comment> comments;
 
   List<Reaction> reactions;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? late_;
 
   @override
   bool operator ==(Object other) =>
@@ -44,9 +50,9 @@ class Zap {
           other.frontCameraUrl == frontCameraUrl &&
           other.backCameraUrl == backCameraUrl &&
           other.timestamp == timestamp &&
-          other.late_ == late_ &&
           _deepEquality.equals(other.comments, comments) &&
-          _deepEquality.equals(other.reactions, reactions);
+          _deepEquality.equals(other.reactions, reactions) &&
+          other.late_ == late_;
 
   @override
   int get hashCode =>
@@ -55,13 +61,13 @@ class Zap {
       (frontCameraUrl.hashCode) +
       (backCameraUrl.hashCode) +
       (timestamp.hashCode) +
-      (late_.hashCode) +
       (comments.hashCode) +
-      (reactions.hashCode);
+      (reactions.hashCode) +
+      (late_ == null ? 0 : late_!.hashCode);
 
   @override
   String toString() =>
-      'Zap[id=$id, frontCameraUrl=$frontCameraUrl, backCameraUrl=$backCameraUrl, timestamp=$timestamp, late_=$late_, comments=$comments, reactions=$reactions]';
+      'Zap[id=$id, frontCameraUrl=$frontCameraUrl, backCameraUrl=$backCameraUrl, timestamp=$timestamp, comments=$comments, reactions=$reactions, late_=$late_]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -69,9 +75,13 @@ class Zap {
     json[r'frontCameraUrl'] = this.frontCameraUrl;
     json[r'backCameraUrl'] = this.backCameraUrl;
     json[r'timestamp'] = this.timestamp;
-    json[r'late'] = this.late_;
     json[r'comments'] = this.comments;
     json[r'reactions'] = this.reactions;
+    if (this.late_ != null) {
+      json[r'late'] = this.late_;
+    } else {
+      json[r'late'] = null;
+    }
     return json;
   }
 
@@ -100,9 +110,9 @@ class Zap {
         frontCameraUrl: mapValueOfType<String>(json, r'frontCameraUrl')!,
         backCameraUrl: mapValueOfType<String>(json, r'backCameraUrl')!,
         timestamp: mapValueOfType<int>(json, r'timestamp')!,
-        late_: mapValueOfType<int>(json, r'late')!,
         comments: Comment.listFromJson(json[r'comments']),
         reactions: Reaction.listFromJson(json[r'reactions']),
+        late_: mapValueOfType<int>(json, r'late'),
       );
     }
     return null;
@@ -163,7 +173,6 @@ class Zap {
     'frontCameraUrl',
     'backCameraUrl',
     'timestamp',
-    'late',
     'comments',
     'reactions',
   };

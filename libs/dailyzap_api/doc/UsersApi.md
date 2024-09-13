@@ -9,9 +9,57 @@ All URIs are relative to *http://192.168.114.17*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUserByHandle**](UsersApi.md#getuserbyhandle) | **GET** /users | 
-[**getUserById**](UsersApi.md#getuserbyid) | **GET** /users/{id} | 
+[**getProfilePicture**](UsersApi.md#getprofilepicture) | **GET** /v1/users/{id}/profile/picture | 
+[**getUserByHandle**](UsersApi.md#getuserbyhandle) | **GET** /v1/users | 
+[**getUserById**](UsersApi.md#getuserbyid) | **GET** /v1/users/{id} | 
 
+
+# **getProfilePicture**
+> String getProfilePicture(id)
+
+
+
+### Example
+```dart
+import 'package:dailyzap_api/api.dart';
+// TODO Configure HTTP Bearer authorization: sessionToken
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = UsersApi();
+final id = id_example; // String | 
+
+try {
+    final result = api_instance.getProfilePicture(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->getProfilePicture: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[sessionToken](../README.md#sessionToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: image/*, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUserByHandle**
 > List<UserGetParams> getUserByHandle(handle)
@@ -21,6 +69,12 @@ Method | HTTP request | Description
 ### Example
 ```dart
 import 'package:dailyzap_api/api.dart';
+// TODO Configure HTTP Bearer authorization: sessionToken
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = UsersApi();
 final handle = handle_example; // String | 
@@ -45,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[sessionToken](../README.md#sessionToken)
 
 ### HTTP request headers
 
@@ -62,6 +116,12 @@ No authorization required
 ### Example
 ```dart
 import 'package:dailyzap_api/api.dart';
+// TODO Configure HTTP Bearer authorization: sessionToken
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = UsersApi();
 final id = id_example; // String | 
@@ -86,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[sessionToken](../README.md#sessionToken)
 
 ### HTTP request headers
 
