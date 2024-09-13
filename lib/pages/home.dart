@@ -35,10 +35,25 @@ class _HomePageState extends State<HomePage> {
       ),
     ),
   ];
+  late PageController _pageViewController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageViewController = PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageViewController.dispose();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _pageViewController.animateToPage(index,
+          duration: const Duration(milliseconds: 200), curve: Curves.linear);
     });
   }
 
@@ -95,7 +110,11 @@ class _HomePageState extends State<HomePage> {
               )),
         ],
       ),
-      body: _pages.elementAt(_selectedIndex),
+      body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: _pageViewController,
+          onPageChanged: _onItemTapped,
+          children: _pages),
     );
   }
 }
