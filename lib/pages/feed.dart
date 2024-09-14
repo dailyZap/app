@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/api/urls.dart';
 import 'package:dailyzap/helpers/dates.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/network_zap.dart';
@@ -99,9 +100,17 @@ class _FeedPageState extends State<FeedPage> {
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: NetworkZap(
                       zap: zap,
-                      width: 100,
+                      borderRadius: 10,
                       onTap: () {
-                        print("hi");
+                        openZapsPage(
+                            UserProps(
+                                id: "id",
+                                handle: "handle",
+                                firstName: "firstName",
+                                lastName: "lastName",
+                                profilePictureUrl: getMyProfilePictureUrl()),
+                            myZaps,
+                            itemIndex);
                       },
                     ));
               },
@@ -123,7 +132,7 @@ class _FeedPageState extends State<FeedPage> {
           return CarouselSlider.builder(
             options: CarouselOptions(
               viewportFraction: 0.9,
-              aspectRatio: 0.8,
+              aspectRatio: 0.7,
               enlargeCenterPage: true,
               enlargeFactor: 0.3,
               enlargeStrategy: CenterPageEnlargeStrategy.zoom,
@@ -147,12 +156,8 @@ class _FeedPageState extends State<FeedPage> {
                       },
                       child: Row(
                         children: [
-                          SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: ProfilePicture(
-                              url: user.profilePictureUrl,
-                            ),
+                          ProfilePicture(
+                            url: user.profilePictureUrl,
                           ),
                           const SizedBox(width: 10),
                           Column(
@@ -170,8 +175,23 @@ class _FeedPageState extends State<FeedPage> {
                       )),
                   NetworkZap(
                     zap: zap,
-                    width: 400,
                   ),
+                  InkWell(
+                      onTap: () {
+                        openZapsPage(user, thisContent.zaps, itemIndex);
+                      },
+                      child: Row(
+                        children: [
+                          ProfilePicture(
+                            url: getMyProfilePictureUrl(),
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          const Text(
+                            "Leave a comment...",
+                          ),
+                        ],
+                      )),
                 ],
               );
             },

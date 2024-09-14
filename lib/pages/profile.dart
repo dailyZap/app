@@ -51,14 +51,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 200,
-                      width: 200,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: ProfilePicture(url: getMyProfilePictureUrl()),
+                    ProfilePicture(
+                      url: getMyProfilePictureUrl(),
+                      size: 200,
                     ),
                     TextButton(
                         onPressed: () async {

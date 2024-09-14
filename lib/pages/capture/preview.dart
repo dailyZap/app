@@ -82,7 +82,6 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
                     width: 300,
                     height: 400,
                     child: InteractiveZap(
-                      width: 300,
                       frontPicture: Image.file(File(frontPicture!.path)),
                       backPicture: Image.file(File(backPicture!.path)),
                     ),

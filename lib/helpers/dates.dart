@@ -1,5 +1,9 @@
+String padZero(int number) {
+  return number.toString().padLeft(2, '0');
+}
+
 String formatTime(DateTime time) {
-  return "${time.hour}:${time.minute}:${time.second}";
+  return "${padZero(time.hour)}:${padZero(time.minute)}:${padZero(time.second)}";
 }
 
 String formatLate(int milliseconds) {

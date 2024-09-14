@@ -16,3 +16,10 @@ void openFriendPage(UserProps friend) {
     arguments: {'friend': friend},
   );
 }
+
+void openZapsPage(UserProps user, List<Zap> zaps, int index) {
+  navigateNewSubPage(
+    '/zaps',
+    arguments: {'zaps': zaps, 'user': user, 'index': index},
+  );
+}

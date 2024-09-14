@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 class NetworkZap extends StatefulWidget {
   final Zap zap;
-  final double width;
+  final double? borderRadius;
   final Function()? onTap;
 
   const NetworkZap(
-      {super.key, required this.zap, required this.width, this.onTap});
+      {super.key, required this.zap, this.onTap, this.borderRadius});
 
   @override
   _NetworkZapState createState() => _NetworkZapState();
@@ -20,14 +20,16 @@ class _NetworkZapState extends State<NetworkZap> {
   @override
   Widget build(BuildContext context) {
     return InteractiveZap(
+        borderRadius: widget.borderRadius,
         onTap: widget.onTap,
-        width: widget.width,
         frontCachedPicture: FastCachedImage(
+            fit: BoxFit.cover,
             url: widget.zap.frontCameraUrl,
             fadeInDuration: const Duration(milliseconds: 0),
             headers: getAuthHeader(),
             key: Key(widget.zap.frontCameraUrl)),
         backCachedPicture: FastCachedImage(
+            fit: BoxFit.cover,
             fadeInDuration: const Duration(milliseconds: 0),
             url: widget.zap.backCameraUrl,
             headers: getAuthHeader(),

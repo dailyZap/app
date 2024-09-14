@@ -6,16 +6,17 @@ class InteractiveZap extends StatefulWidget {
   final Image? backPicture;
   final FastCachedImage? frontCachedPicture;
   final FastCachedImage? backCachedPicture;
-  final double width;
+  final double? borderRadius;
+  final double defaultBorderRadius = 25;
 
   final Function()? onTap;
 
   const InteractiveZap(
       {super.key,
+      this.borderRadius,
       this.frontPicture,
       this.onTap,
       this.backPicture,
-      required this.width,
       this.frontCachedPicture,
       this.backCachedPicture});
 
@@ -36,74 +37,80 @@ class _InteractiveZapState extends State<InteractiveZap> {
         ? widget.frontPicture ?? widget.frontCachedPicture
         : widget.backPicture ?? widget.backCachedPicture;
 
-    return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GestureDetector(
-          onTap: widget.onTap,
-          onTapDown: widget.onTap != null
-              ? null
-              : (_) {
-                  setState(() {
-                    hideUI = true;
-                  });
-                },
-          onTapUp: widget.onTap != null
-              ? null
-              : (details) {
-                  setState(() {
-                    hideUI = false;
-                  });
-                },
-          child: SizedBox(
-            width: widget.width,
-            height: widget.width * 4.4 / 4,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black,
-                          spreadRadius: 5,
-                        ),
-                      ],
-                    ),
-                    child: bigPicture,
+    final borderSmall = BoxDecoration(
+      border: Border.all(
+        color: Colors.black,
+        style: BorderStyle.solid,
+        width: 2.0,
+      ),
+      borderRadius: BorderRadius.circular(
+        (widget.borderRadius ?? widget.defaultBorderRadius) * 0.6,
+      ),
+    );
+    final borderBig = BoxDecoration(
+      border: Border.all(
+        color: Colors.black,
+        style: BorderStyle.solid,
+        width: 2.0,
+      ),
+      borderRadius: BorderRadius.circular(
+        (widget.borderRadius ?? widget.defaultBorderRadius),
+      ),
+    );
+
+    return Center(
+        child: AspectRatio(
+            aspectRatio: 3 / 4,
+            child: GestureDetector(
+              onTap: widget.onTap,
+              onTapDown: widget.onTap != null
+                  ? null
+                  : (_) {
+                      setState(() {
+                        hideUI = true;
+                      });
+                    },
+              onTapUp: widget.onTap != null
+                  ? null
+                  : (details) {
+                      setState(() {
+                        hideUI = false;
+                      });
+                    },
+              child: Stack(
+                children: [
+                  Container(
+                    clipBehavior: Clip.antiAlias,
+                    foregroundDecoration: borderBig,
+                    decoration: borderBig,
+                    child: AspectRatio(aspectRatio: 3 / 4, child: bigPicture),
                   ),
-                ),
-                AnimatedOpacity(
-                    opacity: hideUI ? 0 : 1,
-                    duration: const Duration(milliseconds: 200),
-                    child: GestureDetector(
-                        onTap: widget.onTap != null
-                            ? null
-                            : () {
-                                setState(() {
-                                  backBig = !backBig;
-                                });
-                              },
-                        child: FractionallySizedBox(
-                            widthFactor: 0.5,
-                            heightFactor: 0.5,
-                            child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Colors.black,
-                                        spreadRadius: 5,
-                                      ),
-                                    ],
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: smallPicture,
-                                ))))),
-              ],
-            ),
-          ),
-        ));
+                  AnimatedOpacity(
+                      opacity: hideUI ? 0 : 1,
+                      duration: const Duration(milliseconds: 200),
+                      child: GestureDetector(
+                          onTap: widget.onTap != null
+                              ? null
+                              : () {
+                                  setState(() {
+                                    backBig = !backBig;
+                                  });
+                                },
+                          child: FractionallySizedBox(
+                              widthFactor: 0.35,
+                              heightFactor: 0.35,
+                              child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Container(
+                                    clipBehavior: Clip.antiAlias,
+                                    foregroundDecoration: borderSmall,
+                                    decoration: borderSmall,
+                                    child: AspectRatio(
+                                        aspectRatio: 3 / 4,
+                                        child: smallPicture),
+                                  ))))),
+                ],
+              ),
+            )));
   }
 }

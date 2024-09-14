@@ -6,35 +6,41 @@ import 'package:shimmer/shimmer.dart';
 
 class ProfilePicture extends StatelessWidget {
   final String url;
+  final double size;
 
   const ProfilePicture({
     super.key,
+    this.size = 50,
     required this.url,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-      ),
-      child: FastCachedImage(
-        loadingBuilder: (p0, p1) => Shimmer.fromColors(
-          baseColor: Colors.white,
-          highlightColor: Colors.grey,
-          child: Container(
-            color: Colors.grey,
+    return SizedBox(
+        width: size,
+        height: size,
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
           ),
-        ),
-        fit: BoxFit.cover,
-        key: url == getMyProfilePictureUrl()
-            ? Key(getMyProfilePictureUrl())
-            : null,
-        errorBuilder: (p0, p1, p2) => const Icon(Icons.error),
-        headers: getAuthHeader(),
-        url: url,
-      ),
-    );
+          child: FastCachedImage(
+            loadingBuilder: (p0, p1) => Shimmer.fromColors(
+              baseColor: Colors.white,
+              highlightColor: Colors.grey,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+            fadeInDuration: const Duration(milliseconds: 20),
+            fit: BoxFit.cover,
+            key: url == getMyProfilePictureUrl()
+                ? Key(getMyProfilePictureUrl())
+                : null,
+            errorBuilder: (p0, p1, p2) => const Icon(Icons.error),
+            headers: getAuthHeader(),
+            url: url,
+          ),
+        ));
   }
 }
