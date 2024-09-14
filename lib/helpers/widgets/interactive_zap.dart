@@ -1,11 +1,11 @@
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class InteractiveZap extends StatefulWidget {
   final Image? frontPicture;
   final Image? backPicture;
-  final FastCachedImage? frontCachedPicture;
-  final FastCachedImage? backCachedPicture;
+  final CachedNetworkImage? frontCachedPicture;
+  final CachedNetworkImage? backCachedPicture;
   final double? borderRadius;
   final double defaultBorderRadius = 25;
 

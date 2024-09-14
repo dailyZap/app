@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/widgets/interactive_zap.dart';
 import 'package:dailyzap_api/api.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class NetworkZap extends StatefulWidget {
@@ -22,17 +22,17 @@ class _NetworkZapState extends State<NetworkZap> {
     return InteractiveZap(
         borderRadius: widget.borderRadius,
         onTap: widget.onTap,
-        frontCachedPicture: FastCachedImage(
+        frontCachedPicture: CachedNetworkImage(
             fit: BoxFit.cover,
-            url: widget.zap.frontCameraUrl,
+            imageUrl: widget.zap.frontCameraUrl,
             fadeInDuration: const Duration(milliseconds: 0),
-            headers: getAuthHeader(),
-            key: Key(widget.zap.frontCameraUrl)),
-        backCachedPicture: FastCachedImage(
+            httpHeaders: getAuthHeader(),
+            key: ValueKey(widget.zap.frontCameraUrl)),
+        backCachedPicture: CachedNetworkImage(
             fit: BoxFit.cover,
             fadeInDuration: const Duration(milliseconds: 0),
-            url: widget.zap.backCameraUrl,
-            headers: getAuthHeader(),
-            key: Key(widget.zap.backCameraUrl)));
+            imageUrl: widget.zap.backCameraUrl,
+            httpHeaders: getAuthHeader(),
+            key: ValueKey(widget.zap.backCameraUrl)));
   }
 }

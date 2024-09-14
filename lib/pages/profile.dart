@@ -5,12 +5,12 @@ import 'package:dailyzap/helpers/api/urls.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap_api/api.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:june/june.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -72,8 +72,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             print("🎉 Image uploaded");
                           }
                           await profileApi.setProfilePictureUploaded();
-                          await FastCachedImageConfig.deleteCachedImage(
-                              imageUrl: getMyProfilePictureUrl());
+                          await DefaultCacheManager()
+                              .removeFile(getMyProfilePictureUrl());
                           myProfilePictureVersion++;
                           final cacheState = June.getState(() => CacheState());
                           cacheState.setState();

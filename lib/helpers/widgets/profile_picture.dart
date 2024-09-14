@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/api/urls.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -24,22 +24,14 @@ class ProfilePicture extends StatelessWidget {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: FastCachedImage(
-            loadingBuilder: (p0, p1) => Shimmer.fromColors(
-              baseColor: Colors.white,
-              highlightColor: Colors.grey,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
+          child: CachedNetworkImage(
             fadeInDuration: const Duration(milliseconds: 20),
             fit: BoxFit.cover,
             key: url == getMyProfilePictureUrl()
                 ? Key(getMyProfilePictureUrl())
                 : null,
-            errorBuilder: (p0, p1, p2) => const Icon(Icons.error),
-            headers: getAuthHeader(),
-            url: url,
+            httpHeaders: getAuthHeader(),
+            imageUrl: url,
           ),
         ));
   }

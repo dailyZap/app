@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/widgets/profile_picture.dart';
 import 'package:dailyzap_api/api.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class FriendPage extends StatefulWidget {
@@ -27,7 +29,10 @@ class _FriendPageState extends State<FriendPage> {
           ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Stack(
                 children: [
-                  FastCachedImage(url: friend!.profilePictureUrl),
+                  CachedNetworkImage(
+                    imageUrl: friend!.profilePictureUrl,
+                    httpHeaders: getAuthHeader(),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 40),
                     child: IconButton(
