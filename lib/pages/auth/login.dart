@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                           return;
                         }
                         print("🎉 response: $response");
-                        navigateNewSubPage("/auth/2fa", arguments: {
+                        navigateNewSubPage("/auth/otp", arguments: {
                           "loginToken": response.loginToken,
                           "handleOrEmail": _formKey
                               .currentState?.fields['handleOrEmail']!.value

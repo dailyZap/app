@@ -9,7 +9,7 @@ import 'package:dailyzap/pages/auth/login.dart';
 import 'package:dailyzap/pages/capture/preview.dart';
 import 'package:dailyzap/pages/profile.dart';
 import 'package:dailyzap/pages/auth/registration.dart';
-import 'package:dailyzap/pages/auth/twofa.dart';
+import 'package:dailyzap/pages/auth/otp.dart';
 import 'package:flutter/material.dart';
 
 class DailyZapApp extends StatelessWidget {
@@ -33,7 +33,7 @@ class DailyZapApp extends StatelessWidget {
         '/capture/preview': (_) => const CapturePreviewPage(),
         '/auth': (_) => const AuthLandingPage(),
         '/auth/login': (_) => const LoginPage(),
-        '/auth/2fa': (_) => const TwoFaPage(),
+        '/auth/otp': (_) => const OTPPage(),
         '/auth/register': (_) => const RegistrationPage(),
         '/friend': (_) => FriendPage(),
       },

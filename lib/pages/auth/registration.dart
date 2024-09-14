@@ -180,7 +180,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         if (response == null) {
                           return;
                         }
-                        navigate("/auth/2fa", arguments: {
+                        navigate("/auth/otp", arguments: {
                           "loginToken": response.loginToken,
                           "handle":
                               _formKey.currentState?.fields['handle']!.value

@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:pinput/pinput.dart';
 
-class TwoFaPage extends StatefulWidget {
-  const TwoFaPage({Key? key}) : super(key: key);
+class OTPPage extends StatefulWidget {
+  const OTPPage({Key? key}) : super(key: key);
   @override
-  _TwoFaPageState createState() => _TwoFaPageState();
+  _OTPPageState createState() => _OTPPageState();
 }
 
-class _TwoFaPageState extends State<TwoFaPage> {
+class _OTPPageState extends State<OTPPage> {
   String? loginToken;
   String? handleOrEmail;
 
@@ -65,7 +65,7 @@ class _TwoFaPageState extends State<TwoFaPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('2FA Code'),
+            const Text('OTP Code'),
             Pinput(
               length: 6,
               onCompleted: (pin) async {
@@ -88,7 +88,7 @@ class _TwoFaPageState extends State<TwoFaPage> {
                 } on ApiException catch (e) {
                   if (!context.mounted) return;
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Invalid 2FA code (${e.message})'),
+                    content: Text('Invalid OTP code (${e.message})'),
                   ));
                   setState(() {
                     loading = false;
