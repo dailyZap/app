@@ -1,7 +1,9 @@
 import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
+import 'package:dailyzap/helpers/push_notifications/push_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
 
 class LandingPage extends StatefulWidget {
@@ -27,6 +29,14 @@ class _LandingPageState extends State<LandingPage> {
       navigate('/auth');
     } else {
       navigate('/home');
+      final NotificationAppLaunchDetails? notificationAppLaunchDetails =
+          await (await initializeLocalPushNotifications())
+              .getNotificationAppLaunchDetails();
+      if ((notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) &&
+          notificationAppLaunchDetails!.notificationResponse != null) {
+        await handleNotificationTap(
+            notificationAppLaunchDetails.notificationResponse!);
+      }
     }
   }
 

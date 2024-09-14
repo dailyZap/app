@@ -179,7 +179,7 @@ class _CapturePreviewPageState extends State<CapturePreviewPage>
                                       setState(() {
                                         posting = false;
                                       });
-                                      navigate('/');
+                                      navigate('/home');
                                     } catch (e) {
                                       if (!context.mounted) return;
                                       ScaffoldMessenger.of(context)

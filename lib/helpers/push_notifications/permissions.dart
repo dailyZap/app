@@ -32,4 +32,5 @@ Future<void> requestPermissions() async {
   FirebaseMessaging.instance.getToken().then((token) {
     deviceToken = token!;
   });
+  FirebaseMessaging.instance.subscribeToTopic("time-to-zap.eu");
 }
