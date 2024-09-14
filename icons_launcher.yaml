@@ -1,0 +1,7 @@
+icons_launcher:
+    image_path: "assets/icon_light_1024.png"
+    platforms:
+        android:
+            enable: true
+        ios:
+            enable: true
