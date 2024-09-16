@@ -17,6 +17,7 @@ class UserCreationParams {
     required this.email,
     required this.firstName,
     required this.lastName,
+    required this.region,
   });
 
   String handle;
@@ -27,6 +28,8 @@ class UserCreationParams {
 
   String lastName;
 
+  Region region;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -34,7 +37,8 @@ class UserCreationParams {
           other.handle == handle &&
           other.email == email &&
           other.firstName == firstName &&
-          other.lastName == lastName;
+          other.lastName == lastName &&
+          other.region == region;
 
   @override
   int get hashCode =>
@@ -42,11 +46,12 @@ class UserCreationParams {
       (handle.hashCode) +
       (email.hashCode) +
       (firstName.hashCode) +
-      (lastName.hashCode);
+      (lastName.hashCode) +
+      (region.hashCode);
 
   @override
   String toString() =>
-      'UserCreationParams[handle=$handle, email=$email, firstName=$firstName, lastName=$lastName]';
+      'UserCreationParams[handle=$handle, email=$email, firstName=$firstName, lastName=$lastName, region=$region]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -54,6 +59,7 @@ class UserCreationParams {
     json[r'email'] = this.email;
     json[r'firstName'] = this.firstName;
     json[r'lastName'] = this.lastName;
+    json[r'region'] = this.region;
     return json;
   }
 
@@ -82,6 +88,7 @@ class UserCreationParams {
         email: mapValueOfType<String>(json, r'email')!,
         firstName: mapValueOfType<String>(json, r'firstName')!,
         lastName: mapValueOfType<String>(json, r'lastName')!,
+        region: Region.fromJson(json[r'region'])!,
       );
     }
     return null;
@@ -142,5 +149,6 @@ class UserCreationParams {
     'email',
     'firstName',
     'lastName',
+    'region',
   };
 }

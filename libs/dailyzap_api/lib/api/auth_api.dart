@@ -62,15 +62,15 @@ class AuthApi {
   /// Performs an HTTP 'POST /v1/auth/login' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [UserLoginParams] userLoginParams (required):
+  /// * [LoginParams] loginParams (required):
   Future<Response> loginWithHttpInfo(
-    UserLoginParams userLoginParams,
+    LoginParams loginParams,
   ) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/auth/login';
 
     // ignore: prefer_final_locals
-    Object? postBody = userLoginParams;
+    Object? postBody = loginParams;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -91,12 +91,12 @@ class AuthApi {
 
   /// Parameters:
   ///
-  /// * [UserLoginParams] userLoginParams (required):
-  Future<LoginReturnParams?> login(
-    UserLoginParams userLoginParams,
+  /// * [LoginParams] loginParams (required):
+  Future<LoginToken?> login(
+    LoginParams loginParams,
   ) async {
     final response = await loginWithHttpInfo(
-      userLoginParams,
+      loginParams,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -108,8 +108,8 @@ class AuthApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'LoginReturnParams',
-      ) as LoginReturnParams;
+        'LoginToken',
+      ) as LoginToken;
     }
     return null;
   }
@@ -117,15 +117,15 @@ class AuthApi {
   /// Performs an HTTP 'POST /v1/auth/otp' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [UserOTPParams] userOTPParams (required):
+  /// * [OTPParams] oTPParams (required):
   Future<Response> otpWithHttpInfo(
-    UserOTPParams userOTPParams,
+    OTPParams oTPParams,
   ) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/auth/otp';
 
     // ignore: prefer_final_locals
-    Object? postBody = userOTPParams;
+    Object? postBody = oTPParams;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -146,12 +146,12 @@ class AuthApi {
 
   /// Parameters:
   ///
-  /// * [UserOTPParams] userOTPParams (required):
-  Future<OTPReturnParams?> otp(
-    UserOTPParams userOTPParams,
+  /// * [OTPParams] oTPParams (required):
+  Future<Session?> otp(
+    OTPParams oTPParams,
   ) async {
     final response = await otpWithHttpInfo(
-      userOTPParams,
+      oTPParams,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -163,8 +163,8 @@ class AuthApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'OTPReturnParams',
-      ) as OTPReturnParams;
+        'Session',
+      ) as Session;
     }
     return null;
   }
@@ -202,7 +202,7 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [UserCreationParams] userCreationParams (required):
-  Future<RegisterReturnParams?> register(
+  Future<LoginToken?> register(
     UserCreationParams userCreationParams,
   ) async {
     final response = await registerWithHttpInfo(
@@ -218,8 +218,8 @@ class AuthApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'RegisterReturnParams',
-      ) as RegisterReturnParams;
+        'LoginToken',
+      ) as LoginToken;
     }
     return null;
   }

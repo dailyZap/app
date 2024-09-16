@@ -5,7 +5,7 @@
 import 'package:dailyzap_api/api.dart';
 ```
 
-All URIs are relative to *http://192.168.114.17*
+All URIs are relative to *http://192.168.113.54*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **fetchNotification**
-> NotificationResponseProps fetchNotification(id)
+> Notification fetchNotification(id)
 
 
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NotificationResponseProps**](NotificationResponseProps.md)
+[**Notification**](Notification.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetchNotifications**
-> NotificationsResponseProps fetchNotifications()
+> Notifications fetchNotifications()
 
 
 
@@ -90,7 +90,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**NotificationsResponseProps**](NotificationsResponseProps.md)
+[**Notifications**](Notifications.md)
 
 ### Authorization
 

@@ -48,7 +48,7 @@ class ZapsApi {
   /// Parameters:
   ///
   /// * [ZapCreationParams] zapCreationParams (required):
-  Future<ZapResponseProps?> createZap(
+  Future<ZapUploadInfo?> createZap(
     ZapCreationParams zapCreationParams,
   ) async {
     final response = await createZapWithHttpInfo(
@@ -64,8 +64,8 @@ class ZapsApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'ZapResponseProps',
-      ) as ZapResponseProps;
+        'ZapUploadInfo',
+      ) as ZapUploadInfo;
     }
     return null;
   }
@@ -132,6 +132,50 @@ class ZapsApi {
       ) as String;
     }
     return null;
+  }
+
+  /// Performs an HTTP 'POST /v1/zaps/{id}/repost' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> repostZapWithHttpInfo(
+    String id,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/zaps/{id}/repost'.replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<void> repostZap(
+    String id,
+  ) async {
+    final response = await repostZapWithHttpInfo(
+      id,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// Performs an HTTP 'PUT /v1/zaps/{id}/uploaded' operation and returns the [Response].

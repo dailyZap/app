@@ -35,5 +35,10 @@ void main() {
     test('to test the property `lastName`', () async {
       // TODO
     });
+
+    // Region region
+    test('to test the property `region`', () async {
+      // TODO
+    });
   });
 }

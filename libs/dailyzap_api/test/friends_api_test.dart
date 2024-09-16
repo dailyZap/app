@@ -26,12 +26,12 @@ void main() {
       // TODO
     });
 
-    //Future<FriendRequestsResponseProps> getFriendRequests() async
+    //Future<FriendRequests> getFriendRequests() async
     test('test getFriendRequests', () async {
       // TODO
     });
 
-    //Future<FriendsResponseProps> getFriends() async
+    //Future<Friends> getFriends() async
     test('test getFriends', () async {
       // TODO
     });

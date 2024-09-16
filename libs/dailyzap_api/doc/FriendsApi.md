@@ -5,7 +5,7 @@
 import 'package:dailyzap_api/api.dart';
 ```
 
-All URIs are relative to *http://192.168.114.17*
+All URIs are relative to *http://192.168.113.54*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -110,7 +110,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFriendRequests**
-> FriendRequestsResponseProps getFriendRequests()
+> FriendRequests getFriendRequests()
 
 
 
@@ -139,7 +139,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**FriendRequestsResponseProps**](FriendRequestsResponseProps.md)
+[**FriendRequests**](FriendRequests.md)
 
 ### Authorization
 
@@ -153,7 +153,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFriends**
-> FriendsResponseProps getFriends()
+> Friends getFriends()
 
 
 
@@ -182,7 +182,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**FriendsResponseProps**](FriendsResponseProps.md)
+[**Friends**](Friends.md)
 
 ### Authorization
 

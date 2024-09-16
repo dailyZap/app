@@ -53,7 +53,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://192.168.114.17*
+All URIs are relative to *http://192.168.113.54*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -68,17 +68,22 @@ Class | Method | HTTP request | Description
 *FriendsApi* | [**getFriends**](doc//FriendsApi.md#getfriends) | **GET** /v1/friends | 
 *FriendsApi* | [**rejectFriendship**](doc//FriendsApi.md#rejectfriendship) | **POST** /v1/friends/requests/{senderId}/reject | 
 *FriendsApi* | [**requestFriendship**](doc//FriendsApi.md#requestfriendship) | **PUT** /v1/friends/requests/{handle} | 
+*InfoApi* | [**getServerInfo**](doc//InfoApi.md#getserverinfo) | **GET** /v1/info | 
 *NotificationsApi* | [**fetchNotification**](doc//NotificationsApi.md#fetchnotification) | **POST** /v1/notifications/{id} | 
 *NotificationsApi* | [**fetchNotifications**](doc//NotificationsApi.md#fetchnotifications) | **POST** /v1/notifications | 
 *ProfileApi* | [**getProfile**](doc//ProfileApi.md#getprofile) | **GET** /v1/profile | 
 *ProfileApi* | [**getProfilePicture**](doc//ProfileApi.md#getprofilepicture) | **GET** /v1/profile/picture | 
 *ProfileApi* | [**setProfilePicture**](doc//ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
 *ProfileApi* | [**setProfilePictureUploaded**](doc//ProfileApi.md#setprofilepictureuploaded) | **PUT** /v1/profile/picture/uploaded | 
+*ProfileApi* | [**setRegion**](doc//ProfileApi.md#setregion) | **PUT** /v1/profile/region | 
+*ReactionsApi* | [**deleteReaction**](doc//ReactionsApi.md#deletereaction) | **DELETE** /v1/reactions/{id} | 
+*ReactionsApi* | [**getProfilePicture**](doc//ReactionsApi.md#getprofilepicture) | **GET** /v1/reactions/{id}/picture | 
 *UsersApi* | [**getProfilePicture**](doc//UsersApi.md#getprofilepicture) | **GET** /v1/users/{id}/profile/picture | 
 *UsersApi* | [**getUserByHandle**](doc//UsersApi.md#getuserbyhandle) | **GET** /v1/users | 
 *UsersApi* | [**getUserById**](doc//UsersApi.md#getuserbyid) | **GET** /v1/users/{id} | 
 *ZapsApi* | [**createZap**](doc//ZapsApi.md#createzap) | **PUT** /v1/zaps | 
 *ZapsApi* | [**getProfilePicture**](doc//ZapsApi.md#getprofilepicture) | **GET** /v1/zaps/{id}/picture/{side} | 
+*ZapsApi* | [**repostZap**](doc//ZapsApi.md#repostzap) | **POST** /v1/zaps/{id}/repost | 
 *ZapsApi* | [**setZapUploaded**](doc//ZapsApi.md#setzapuploaded) | **PUT** /v1/zaps/{id}/uploaded | 
 
 
@@ -86,33 +91,34 @@ Class | Method | HTTP request | Description
 
  - [Comment](doc//Comment.md)
  - [Content](doc//Content.md)
- - [FeedResponseProps](doc//FeedResponseProps.md)
- - [FeedResponsePropsFriend](doc//FeedResponsePropsFriend.md)
- - [FriendRequestsResponseProps](doc//FriendRequestsResponseProps.md)
- - [FriendsResponseProps](doc//FriendsResponseProps.md)
- - [GetProfilePicture401Response](doc//GetProfilePicture401Response.md)
- - [LoginReturnParams](doc//LoginReturnParams.md)
- - [NotificationResponseProps](doc//NotificationResponseProps.md)
+ - [Feed](doc//Feed.md)
+ - [FeedFriend](doc//FeedFriend.md)
+ - [FriendRequests](doc//FriendRequests.md)
+ - [Friends](doc//Friends.md)
+ - [LoginParams](doc//LoginParams.md)
+ - [LoginToken](doc//LoginToken.md)
+ - [Notification](doc//Notification.md)
  - [NotificationType](doc//NotificationType.md)
- - [NotificationsResponseProps](doc//NotificationsResponseProps.md)
- - [OTPReturnParams](doc//OTPReturnParams.md)
- - [ProfileResponseProps](doc//ProfileResponseProps.md)
+ - [Notifications](doc//Notifications.md)
+ - [OTPParams](doc//OTPParams.md)
+ - [Profile](doc//Profile.md)
+ - [ProfilePictureUploadInfo](doc//ProfilePictureUploadInfo.md)
  - [Reaction](doc//Reaction.md)
  - [ReactionType](doc//ReactionType.md)
+ - [Region](doc//Region.md)
+ - [RegionUpdate](doc//RegionUpdate.md)
  - [Register409Response](doc//Register409Response.md)
  - [Register500Response](doc//Register500Response.md)
- - [RegisterReturnParams](doc//RegisterReturnParams.md)
- - [SetPictureResponseProps](doc//SetPictureResponseProps.md)
- - [UniqueFields](doc//UniqueFields.md)
+ - [RepostZap403Response](doc//RepostZap403Response.md)
+ - [ServerInfo](doc//ServerInfo.md)
+ - [Session](doc//Session.md)
+ - [User](doc//User.md)
  - [UserCreationParams](doc//UserCreationParams.md)
- - [UserGetParams](doc//UserGetParams.md)
- - [UserLoginParams](doc//UserLoginParams.md)
- - [UserOTPParams](doc//UserOTPParams.md)
- - [UserProps](doc//UserProps.md)
+ - [UserUniqueFields](doc//UserUniqueFields.md)
  - [Zap](doc//Zap.md)
  - [ZapCreationParams](doc//ZapCreationParams.md)
  - [ZapImageType](doc//ZapImageType.md)
- - [ZapResponseProps](doc//ZapResponseProps.md)
+ - [ZapUploadInfo](doc//ZapUploadInfo.md)
 
 
 ## Documentation For Authorization

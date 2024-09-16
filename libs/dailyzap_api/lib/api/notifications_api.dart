@@ -49,7 +49,7 @@ class NotificationsApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<NotificationResponseProps?> fetchNotification(
+  Future<Notification?> fetchNotification(
     String id,
   ) async {
     final response = await fetchNotificationWithHttpInfo(
@@ -65,8 +65,8 @@ class NotificationsApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'NotificationResponseProps',
-      ) as NotificationResponseProps;
+        'Notification',
+      ) as Notification;
     }
     return null;
   }
@@ -96,7 +96,7 @@ class NotificationsApi {
     );
   }
 
-  Future<NotificationsResponseProps?> fetchNotifications() async {
+  Future<Notifications?> fetchNotifications() async {
     final response = await fetchNotificationsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -108,8 +108,8 @@ class NotificationsApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'NotificationsResponseProps',
-      ) as NotificationsResponseProps;
+        'Notifications',
+      ) as Notifications;
     }
     return null;
   }

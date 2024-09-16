@@ -5,7 +5,7 @@
 import 'package:dailyzap_api/api.dart';
 ```
 
-All URIs are relative to *http://192.168.114.17*
+All URIs are relative to *http://192.168.113.54*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **login**
-> LoginReturnParams login(userLoginParams)
+> LoginToken login(loginParams)
 
 
 
@@ -65,10 +65,10 @@ No authorization required
 import 'package:dailyzap_api/api.dart';
 
 final api_instance = AuthApi();
-final userLoginParams = UserLoginParams(); // UserLoginParams | 
+final loginParams = LoginParams(); // LoginParams | 
 
 try {
-    final result = api_instance.login(userLoginParams);
+    final result = api_instance.login(loginParams);
     print(result);
 } catch (e) {
     print('Exception when calling AuthApi->login: $e\n');
@@ -79,11 +79,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userLoginParams** | [**UserLoginParams**](UserLoginParams.md)|  | 
+ **loginParams** | [**LoginParams**](LoginParams.md)|  | 
 
 ### Return type
 
-[**LoginReturnParams**](LoginReturnParams.md)
+[**LoginToken**](LoginToken.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **otp**
-> OTPReturnParams otp(userOTPParams)
+> Session otp(oTPParams)
 
 
 
@@ -106,10 +106,10 @@ No authorization required
 import 'package:dailyzap_api/api.dart';
 
 final api_instance = AuthApi();
-final userOTPParams = UserOTPParams(); // UserOTPParams | 
+final oTPParams = OTPParams(); // OTPParams | 
 
 try {
-    final result = api_instance.otp(userOTPParams);
+    final result = api_instance.otp(oTPParams);
     print(result);
 } catch (e) {
     print('Exception when calling AuthApi->otp: $e\n');
@@ -120,11 +120,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userOTPParams** | [**UserOTPParams**](UserOTPParams.md)|  | 
+ **oTPParams** | [**OTPParams**](OTPParams.md)|  | 
 
 ### Return type
 
-[**OTPReturnParams**](OTPReturnParams.md)
+[**Session**](Session.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **register**
-> RegisterReturnParams register(userCreationParams)
+> LoginToken register(userCreationParams)
 
 
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RegisterReturnParams**](RegisterReturnParams.md)
+[**LoginToken**](LoginToken.md)
 
 ### Authorization
 

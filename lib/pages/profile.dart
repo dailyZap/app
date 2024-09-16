@@ -20,7 +20,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  ProfileResponseProps? profile;
+  Profile? profile;
 
   @override
   void initState() {

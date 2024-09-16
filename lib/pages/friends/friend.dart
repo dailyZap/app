@@ -10,7 +10,7 @@ class FriendPage extends StatefulWidget {
 }
 
 class _FriendPageState extends State<FriendPage> {
-  UserProps? friend;
+  User? friend;
 
   @override
   void didChangeDependencies() {

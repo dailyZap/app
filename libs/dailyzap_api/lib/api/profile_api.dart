@@ -41,7 +41,7 @@ class ProfileApi {
     );
   }
 
-  Future<ProfileResponseProps?> getProfile() async {
+  Future<Profile?> getProfile() async {
     final response = await getProfileWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -53,8 +53,8 @@ class ProfileApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'ProfileResponseProps',
-      ) as ProfileResponseProps;
+        'Profile',
+      ) as Profile;
     }
     return null;
   }
@@ -127,7 +127,7 @@ class ProfileApi {
     );
   }
 
-  Future<SetPictureResponseProps?> setProfilePicture() async {
+  Future<ProfilePictureUploadInfo?> setProfilePicture() async {
     final response = await setProfilePictureWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -139,8 +139,8 @@ class ProfileApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'SetPictureResponseProps',
-      ) as SetPictureResponseProps;
+        'ProfilePictureUploadInfo',
+      ) as ProfilePictureUploadInfo;
     }
     return null;
   }
@@ -172,6 +172,50 @@ class ProfileApi {
 
   Future<void> setProfilePictureUploaded() async {
     final response = await setProfilePictureUploadedWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'PUT /v1/profile/region' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [RegionUpdate] regionUpdate (required):
+  Future<Response> setRegionWithHttpInfo(
+    RegionUpdate regionUpdate,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/profile/region';
+
+    // ignore: prefer_final_locals
+    Object? postBody = regionUpdate;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [RegionUpdate] regionUpdate (required):
+  Future<void> setRegion(
+    RegionUpdate regionUpdate,
+  ) async {
+    final response = await setRegionWithHttpInfo(
+      regionUpdate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

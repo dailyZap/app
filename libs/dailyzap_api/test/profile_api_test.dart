@@ -16,7 +16,7 @@ void main() {
   // final instance = ProfileApi();
 
   group('tests for ProfileApi', () {
-    //Future<ProfileResponseProps> getProfile() async
+    //Future<Profile> getProfile() async
     test('test getProfile', () async {
       // TODO
     });
@@ -26,13 +26,18 @@ void main() {
       // TODO
     });
 
-    //Future<SetPictureResponseProps> setProfilePicture() async
+    //Future<ProfilePictureUploadInfo> setProfilePicture() async
     test('test setProfilePicture', () async {
       // TODO
     });
 
     //Future setProfilePictureUploaded() async
     test('test setProfilePictureUploaded', () async {
+      // TODO
+    });
+
+    //Future setRegion(RegionUpdate regionUpdate) async
+    test('test setRegion', () async {
       // TODO
     });
   });

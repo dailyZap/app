@@ -40,7 +40,7 @@ class FeedApi {
     );
   }
 
-  Future<FeedResponseProps?> getFeed() async {
+  Future<Feed?> getFeed() async {
     final response = await getFeedWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -52,8 +52,8 @@ class FeedApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'FeedResponseProps',
-      ) as FeedResponseProps;
+        'Feed',
+      ) as Feed;
     }
     return null;
   }

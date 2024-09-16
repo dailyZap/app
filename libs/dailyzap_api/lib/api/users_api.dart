@@ -107,7 +107,7 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] handle:
-  Future<List<UserGetParams>?> getUserByHandle({
+  Future<List<User>?> getUserByHandle({
     String? handle,
   }) async {
     final response = await getUserByHandleWithHttpInfo(
@@ -122,9 +122,9 @@ class UsersApi {
     if (response.body.isNotEmpty &&
         response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(
-              responseBody, 'List<UserGetParams>') as List)
-          .cast<UserGetParams>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<User>')
+              as List)
+          .cast<User>()
           .toList(growable: false);
     }
     return null;
@@ -163,7 +163,7 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<UserGetParams?> getUserById(
+  Future<User?> getUserById(
     String id,
   ) async {
     final response = await getUserByIdWithHttpInfo(
@@ -179,8 +179,8 @@ class UsersApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'UserGetParams',
-      ) as UserGetParams;
+        'User',
+      ) as User;
     }
     return null;
   }

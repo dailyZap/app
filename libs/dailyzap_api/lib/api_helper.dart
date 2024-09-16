@@ -71,8 +71,11 @@ String parameterToString(dynamic value) {
   if (value is ReactionType) {
     return ReactionTypeTypeTransformer().encode(value).toString();
   }
-  if (value is UniqueFields) {
-    return UniqueFieldsTypeTransformer().encode(value).toString();
+  if (value is Region) {
+    return RegionTypeTransformer().encode(value).toString();
+  }
+  if (value is UserUniqueFields) {
+    return UserUniqueFieldsTypeTransformer().encode(value).toString();
   }
   if (value is ZapImageType) {
     return ZapImageTypeTypeTransformer().encode(value).toString();

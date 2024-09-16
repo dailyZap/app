@@ -4,7 +4,7 @@ import 'package:dailyzap/firebase_options.dart';
 import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/push_notifications/channels.dart';
-import 'package:dailyzap_api/api.dart';
+import 'package:dailyzap_api/api.dart' hide NotificationResponse;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';

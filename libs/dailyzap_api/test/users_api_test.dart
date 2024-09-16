@@ -21,12 +21,12 @@ void main() {
       // TODO
     });
 
-    //Future<List<UserGetParams>> getUserByHandle({ String handle }) async
+    //Future<List<User>> getUserByHandle({ String handle }) async
     test('test getUserByHandle', () async {
       // TODO
     });
 
-    //Future<UserGetParams> getUserById(String id) async
+    //Future<User> getUserById(String id) async
     test('test getUserById', () async {
       // TODO
     });

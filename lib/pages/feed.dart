@@ -16,7 +16,7 @@ class FeedPage extends StatefulWidget {
 class _FeedPageState extends State<FeedPage> {
   List<Content> content = [];
   List<Zap> myZaps = [];
-  Map<String, UserProps> users = {};
+  Map<String, User> users = {};
 
   @override
   void initState() {
@@ -103,10 +103,11 @@ class _FeedPageState extends State<FeedPage> {
                       borderRadius: 10,
                       onTap: () {
                         openZapsPage(
-                            UserProps(
+                            User(
                                 id: "id",
                                 handle: "handle",
                                 firstName: "firstName",
+                                region: Region.EU,
                                 lastName: "lastName",
                                 profilePictureUrl: getMyProfilePictureUrl()),
                             myZaps,

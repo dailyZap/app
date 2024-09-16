@@ -73,7 +73,7 @@ class _OTPPageState extends State<OTPPage> {
                   loading = true;
                 });
                 try {
-                  final response = await authApi!.otp(UserOTPParams(
+                  final response = await authApi.otp(OTPParams(
                       loginToken: loginToken!,
                       otp: pin,
                       deviceToken: deviceToken));
@@ -102,8 +102,8 @@ class _OTPPageState extends State<OTPPage> {
                     resendingCode = true;
                   });
                   try {
-                    loginToken = (await authApi!.login(
-                            UserLoginParams(handleOrEmail: handleOrEmail!)))!
+                    loginToken = (await authApi
+                            .login(LoginParams(handleOrEmail: handleOrEmail!)))!
                         .loginToken;
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

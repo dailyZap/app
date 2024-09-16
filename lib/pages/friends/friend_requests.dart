@@ -10,7 +10,7 @@ class FriendRequestsPage extends StatefulWidget {
 }
 
 class _FriendRequestsPageState extends State<FriendRequestsPage> {
-  FriendRequestsResponseProps? friendRequests;
+  FriendRequests? friendRequests;
 
   String? deletingFriendRequest;
   String? acceptingFriendRequest;
@@ -43,7 +43,7 @@ class _FriendRequestsPageState extends State<FriendRequestsPage> {
         onRefresh: _handleRefresh,
         child: ListView(children: [
           const ListTile(title: Text("Incoming Friend Requests")),
-          for (UserProps friend in friendRequests?.incoming ?? [])
+          for (final User friend in friendRequests?.incoming ?? [])
             ListTile(
               leading: SizedBox(
                   width: 50,

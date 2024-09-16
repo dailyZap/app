@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:dailyzap/helpers/api/home_server.dart';
 import 'package:dailyzap/helpers/navigation/navigation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -17,6 +16,7 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   String? server;
   String? token;
+  ServerInfo? serverInfo;
 
   bool loading = true;
   bool success = false;
@@ -45,21 +45,22 @@ class _RegistrationPageState extends State<RegistrationPage> {
       loading = true;
     });
 
-    authApi =
-        AuthApi(ApiClient(basePath: "http${kDebugMode ? '' : 's'}://$server"));
-    authApi!.checkInvite(token!).then((value) {
-      setState(() {
-        loading = false;
-        success = true;
-      });
-    }).catchError((error) {
+    load();
+  }
+
+  void load() async {
+    setServerUrl(server!);
+    try {
+      await authApi.checkInvite(token!);
+      serverInfo = await infoApi.getServerInfo();
+    } catch (e) {
       // ToDo: Show error message
-      print(error);
+      print(e);
       setState(() {
         loading = false;
         success = false;
       });
-    });
+    }
   }
 
   @override
@@ -166,15 +167,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         registering = true;
                       });
                       try {
-                        final response = await authApi!.register(
+                        final response = await authApi.register(
                             UserCreationParams(
+                                region: serverInfo!.region,
                                 handle: _formKey
                                     .currentState?.fields['handle']?.value,
                                 email: _formKey
                                     .currentState?.fields['email']?.value,
-                                firstName:
-                                    _formKey.currentState?.fields['firstname']
-                                        ?.value,
+                                firstName: _formKey
+                                    .currentState?.fields['firstname']?.value,
                                 lastName: _formKey
                                     .currentState?.fields['lastname']?.value));
                         if (response == null) {

@@ -16,12 +16,12 @@ void main() {
   // final instance = NotificationsApi();
 
   group('tests for NotificationsApi', () {
-    //Future<NotificationResponseProps> fetchNotification(String id) async
+    //Future<Notification> fetchNotification(String id) async
     test('test fetchNotification', () async {
       // TODO
     });
 
-    //Future<NotificationsResponseProps> fetchNotifications() async
+    //Future<Notifications> fetchNotifications() async
     test('test fetchNotifications', () async {
       // TODO
     });

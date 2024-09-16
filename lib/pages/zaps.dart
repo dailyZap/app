@@ -17,7 +17,7 @@ class ZapsPage extends StatefulWidget {
 class _ZapsPageState extends State<ZapsPage> {
   List<Zap> zaps = [];
   int? index;
-  UserProps? user;
+  User? user;
 
   final double minZapHeight = 200;
   final double maxZapHeight = 500;

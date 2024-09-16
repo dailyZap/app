@@ -5,7 +5,7 @@
 import 'package:dailyzap_api/api.dart';
 ```
 
-All URIs are relative to *http://192.168.114.17*
+All URIs are relative to *http://192.168.113.54*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,10 +13,11 @@ Method | HTTP request | Description
 [**getProfilePicture**](ProfileApi.md#getprofilepicture) | **GET** /v1/profile/picture | 
 [**setProfilePicture**](ProfileApi.md#setprofilepicture) | **PUT** /v1/profile/picture | 
 [**setProfilePictureUploaded**](ProfileApi.md#setprofilepictureuploaded) | **PUT** /v1/profile/picture/uploaded | 
+[**setRegion**](ProfileApi.md#setregion) | **PUT** /v1/profile/region | 
 
 
 # **getProfile**
-> ProfileResponseProps getProfile()
+> Profile getProfile()
 
 
 
@@ -45,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ProfileResponseProps**](ProfileResponseProps.md)
+[**Profile**](Profile.md)
 
 ### Authorization
 
@@ -102,7 +103,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **setProfilePicture**
-> SetPictureResponseProps setProfilePicture()
+> ProfilePictureUploadInfo setProfilePicture()
 
 
 
@@ -131,7 +132,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SetPictureResponseProps**](SetPictureResponseProps.md)
+[**ProfilePictureUploadInfo**](ProfilePictureUploadInfo.md)
 
 ### Authorization
 
@@ -182,6 +183,52 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **setRegion**
+> setRegion(regionUpdate)
+
+
+
+### Example
+```dart
+import 'package:dailyzap_api/api.dart';
+// TODO Configure HTTP Bearer authorization: sessionToken
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('sessionToken').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = ProfileApi();
+final regionUpdate = RegionUpdate(); // RegionUpdate | 
+
+try {
+    api_instance.setRegion(regionUpdate);
+} catch (e) {
+    print('Exception when calling ProfileApi->setRegion: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **regionUpdate** | [**RegionUpdate**](RegionUpdate.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[sessionToken](../README.md#sessionToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

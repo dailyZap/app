@@ -131,7 +131,7 @@ class FriendsApi {
     );
   }
 
-  Future<FriendRequestsResponseProps?> getFriendRequests() async {
+  Future<FriendRequests?> getFriendRequests() async {
     final response = await getFriendRequestsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -143,8 +143,8 @@ class FriendsApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'FriendRequestsResponseProps',
-      ) as FriendRequestsResponseProps;
+        'FriendRequests',
+      ) as FriendRequests;
     }
     return null;
   }
@@ -174,7 +174,7 @@ class FriendsApi {
     );
   }
 
-  Future<FriendsResponseProps?> getFriends() async {
+  Future<Friends?> getFriends() async {
     final response = await getFriendsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -186,8 +186,8 @@ class FriendsApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'FriendsResponseProps',
-      ) as FriendsResponseProps;
+        'Friends',
+      ) as Friends;
     }
     return null;
   }

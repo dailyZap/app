@@ -10,7 +10,7 @@ class FriendListPage extends StatefulWidget {
 }
 
 class _FriendListPageState extends State<FriendListPage> {
-  List<UserProps> friends = [];
+  List<User> friends = [];
 
   @override
   void initState() {

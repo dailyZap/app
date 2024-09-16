@@ -5,7 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-AuthApi? authApi;
+late AuthApi authApi;
+late InfoApi infoApi;
 late ProfileApi profileApi;
 late NotificationsApi notificationsApi;
 late FeedApi feedApi;
@@ -16,11 +17,13 @@ Future<bool> initHomeServerApi() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   final basePath = sharedPreferences.getString(StorageKeys.homeServer);
   final sessionToken = sharedPreferences.getString(StorageKeys.sessionToken);
-  authApi = AuthApi(basePath != null
+  var apiClient = basePath != null
       ? MyApiClient(
           basePath: basePath,
         )
-      : null);
+      : null;
+  authApi = AuthApi(apiClient);
+  infoApi = InfoApi(apiClient);
   final loggedIn = basePath != null && sessionToken != null;
   if (loggedIn) {
     final authenticatedApiClient = MyApiClient(
@@ -59,7 +62,6 @@ Future<void> logout() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   await sharedPreferences.remove(StorageKeys.sessionToken);
   await sharedPreferences.remove(StorageKeys.homeServer);
-  authApi = null;
   await initHomeServerApi();
 }
 

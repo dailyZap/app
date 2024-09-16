@@ -5,7 +5,7 @@
 import 'package:dailyzap_api/api.dart';
 ```
 
-All URIs are relative to *http://192.168.114.17*
+All URIs are relative to *http://192.168.113.54*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUserByHandle**
-> List<UserGetParams> getUserByHandle(handle)
+> List<User> getUserByHandle(handle)
 
 
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<UserGetParams>**](UserGetParams.md)
+[**List<User>**](User.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUserById**
-> UserGetParams getUserById(id)
+> User getUserById(id)
 
 
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserGetParams**](UserGetParams.md)
+[**User**](User.md)
 
 ### Authorization
 

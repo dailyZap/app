@@ -17,7 +17,7 @@ class Register409Response {
     required this.reason,
   });
 
-  UniqueFields field;
+  UserUniqueFields field;
 
   String reason;
 
@@ -64,7 +64,7 @@ class Register409Response {
       }());
 
       return Register409Response(
-        field: UniqueFields.fromJson(json[r'field'])!,
+        field: UserUniqueFields.fromJson(json[r'field'])!,
         reason: mapValueOfType<String>(json, r'reason')!,
       );
     }

@@ -233,60 +233,62 @@ class ApiClient {
           return Comment.fromJson(value);
         case 'Content':
           return Content.fromJson(value);
-        case 'FeedResponseProps':
-          return FeedResponseProps.fromJson(value);
-        case 'FeedResponsePropsFriend':
-          return FeedResponsePropsFriend.fromJson(value);
-        case 'FriendRequestsResponseProps':
-          return FriendRequestsResponseProps.fromJson(value);
-        case 'FriendsResponseProps':
-          return FriendsResponseProps.fromJson(value);
-        case 'GetProfilePicture401Response':
-          return GetProfilePicture401Response.fromJson(value);
-        case 'LoginReturnParams':
-          return LoginReturnParams.fromJson(value);
-        case 'NotificationResponseProps':
-          return NotificationResponseProps.fromJson(value);
+        case 'Feed':
+          return Feed.fromJson(value);
+        case 'FeedFriend':
+          return FeedFriend.fromJson(value);
+        case 'FriendRequests':
+          return FriendRequests.fromJson(value);
+        case 'Friends':
+          return Friends.fromJson(value);
+        case 'LoginParams':
+          return LoginParams.fromJson(value);
+        case 'LoginToken':
+          return LoginToken.fromJson(value);
+        case 'Notification':
+          return Notification.fromJson(value);
         case 'NotificationType':
           return NotificationTypeTypeTransformer().decode(value);
-        case 'NotificationsResponseProps':
-          return NotificationsResponseProps.fromJson(value);
-        case 'OTPReturnParams':
-          return OTPReturnParams.fromJson(value);
-        case 'ProfileResponseProps':
-          return ProfileResponseProps.fromJson(value);
+        case 'Notifications':
+          return Notifications.fromJson(value);
+        case 'OTPParams':
+          return OTPParams.fromJson(value);
+        case 'Profile':
+          return Profile.fromJson(value);
+        case 'ProfilePictureUploadInfo':
+          return ProfilePictureUploadInfo.fromJson(value);
         case 'Reaction':
           return Reaction.fromJson(value);
         case 'ReactionType':
           return ReactionTypeTypeTransformer().decode(value);
+        case 'Region':
+          return RegionTypeTransformer().decode(value);
+        case 'RegionUpdate':
+          return RegionUpdate.fromJson(value);
         case 'Register409Response':
           return Register409Response.fromJson(value);
         case 'Register500Response':
           return Register500Response.fromJson(value);
-        case 'RegisterReturnParams':
-          return RegisterReturnParams.fromJson(value);
-        case 'SetPictureResponseProps':
-          return SetPictureResponseProps.fromJson(value);
-        case 'UniqueFields':
-          return UniqueFieldsTypeTransformer().decode(value);
+        case 'RepostZap403Response':
+          return RepostZap403Response.fromJson(value);
+        case 'ServerInfo':
+          return ServerInfo.fromJson(value);
+        case 'Session':
+          return Session.fromJson(value);
+        case 'User':
+          return User.fromJson(value);
         case 'UserCreationParams':
           return UserCreationParams.fromJson(value);
-        case 'UserGetParams':
-          return UserGetParams.fromJson(value);
-        case 'UserLoginParams':
-          return UserLoginParams.fromJson(value);
-        case 'UserOTPParams':
-          return UserOTPParams.fromJson(value);
-        case 'UserProps':
-          return UserProps.fromJson(value);
+        case 'UserUniqueFields':
+          return UserUniqueFieldsTypeTransformer().decode(value);
         case 'Zap':
           return Zap.fromJson(value);
         case 'ZapCreationParams':
           return ZapCreationParams.fromJson(value);
         case 'ZapImageType':
           return ZapImageTypeTypeTransformer().decode(value);
-        case 'ZapResponseProps':
-          return ZapResponseProps.fromJson(value);
+        case 'ZapUploadInfo':
+          return ZapUploadInfo.fromJson(value);
         default:
           dynamic match;
           if (value is List &&

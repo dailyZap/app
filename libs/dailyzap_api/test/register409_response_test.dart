@@ -16,7 +16,7 @@ void main() {
   // final instance = Register409Response();
 
   group('test Register409Response', () {
-    // UniqueFields field
+    // UserUniqueFields field
     test('to test the property `field`', () async {
       // TODO
     });

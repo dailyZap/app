@@ -16,7 +16,7 @@ void main() {
   // final instance = FeedApi();
 
   group('tests for FeedApi', () {
-    //Future<FeedResponseProps> getFeed() async
+    //Future<Feed> getFeed() async
     test('test getFeed', () async {
       // TODO
     });

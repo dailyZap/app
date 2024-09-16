@@ -16,13 +16,18 @@ void main() {
   // final instance = ZapsApi();
 
   group('tests for ZapsApi', () {
-    //Future<ZapResponseProps> createZap(ZapCreationParams zapCreationParams) async
+    //Future<ZapUploadInfo> createZap(ZapCreationParams zapCreationParams) async
     test('test createZap', () async {
       // TODO
     });
 
     //Future<String> getProfilePicture(String id, ZapImageType side) async
     test('test getProfilePicture', () async {
+      // TODO
+    });
+
+    //Future repostZap(String id) async
+    test('test repostZap', () async {
       // TODO
     });
 

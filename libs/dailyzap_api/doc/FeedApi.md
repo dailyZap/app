@@ -5,7 +5,7 @@
 import 'package:dailyzap_api/api.dart';
 ```
 
-All URIs are relative to *http://192.168.114.17*
+All URIs are relative to *http://192.168.113.54*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **getFeed**
-> FeedResponseProps getFeed()
+> Feed getFeed()
 
 
 
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**FeedResponseProps**](FeedResponseProps.md)
+[**Feed**](Feed.md)
 
 ### Authorization
 
