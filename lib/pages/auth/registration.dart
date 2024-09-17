@@ -7,6 +7,21 @@ import 'package:dailyzap_api/api.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+class PrettyRegion {
+  final Region region;
+  final String name;
+  final Icon icon;
+
+  const PrettyRegion(this.region, this.name, this.icon);
+}
+
+const regions = [
+  PrettyRegion(Region.EU, 'Europe', Icon(Icons.flag)),
+  PrettyRegion(Region.US, 'United States', Icon(Icons.flag)),
+  PrettyRegion(Region.WA, 'West Asia', Icon(Icons.flag)),
+  PrettyRegion(Region.EA, 'East Asia', Icon(Icons.flag)),
+];
+
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
   @override
@@ -99,6 +114,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
             Text(server!),
             const Text('With the valid token'),
             Text(token!),
+            const Text("in Region"),
+            Text(serverInfo!.region.toString()),
             FormBuilder(
               key: _formKey,
               child: Column(
@@ -137,6 +154,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ]),
                   ),
                   const SizedBox(height: 10),
+                  FormBuilderChoiceChip(
+                      name: 'region',
+                      initialValue: serverInfo!.region,
+                      decoration: const InputDecoration(labelText: 'Region'),
+                      options: regions
+                          .map((e) => FormBuilderChipOption(
+                              value: e.region,
+                              child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [Text(e.name)])))
+                          .toList()),
+                  const SizedBox(height: 10),
                   FormBuilderFieldDecoration<bool>(
                     name: 'terms',
                     validator: FormBuilderValidators.compose([
@@ -174,7 +203,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       try {
                         final response = await authApi.register(
                             UserCreationParams(
-                                region: serverInfo!.region,
+                                region: _formKey
+                                    .currentState?.fields['region']?.value,
                                 handle: _formKey
                                     .currentState?.fields['handle']?.value,
                                 email: _formKey
