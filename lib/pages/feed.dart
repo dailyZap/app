@@ -101,6 +101,7 @@ class _FeedPageState extends State<FeedPage> {
                     child: NetworkZap(
                       zap: zap,
                       borderRadius: 10,
+                      padding: 3,
                       onTap: () {
                         openZapsPage(
                             User(

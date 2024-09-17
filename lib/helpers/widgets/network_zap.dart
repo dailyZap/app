@@ -7,10 +7,15 @@ import 'package:flutter/material.dart';
 class NetworkZap extends StatefulWidget {
   final Zap zap;
   final double? borderRadius;
+  final double? padding;
   final Function()? onTap;
 
   const NetworkZap(
-      {super.key, required this.zap, this.onTap, this.borderRadius});
+      {super.key,
+      required this.zap,
+      this.onTap,
+      this.borderRadius,
+      this.padding});
 
   @override
   _NetworkZapState createState() => _NetworkZapState();
@@ -21,6 +26,7 @@ class _NetworkZapState extends State<NetworkZap> {
   Widget build(BuildContext context) {
     return InteractiveZap(
         borderRadius: widget.borderRadius,
+        padding: widget.padding,
         onTap: widget.onTap,
         frontCachedPicture: CachedNetworkImage(
             fit: BoxFit.cover,
