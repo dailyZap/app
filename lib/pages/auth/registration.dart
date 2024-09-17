@@ -52,7 +52,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
     setServerUrl(server!);
     try {
       await authApi.checkInvite(token!);
-      serverInfo = await infoApi.getServerInfo();
+      final info = await infoApi.getServerInfo();
+      setState(() {
+        serverInfo = info;
+        loading = false;
+        success = true;
+      });
     } catch (e) {
       // ToDo: Show error message
       print(e);
