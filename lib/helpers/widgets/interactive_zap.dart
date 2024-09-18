@@ -125,8 +125,20 @@ class _InteractiveZapState extends State<InteractiveZap> {
                         clipBehavior: Clip.antiAlias,
                         foregroundDecoration: borderBig,
                         decoration: borderBig,
-                        child:
-                            AspectRatio(aspectRatio: 3 / 4, child: bigPicture),
+                        child: AspectRatio(
+                            aspectRatio: 3 / 4,
+                            child: InteractiveViewer(
+                                onInteractionStart: (_) {
+                                  setState(() {
+                                    hideUI = true;
+                                  });
+                                },
+                                onInteractionEnd: (_) {
+                                  setState(() {
+                                    hideUI = false;
+                                  });
+                                },
+                                child: bigPicture!)),
                       ),
                       AnimatedPositioned(
                           duration: Duration(milliseconds: dragging ? 0 : 200),
