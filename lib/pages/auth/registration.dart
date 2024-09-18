@@ -218,7 +218,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         }
                         navigate("/auth/otp", arguments: {
                           "loginToken": response.loginToken,
-                          "handle":
+                          "handleOrEmail":
                               _formKey.currentState?.fields['handle']!.value
                         });
                       } on ApiException catch (e) {

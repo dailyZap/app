@@ -15,7 +15,7 @@ class _OTPPageState extends State<OTPPage> {
   String? loginToken;
   String? handleOrEmail;
 
-  bool loading = false;
+  bool loading = true;
   bool? success;
   bool resendingCode = false;
 
@@ -39,6 +39,10 @@ class _OTPPageState extends State<OTPPage> {
       });
       return;
     }
+    setState(() {
+      loading = false;
+      success = true;
+    });
   }
 
   @override
