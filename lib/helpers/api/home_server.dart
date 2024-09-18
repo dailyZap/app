@@ -66,7 +66,7 @@ Future<void> logout() async {
 }
 
 String getApiBaseUrl() {
-  return authApi?.apiClient.basePath ?? "";
+  return authApi.apiClient.basePath;
 }
 
 String getSessionToken() {
