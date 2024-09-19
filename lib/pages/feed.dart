@@ -48,11 +48,16 @@ class _FeedPageState extends State<FeedPage> {
     await loadFeed();
   }
 
+  bool gesturesEnabled = false;
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: _handleRefresh,
       child: ListView.builder(
+        physics: gesturesEnabled
+            ? const AlwaysScrollableScrollPhysics()
+            : const NeverScrollableScrollPhysics(),
         itemCount: content.length + 2,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
@@ -132,7 +137,11 @@ class _FeedPageState extends State<FeedPage> {
           final thisContent = content[index - 1];
           final user = users[thisContent.userId]!;
           return CarouselSlider.builder(
+            disableGesture: true,
             options: CarouselOptions(
+              scrollPhysics: gesturesEnabled
+                  ? const AlwaysScrollableScrollPhysics()
+                  : const NeverScrollableScrollPhysics(),
               viewportFraction: 0.9,
               aspectRatio: 0.7,
               enlargeCenterPage: true,
@@ -177,6 +186,12 @@ class _FeedPageState extends State<FeedPage> {
                       )),
                   NetworkZap(
                     zap: zap,
+                    onParentGesturesShouldBeEnabled: (enabled) {
+                      WidgetsBinding.instance
+                          .addPostFrameCallback((_) => setState(() {
+                                gesturesEnabled = enabled;
+                              }));
+                    },
                   ),
                   InkWell(
                       onTap: () {
