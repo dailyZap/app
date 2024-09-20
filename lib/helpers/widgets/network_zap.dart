@@ -9,11 +9,13 @@ class NetworkZap extends StatefulWidget {
   final double? borderRadius;
   final double? padding;
   final Function()? onTap;
+  final Function(bool)? onParentGesturesShouldBeEnabled;
 
   const NetworkZap(
       {super.key,
       required this.zap,
       this.onTap,
+      this.onParentGesturesShouldBeEnabled,
       this.borderRadius,
       this.padding});
 
@@ -25,6 +27,7 @@ class _NetworkZapState extends State<NetworkZap> {
   @override
   Widget build(BuildContext context) {
     return InteractiveZap(
+        onParentGesturesShouldBeEnabled: widget.onParentGesturesShouldBeEnabled,
         borderRadius: widget.borderRadius,
         padding: widget.padding,
         onTap: widget.onTap,

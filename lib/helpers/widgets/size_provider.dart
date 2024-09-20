@@ -21,6 +21,9 @@ class _SizeProviderWidgetState extends State<SizeProviderWidget> {
 
   void _onResize() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (!mounted) {
+        return;
+      }
       if (context.size is Size) {
         if (cachedSize == context.size) {
           return;
