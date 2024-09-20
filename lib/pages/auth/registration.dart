@@ -64,7 +64,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
 
   void load() async {
-    setServerUrl(server!);
+    await setServerUrl(server!);
     try {
       await authApi.checkInvite(token!);
       final info = await infoApi.getServerInfo();
