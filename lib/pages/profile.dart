@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:june/june.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -79,13 +80,40 @@ class _ProfilePageState extends State<ProfilePage> {
                           cacheState.setState();
                           loadProfile();
                         },
-                        child: const Text("Change Picture")),
+                        child: const Row(
+                          children: [
+                            Text("Change Picture"),
+                            SizedBox(width: 10),
+                            Icon(Icons.photo),
+                          ],
+                        )),
+                    TextButton(
+                      onPressed: () async {
+                        if (profile == null) {
+                          return;
+                        }
+                        Share.share(profile!.inviteUrl);
+                      },
+                      child: const Row(
+                        children: [
+                          Text("Share Profile"),
+                          SizedBox(width: 10),
+                          Icon(Icons.share),
+                        ],
+                      ),
+                    ),
                     TextButton(
                       onPressed: () async {
                         await logout();
                         navigate('/');
                       },
-                      child: const Text("Logout"),
+                      child: const Row(
+                        children: [
+                          Text("Logout"),
+                          SizedBox(width: 10),
+                          Icon(Icons.logout),
+                        ],
+                      ),
                     ),
                   ],
                 )
