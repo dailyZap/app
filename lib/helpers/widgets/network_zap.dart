@@ -1,5 +1,7 @@
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dailyzap/helpers/api/home_server.dart';
+import 'package:dailyzap/helpers/navigation/navigation.dart';
 import 'package:dailyzap/helpers/widgets/interactive_zap.dart';
 import 'package:dailyzap_api/api.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ class NetworkZap extends StatefulWidget {
   final double? padding;
   final Function()? onTap;
   final Function(bool)? onParentGesturesShouldBeEnabled;
+  final bool blurred = false;
 
   const NetworkZap(
       {super.key,
@@ -26,11 +29,12 @@ class NetworkZap extends StatefulWidget {
 class _NetworkZapState extends State<NetworkZap> {
   @override
   Widget build(BuildContext context) {
-    return InteractiveZap(
-        onParentGesturesShouldBeEnabled: widget.onParentGesturesShouldBeEnabled,
+    final zap = InteractiveZap(
+        onParentGesturesShouldBeEnabled:
+            widget.blurred ? null : widget.onParentGesturesShouldBeEnabled,
         borderRadius: widget.borderRadius,
         padding: widget.padding,
-        onTap: widget.onTap,
+        onTap: widget.blurred ? () {} : widget.onTap,
         frontCachedPicture: CachedNetworkImage(
             fit: BoxFit.cover,
             imageUrl: widget.zap.frontCameraUrl,
@@ -43,5 +47,22 @@ class _NetworkZapState extends State<NetworkZap> {
             imageUrl: widget.zap.backCameraUrl,
             httpHeaders: getAuthHeader(),
             key: ValueKey(widget.zap.backCameraUrl)));
+    return widget.blurred
+        ? Stack(
+            children: [
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: zap)),
+              Center(
+                  child: TextButton(
+                      onPressed: () {
+                        navigateNewSubPage("/capture");
+                      },
+                      child: const Text("Capture")))
+            ],
+          )
+        : zap;
   }
 }

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **lastName** | **String** |  | 
 **region** | [**Region**](Region.md) |  | 
 **profilePictureUrl** | **String** |  | 
-**inviteUrl** | **String** |  | [optional] 
+**inviteUrl** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

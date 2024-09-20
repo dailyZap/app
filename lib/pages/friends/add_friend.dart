@@ -20,40 +20,45 @@ class _AddFriendPageState extends State<AddFriendPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: _handleController,
-          decoration: const InputDecoration(
-            labelText: 'Handle',
-          ),
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Add Friend'),
         ),
-        ElevatedButton(
-          onPressed: requestingFriendship
-              ? null
-              : () async {
-                  setState(() {
-                    requestingFriendship = true;
-                  });
-                  try {
-                    await friendsApi.requestFriendship(_handleController.text);
-                  } on ApiException catch (e) {
-                    if (!context.mounted) {
-                      return;
-                    }
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(e.message ?? 'An error occurred'),
-                    ));
-                  }
-                  setState(() {
-                    requestingFriendship = false;
-                  });
-                },
-          child: requestingFriendship
-              ? const CircularProgressIndicator()
-              : const Text('Add Friend'),
-        ),
-      ],
-    );
+        body: Column(
+          children: [
+            TextField(
+              controller: _handleController,
+              decoration: const InputDecoration(
+                labelText: 'Handle',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: requestingFriendship
+                  ? null
+                  : () async {
+                      setState(() {
+                        requestingFriendship = true;
+                      });
+                      try {
+                        await friendsApi
+                            .requestFriendship(_handleController.text);
+                      } on ApiException catch (e) {
+                        if (!context.mounted) {
+                          return;
+                        }
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(e.message ?? 'An error occurred'),
+                        ));
+                      }
+                      setState(() {
+                        requestingFriendship = false;
+                      });
+                    },
+              child: requestingFriendship
+                  ? const CircularProgressIndicator()
+                  : const Text('Add Friend'),
+            ),
+          ],
+        ));
   }
 }

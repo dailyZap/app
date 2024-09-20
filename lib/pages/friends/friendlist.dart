@@ -36,28 +36,28 @@ class _FriendListPageState extends State<FriendListPage> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: _handleRefresh,
-      child: friends.isNotEmpty
-          ? ListView.builder(
-              itemCount: friends.length,
-              itemBuilder: (BuildContext context, int index) {
-                final friend = friends[index];
-                return ListTile(
-                  leading: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: ProfilePicture(url: friend.profilePictureUrl)),
-                  title: Text(
-                    "${friend.firstName} ${friend.lastName}",
-                  ),
-                  subtitle: Text(friend.handle),
-                  onTap: () {
-                    openFriendPage(friend);
-                  },
-                );
+        onRefresh: _handleRefresh,
+        child: ListView.builder(
+          itemCount: friends.isEmpty ? 1 : friends.length,
+          itemBuilder: (BuildContext context, int index) {
+            if (friends.isEmpty) {
+              return const Center(child: Text("No friends yet"));
+            }
+            final friend = friends[index];
+            return ListTile(
+              leading: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: ProfilePicture(url: friend.profilePictureUrl)),
+              title: Text(
+                "${friend.firstName} ${friend.lastName}",
+              ),
+              subtitle: Text(friend.handle),
+              onTap: () {
+                openFriendPage(friend);
               },
-            )
-          : const Center(child: Text("No friends")),
-    );
+            );
+          },
+        ));
   }
 }

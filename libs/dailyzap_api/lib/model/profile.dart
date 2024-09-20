@@ -19,7 +19,7 @@ class Profile {
     required this.lastName,
     required this.region,
     required this.profilePictureUrl,
-    this.inviteUrl,
+    required this.inviteUrl,
   });
 
   String id;
@@ -34,13 +34,7 @@ class Profile {
 
   String profilePictureUrl;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? inviteUrl;
+  String inviteUrl;
 
   @override
   bool operator ==(Object other) =>
@@ -63,7 +57,7 @@ class Profile {
       (lastName.hashCode) +
       (region.hashCode) +
       (profilePictureUrl.hashCode) +
-      (inviteUrl == null ? 0 : inviteUrl!.hashCode);
+      (inviteUrl.hashCode);
 
   @override
   String toString() =>
@@ -77,11 +71,7 @@ class Profile {
     json[r'lastName'] = this.lastName;
     json[r'region'] = this.region;
     json[r'profilePictureUrl'] = this.profilePictureUrl;
-    if (this.inviteUrl != null) {
-      json[r'inviteUrl'] = this.inviteUrl;
-    } else {
-      json[r'inviteUrl'] = null;
-    }
+    json[r'inviteUrl'] = this.inviteUrl;
     return json;
   }
 
@@ -112,7 +102,7 @@ class Profile {
         lastName: mapValueOfType<String>(json, r'lastName')!,
         region: Region.fromJson(json[r'region'])!,
         profilePictureUrl: mapValueOfType<String>(json, r'profilePictureUrl')!,
-        inviteUrl: mapValueOfType<String>(json, r'inviteUrl'),
+        inviteUrl: mapValueOfType<String>(json, r'inviteUrl')!,
       );
     }
     return null;
@@ -175,5 +165,6 @@ class Profile {
     'lastName',
     'region',
     'profilePictureUrl',
+    'inviteUrl',
   };
 }
