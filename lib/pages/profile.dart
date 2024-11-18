@@ -56,6 +56,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       url: getMyProfilePictureUrl(),
                       size: 200,
                     ),
+                    Text("Handle: @${profile!.handle}"),
+                    const SizedBox(height: 20),
                     TextButton(
                         onPressed: () async {
                           final file = await pickImage(ImageSource.gallery);
